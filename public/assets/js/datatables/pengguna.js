@@ -123,7 +123,6 @@ var KTDatatableJsonRemoteDemo = function () {
         });
 
 
-
         $('#search_sekolah').on('change', function (e) {
             datatable.search($(this).val().toLowerCase(), 'sekolah_id');
         });
@@ -210,28 +209,25 @@ jQuery(document).ready(function () {
 // delete function
 $('body').on('click', '.delete', function () {
     var id = $(this).data('id');
-    $.ajax({
-        type: "POST",
-        url: `${HOST_URL}/admin/siswa/hapus`,
-        data: { id: id },
-        dataType: 'json',
-    });
     Swal.fire({
-        title: 'Apakah anda yakin?',
-        text: 'Jika data terhapus tidak dapat dikembalikan!',
+        title: 'Apakah Anda Yakin?',
+        text: 'Data terhapus tidak dapat dikembalikan!',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Hapus data!'
+        confirmButtonText: 'Hapus Data!'
     }).then((result)=>{
         if(result.isConfirmed){
-            Swal.fire(
-                'Terhapus!',
-                'Data telah berhasil dihapus',
-                'success'
-            )
-            location.reload();
+            $.ajax({
+                type: "POST",
+                url: 'user/pengguna/hapus',
+                data: { id: id },
+                dataType: 'json',
+                success: function(){
+                    location.reload()
+                }
+            });
         }
     })
 });

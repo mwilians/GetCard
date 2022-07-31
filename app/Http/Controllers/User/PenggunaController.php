@@ -89,26 +89,32 @@ class PenggunaController extends Controller
 
         $pengguna = Pengguna::find($id);
 
-        $pengguna->update($request->all());
-
         if ($foto = $request->file('foto')) {
             $lokasiFoto = 'assets/media/pengguna/';
             $Foto = $lokasiFoto . date('YmdHis') . "." . $foto->getClientOriginalExtension();
             $foto->move($lokasiFoto, $Foto);
-
-            $pengguna->update();
+            
+            $pengguna->update([
+                'foto' => "$Foto",
+                'nama' => $request->nama,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'jabatan' => $request->jabatan,
+            ]);
         } 
-        
         return redirect()->route('index')->with('success',' Data Berhasil di Update');
     }
 
-    public function delete(Request $request, $id) {
+    public function delete(Request $request) {
 
-        $pengguna = Pengguna::find($id);
+        // $pengguna = Pengguna::find($id);
 
-        $pengguna->delete();
+        $pengguna = Pengguna::where('id', $request->id)->delete();
+
+        return response()->json($pengguna);
         
-        return redirect()->route('index')->with('success',' Data Berhasil di Hapus');
+        // return redirect()->route('index')->with('success',' Data Berhasil di Hapus');
     }
 
     public function show() {

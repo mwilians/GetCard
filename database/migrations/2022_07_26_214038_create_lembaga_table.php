@@ -15,7 +15,7 @@ class CreateLembagaTable extends Migration
     {
         Schema::create('lembaga', function (Blueprint $table) {
             $table->id();
-            $table->string('foto');
+            $table->string('foto')->default('assets/media/users/default.jpg');
             $table->string('nama');
             $table->biginteger('telepon');
             $table->string('alamat');

@@ -41,15 +41,12 @@ Route::post('user/insert', [PenggunaController::class, 'insert'])->name('insert'
 Route::get('user/pengguna/{id}/edit',[PenggunaController::class, 'edit'])->name('edit');
 Route::post('user/update/{id}',[PenggunaController::class, 'update'])->name('update');
 
-Route::get('user/delete/{id}',[PenggunaController::class, 'delete'])->name('delete');
+Route::post('user/pengguna/hapus',[PenggunaController::class, 'delete']);
 
 Route::get('user/pengguna/{id}/show',[PenggunaController::class, 'show'])->name('show');
 
 
 // lembaga
-// Route::get('user/lembaga', function () {
-//     return view('user.lembaga');
-// });
 
 Route::get('user/lembaga', [LembagaController::class, 'lembaga'])->name('lembaga');
 

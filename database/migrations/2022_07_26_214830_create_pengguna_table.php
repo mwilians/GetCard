@@ -15,7 +15,7 @@ class CreatePenggunaTable extends Migration
     {
         Schema::create('pengguna', function (Blueprint $table) {
             $table->id();
-            $table->string('foto');
+            $table->string('foto')->default('assets/media/users/default.jpg');
             $table->string('nama');
             $table->string('tempat_lahir');
             $table->string('tanggal_lahir');
