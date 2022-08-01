@@ -21,6 +21,8 @@ class CreatePenggunaTable extends Migration
             $table->string('tanggal_lahir');
             $table->string('jenis_kelamin');
             $table->string('jabatan');
+            $table->string('tanggal_bergabung');
+            $table->string('tanggal_berakhir');
             $table->timestamps();
         });
     }

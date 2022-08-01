@@ -136,7 +136,7 @@
                                                                 class="la la-calendar"></i></span></div>
                                                     <input type="date" name="tanggal_lahir"
                                                         class="form-control form-control-lg form-control-solid"
-                                                        value="" placeholder="Jln. Raya Tlogomas" required/>
+                                                        value="" placeholder="" required/>
                                                 </div>
                                             </div>
                                         </div>
@@ -163,6 +163,32 @@
                                                     <input type="text" name="jabatan"
                                                         class="form-control form-control-lg form-control-solid"
                                                         value="" placeholder="Assistant Manager" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Tgl Bergabung</label>
+                                            <div class="col-lg-9 col-xl-6">
+                                                <div class="input-group input-group-lg input-group-solid">
+                                                    <div class="input-group-prepend"><span
+                                                            class="input-group-text"><i
+                                                                class="la la-calendar"></i></span></div>
+                                                    <input type="date" name="tanggal_bergabung"
+                                                        class="form-control form-control-lg form-control-solid"
+                                                        value="" placeholder="Assistant Manager" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Tgl Berakhir</label>
+                                            <div class="col-lg-9 col-xl-6">
+                                                <div class="input-group input-group-lg input-group-solid">
+                                                    <div class="input-group-prepend"><span
+                                                            class="input-group-text"><i
+                                                                class="la la-calendar"></i></span></div>
+                                                    <input type="date" name="tanggal_berakhir"
+                                                        class="form-control form-control-lg form-control-solid"
+                                                        value="" placeholder="" required/>
                                                 </div>
                                             </div>
                                         </div>

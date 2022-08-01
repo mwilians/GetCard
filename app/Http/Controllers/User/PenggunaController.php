@@ -51,6 +51,8 @@ class PenggunaController extends Controller
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'jabatan' => $request->jabatan,
+                'tanggal_bergabung' => $request->tanggal_bergabung,
+                'tanggal_berakhir' => $request->tanggal_berakhir,
             ]);
             
         } else {
@@ -63,6 +65,8 @@ class PenggunaController extends Controller
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'jabatan' => $request->jabatan,
+                'tanggal_bergabung' => $request->tanggal_bergabung,
+                'tanggal_berakhir' => $request->tanggal_berakhir,
             ]);
 
         }
@@ -101,6 +105,8 @@ class PenggunaController extends Controller
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'jabatan' => $request->jabatan,
+                'tanggal_bergabung' => $request->tanggal_bergabung,
+                'tanggal_berakhir' => $request->tanggal_berakhir,
             ]);
         } 
         return redirect()->route('index')->with('success',' Data Berhasil di Update');
