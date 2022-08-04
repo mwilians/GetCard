@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('title', 'Tambah Pengguna')
+@section('title', 'Add Card')
 
 @section('content')
     <!--begin::Content-->

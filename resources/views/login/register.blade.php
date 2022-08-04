@@ -16,7 +16,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <head>
     <base href="../../../../">
     <meta charset="utf-8" />
-    <title>Login | Get Card</title>
+    <title>Register | Get Card</title>
     <meta name="description" content="Login page example" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -60,28 +60,29 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                     <!--end::Login Header-->
 
-                    <!--begin::Login Sign in form-->
+                    <!--begin::Login Sign up form-->
                     <div class="login-signin">
                         <div class="mb-20">
-                            <h3>Login</h3>
-                            <div class="text-muted font-weight-bold">Masukkan Detail Akun Anda:</div>
+                            <h3>Daftar</h3>
+                            <div class="text-muted font-weight-bold">Masukkan Detail untuk Membuat Akun:</div>
                         </div>
-                        {{-- <form action="{{ route('postLogin') }}" method="POST" class="form" id="kt_login_signin_form">
-                        @csrf
-                            <div class="form-group mb-5">
-                                <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="Email" name="email" autocomplete="off" />
-                            </div>
-                            <div class="form-group mb-5">
-                                <input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Password" name="password" />
-                            </div>
-                            <button type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Login</button>
-                        </form> --}}
-                        <form method="POST" action="{{ route('postLogin') }}">
+                        <form method="POST" action="{{ route('register') }}">
                             @csrf
     
                             <div class="row mb-5">
     
-                                <input id="email" type="email" class="form-control h-auto form-control-solid py-4 px-8 @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="name" type="text" class="form-control h-auto form-control-solid py-4 px-8 @error('name') is-invalid @enderror" name="name" placeholder="Nama" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                            </div>
+    
+                            <div class="row mb-5">
+    
+                                <input id="email" type="email" class="form-control h-auto form-control-solid py-4 px-8 @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email">
     
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -92,7 +93,7 @@ License: You must have a valid license purchased only from themeforest(the above
     
                             <div class="row mb-5">
     
-                                <input id="password" type="password" class="form-control h-auto form-control-solid py-4 px-8 @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control h-auto form-control-solid py-4 px-8 @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
     
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -100,56 +101,16 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </span>
                                     @enderror
                             </div>
+    
+                            <div class="row mb-5">
+    
+                                <input id="password-confirm" type="password" class="form-control h-auto form-control-solid py-4 px-8" name="password_confirmation" placeholder="Konfirmasi Password" required autocomplete="new-password">
+                            </div>
 
                             <button type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">
-                                {{ __('Login') }}
+                                {{ __('Daftar') }}
                             </button>
 
-                        </form>
-                        
-                        <div class="mt-10">
-                            <span class="opacity-70 mr-4">
-                                Belum memiliki akun?
-                            </span>
-                            <a href="/register" id="kt_login_signup" class="text-muted text-hover-primary font-weight-bold">Daftar!</a>
-                        </div>
-                    </div>
-                    <!--end::Login Sign in form-->
-
-                    <!--begin::Login Sign up form-->
-                    <div class="login-signup">
-                        <div class="mb-20">
-                            <h3>Daftar</h3>
-                            <div class="text-muted font-weight-bold">Masukkan Detail untuk Membuat Akun:</div>
-                        </div>
-                        <form action="{{ route('register') }}" method="POST" class="form" id="kt_login_signup_form">
-                        @csrf
-                            <div class="form-group mb-5">
-                                <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="Fullname" name="name" />
-                            </div>
-                            <div class="form-group mb-5">
-                                <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="Email" name="email" autocomplete="off" />
-                            </div>
-                            <div class="form-group mb-5">
-                                <input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Password" name="password" />
-                            </div>
-                            <div class="form-group mb-5">
-                                <input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Confirm Password" name="cpassword" />
-                            </div>
-                            <div class="form-group mb-5 text-left">
-                                <div class="checkbox-inline">
-                                    <label class="checkbox m-0">
-                                        <input type="checkbox" name="agree" />
-                                        <span></span>
-                                        I Agree the <a href="#" class="font-weight-bold ml-1">terms and conditions</a>.
-                                    </label>
-                                </div>
-                                <div class="form-text text-muted text-center"></div>
-                            </div>
-                            <div class="form-group d-flex flex-wrap flex-center mt-10">
-                                <button id="" type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Daftar</button>
-                                <button id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-2">Batal</button>
-                            </div>
                         </form>
                     </div>
                     <!--end::Login Sign up form-->
@@ -237,7 +198,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
     <!--begin::Page Scripts(used by this page)-->
-    <script src="assets/js/pages/custom/login/login-general.js?v=7.0.6"></script>
+    {{-- <script src="assets/js/pages/custom/login/login-general.js?v=7.0.6"></script> --}}
     <!--end::Page Scripts-->
 </body>
 <!--end::Body-->

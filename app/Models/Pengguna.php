@@ -18,5 +18,7 @@ class Pengguna extends Model
         'tanggal_lahir',
         'jenis_kelamin',
         'jabatan',
+        'tanggal_bergabung',
+        'tanggal_berakhir',
     ];
 }

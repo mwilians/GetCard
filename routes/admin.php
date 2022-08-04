@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\{ListPenggunaController, ListLembagaController};
 
 // laravel
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -31,6 +31,8 @@ Route::get('/login', function () {
 Route::get('/admin', function () {
     return view('admin.index');
 });
+Route::get('/user', [UserController::class, 'home'])->name('home')->middleware('role_admin');
+
 
 // list pengguna
 

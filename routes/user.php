@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\{PenggunaController, LembagaController};
+use App\Http\Controllers\User\{UserController, PenggunaController, LembagaController};
+
+use Illuminate\Support\Facades\Auth;
 
 /*
 |----------------------------------------------------------------------
@@ -14,24 +16,23 @@ use App\Http\Controllers\User\{PenggunaController, LembagaController};
 |
 */
 
-// laravel
-Route::get('/', function () {
+// Laravel
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
-// login
+// Login
 
 Route::get('/login', function () {
     return view('login.login');
 });
 
-// dashboard
-Route::get('/user', function () {
-    return view('user.index');
-});
+// Dashboard
+
+Route::get('/user', [UserController::class, 'home'])->name('home')->middleware('auth');
 
 
-// pengguna
+// My Card
 Route::get('user/pengguna', [PenggunaController::class, 'index'])->name('index');
 Route::post('user/pengguna/data', [PenggunaController::class, 'data']);
 
@@ -46,7 +47,7 @@ Route::post('user/pengguna/hapus',[PenggunaController::class, 'delete']);
 Route::get('user/pengguna/{id}/show',[PenggunaController::class, 'show'])->name('show');
 
 
-// lembaga
+// My Company
 
 Route::get('user/lembaga', [LembagaController::class, 'lembaga'])->name('lembaga');
 
@@ -55,3 +56,11 @@ Route::post('user/lembaga-insert', [LembagaController::class, 'lembaga_insert'])
 
 // Route::get('user/lembaga', [LembagaController::class, 'lembaga_edit'])->name('lembaga_edit');
 // Route::post('user/lembaga-update', [LembagaController::class, 'lembaga_update'])->name('lembaga_update');
+
+// My List Card 
+
+Route::get('user/list-kartu', function () {
+    return view('user.list-kartu');
+});
+
+// Route::get('user/list-kartu', [ListKartuController::class, 'list_kartu'])->name('list_kartu');
