@@ -29,11 +29,11 @@
                             <div class="card-body">
                                 {{-- // Preview ID Card --}}
 
-                                <div class="flex-shrink-0 mr-7 mt-lg-0 mt-3 symbol-50 symbol-lg-120">
-                                    <img src="{{ asset('assets/media/desain/D-1.jpg') }}" alt="image" />
+                                <div class=" mr-7 mt-lg-0 mt-3 symbol-50 symbol-lg-120">
+                                    <img class="mt-5" src="{{ asset('assets/media/desain/1.png') }}" height="475" alt="image" />
                                 </div> <br>
-                                <div class="flex-shrink-0 mr-7 mt-lg-0 mt-3 symbol-50 symbol-lg-120">
-                                    <img src="{{ asset('assets/media/desain/D-2.jpg') }}" alt="image" />
+                                <div class=" mr-7 mt-lg-0 mt-3 symbol-50 symbol-lg-120">
+                                    <img src="{{ asset('assets/media/desain/2.png') }}" height="475" alt="image" />
                                 </div>
                             </div>
 

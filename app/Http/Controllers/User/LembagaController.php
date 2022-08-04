@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\{Auth, DB};
 use Illuminate\Http\Request;
 use App\Models\Lembaga;
 
@@ -11,14 +11,16 @@ class LembagaController extends Controller
 {
     public function lembaga() {
 
-        $lembaga = Lembaga::all();
+        $lembaga = Lembaga::where('email', Auth::user()->email)->first();
+        dd($lembaga);
 
         return view ('user.lembaga', compact('lembaga'));
     }
 
     public function lembaga_tambah() {
 
-        $lembaga = Lembaga::all();
+        $lembaga = Lembaga::where('email', Auth::user()->email)->first();
+        // dd($lembaga);
 
         return view ('user.lembaga', compact('lembaga'));
     }

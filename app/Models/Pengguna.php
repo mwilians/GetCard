@@ -18,7 +18,13 @@ class Pengguna extends Model
         'tanggal_lahir',
         'jenis_kelamin',
         'jabatan',
+        'email',
         'tanggal_bergabung',
         'tanggal_berakhir',
     ];
+
+    public function lembaga() {
+
+        return $this->belongsTo(Lembaga::class);
+    }
 }

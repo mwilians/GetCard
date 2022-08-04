@@ -19,4 +19,9 @@ class Lembaga extends Model
         'email',
         'website',
     ];
+
+    public function pengguna() {
+
+        return $this->hasMany(Pengguna::class);
+    }
 }
