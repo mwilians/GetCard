@@ -29,7 +29,7 @@ Route::get('/login', function () {
 
 // Dashboard
 
-Route::get('/user', [UserController::class, 'home'])->name('home')->middleware('auth');
+Route::get('/user', [UserController::class, 'home'])->name('home');
 
 
 // My Card

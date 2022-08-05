@@ -51,6 +51,7 @@ class PenggunaController extends Controller
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'jabatan' => $request->jabatan,
+                'email' => $request->email,
                 'tanggal_bergabung' => $request->tanggal_bergabung,
                 'tanggal_berakhir' => $request->tanggal_berakhir,
             ]);
@@ -65,6 +66,7 @@ class PenggunaController extends Controller
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'jabatan' => $request->jabatan,
+                'email' => $request->email,
                 'tanggal_bergabung' => $request->tanggal_bergabung,
                 'tanggal_berakhir' => $request->tanggal_berakhir,
             ]);
@@ -93,6 +95,8 @@ class PenggunaController extends Controller
 
         $pengguna = Pengguna::find($id);
 
+        $pengguna->update($request->all());
+
         if ($foto = $request->file('foto')) {
             $lokasiFoto = 'assets/media/pengguna/';
             $Foto = $lokasiFoto . date('YmdHis') . "." . $foto->getClientOriginalExtension();
@@ -105,6 +109,7 @@ class PenggunaController extends Controller
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'jabatan' => $request->jabatan,
+                'email' => $request->email,
                 'tanggal_bergabung' => $request->tanggal_bergabung,
                 'tanggal_berakhir' => $request->tanggal_berakhir,
             ]);
