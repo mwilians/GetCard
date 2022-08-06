@@ -17,11 +17,13 @@ class Role
     public function handle(Request $request, Closure $next)
     {
         if(auth()->user()->role == 1) {
-
             return $next($request);
+        }elseif(auth()->user()->role == 0){
+            return back();
+        }else{
+            return redirect('login')->with('error', "Anda Tidak Dapat Mengakses");
         }
 
-        return redirect('login')->with('error', "Anda Tidak Dapat Mengakses");
         
     }
 }

@@ -25,34 +25,34 @@ Route::get('/welcome', function () {
 
 Route::get('/login', function () {
     return view('login.login');
-});
+ })->middleware('guest')->name('login');//->name('login');
 
 // Dashboard
 
-Route::get('/user', [UserController::class, 'home'])->name('home');
+Route::get('/user', [UserController::class, 'home'])->name('home')->middleware('auth');
 
 
 // My Card
-Route::get('user/pengguna', [PenggunaController::class, 'index'])->name('index');
-Route::post('user/pengguna/data', [PenggunaController::class, 'data']);
+Route::get('user/pengguna', [PenggunaController::class, 'index'])->name('index')->middleware('auth');
+Route::post('user/pengguna/data', [PenggunaController::class, 'data'])->middleware('auth');
 
-Route::get('user/pengguna-add', [PenggunaController::class, 'tambah'])->name('tambah');
-Route::post('user/insert', [PenggunaController::class, 'insert'])->name('insert');
+Route::get('user/pengguna-add', [PenggunaController::class, 'tambah'])->name('tambah')->middleware('auth');
+Route::post('user/insert', [PenggunaController::class, 'insert'])->name('insert')->middleware('auth');
 
-Route::get('user/pengguna/{id}/edit',[PenggunaController::class, 'edit'])->name('edit');
-Route::post('user/update/{id}',[PenggunaController::class, 'update'])->name('update');
+Route::get('user/pengguna/{id}/edit',[PenggunaController::class, 'edit'])->name('edit')->middleware('auth');
+Route::post('user/update/{id}',[PenggunaController::class, 'update'])->name('update')->middleware('auth');
 
-Route::post('user/pengguna/hapus',[PenggunaController::class, 'delete']);
+Route::post('user/pengguna/hapus',[PenggunaController::class, 'delete'])->middleware('auth');
 
-Route::get('user/pengguna/{id}/show',[PenggunaController::class, 'show'])->name('show');
+Route::get('user/pengguna/{id}/show',[PenggunaController::class, 'show'])->name('show')->middleware('auth');
 
 
 // My Company
 
-Route::get('user/lembaga', [LembagaController::class, 'lembaga'])->name('lembaga');
+Route::get('user/lembaga', [LembagaController::class, 'lembaga'])->name('lembaga')->middleware('auth');
 
-Route::get('user/lembaga', [LembagaController::class, 'lembaga_tambah'])->name('lembaga_tambah');
-Route::post('user/lembaga-insert', [LembagaController::class, 'lembaga_insert'])->name('lembaga_insert');
+Route::get('user/lembaga', [LembagaController::class, 'lembaga_tambah'])->name('lembaga_tambah')->middleware('auth');
+Route::post('user/lembaga-insert', [LembagaController::class, 'lembaga_insert'])->name('lembaga_insert')->middleware('auth');
 
 // Route::get('user/lembaga', [LembagaController::class, 'lembaga_edit'])->name('lembaga_edit');
 // Route::post('user/lembaga-update', [LembagaController::class, 'lembaga_update'])->name('lembaga_update');

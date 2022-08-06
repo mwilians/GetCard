@@ -63,7 +63,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!--begin::Login Sign in form-->
                     <div class="login-signin">
                         <div class="mb-20">
-                            <h3>Login</h3>
+                            <h3>Masuk</h3>
                             <div class="text-muted font-weight-bold">Masukkan Detail Akun Anda:</div>
                         </div>
                         {{-- <form action="{{ route('postLogin') }}" method="POST" class="form" id="kt_login_signin_form">
@@ -102,7 +102,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
 
                             <button type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">
-                                {{ __('Login') }}
+                                {{ __('Masuk') }}
                             </button>
 
                         </form>

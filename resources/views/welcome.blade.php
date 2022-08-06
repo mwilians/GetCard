@@ -21,7 +21,7 @@
         </style>
     </head>
     <body class="antialiased">
-        <center><h1>Welcome to Get Card</h1></center>
+        <center><h1>Selamat Datang di Get Card</h1></center>
         
     </body>
 </html>
