@@ -30,10 +30,10 @@
                                 {{-- // Preview ID Card --}}
 
                                 <div class=" mr-7 mt-lg-0 mt-3 symbol-50 symbol-lg-120">
-                                    <img class="mt-5" src="{{ asset('assets/media/desain/1.png') }}" height="475" alt="image" />
+                                    <img class="mt-5" src="{{ asset('assets/media/desain/1.png') }}" height="470" alt="image" />
                                 </div> <br>
                                 <div class=" mr-7 mt-lg-0 mt-3 symbol-50 symbol-lg-120">
-                                    <img src="{{ asset('assets/media/desain/2.png') }}" height="475" alt="image" />
+                                    <img src="{{ asset('assets/media/desain/2.png') }}" height="470" alt="image" />
                                 </div>
                             </div>
 
