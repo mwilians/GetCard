@@ -39,26 +39,65 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    // public function login(Request $request) {
+
+    //     $input = $request->all();
+
+    //     $this->validate($request,[
+
+    //         'email' => 'required|email:dns',
+
+    //         'password' => 'required',
+
+    //     ]);
+
+    //     // dd('berhasil login!');
+
+    //     if(Auth::attempt(['email' => $input['email'], 'password' => $input['password']])){
+
+    //         if(auth()->user()->role == 1) {
+
+    //             return redirect()->route('home');
+    //         } else {
+
+    //             return redirect()->route('admin');
+    //         }
+    //     } else {
+            
+    //         return redirect()->route('login.login')->with('error', 'Email atau Password salah');
+        
+    //     }
+    // }
+
     public function login(Request $request) {
 
-        $input = $request->all();
-        $this->validate($request,[
-            'email' => 'required|email',
+        $credentials = $request->validate([
+
+            'email' => 'required|email:dns',
+
             'password' => 'required',
+
         ]);
 
-        if(Auth::attempt(['email' => $input['email'], 'password' => $input['password']])){
+        // dd('berhasil login!');
+
+
+        if(Auth::attempt($credentials)){
+
+            $request->session()->regenerate();
 
             if(auth()->user()->role == 1) {
 
-                return redirect()->route('home');
+                return redirect()->intended('/user');
+
             } else {
 
-                return redirect()->route('admin');
+                return redirect()->intended('/admin');
             }
-        } else {
             
-            return redirect()->route('login.login')->with('error', 'Email atau Password salah');
+            // return redirect()->route('login.login')->with('error', 'Email atau Password salah');
+
+            return back()->with('error', 'Login Gagal!');
         
         }
     }

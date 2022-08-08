@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Pengguna;
 use Alert;
+use BaconQrCode\Encoder\QrCode;
+use Illuminate\Support\Facades\App;
 
 class PenggunaController extends Controller
 {
@@ -128,8 +130,12 @@ class PenggunaController extends Controller
         // return redirect()->route('index')->with('success',' Data Berhasil di Hapus');
     }
 
-    public function show() {
+    public function show($id) {
 
-        return view('user.pengguna-show');
+        // return view('user.pengguna-show');
+
+        $pengguna = Pengguna::where('id', $id)->get();
+
+        return view('user.pengguna-show', compact('pengguna'));
     }
 }
