@@ -166,7 +166,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body"
-                            data-boundary="window" title="Lembaga">
+                            data-boundary="window" title="Perusahaan">
                             <a href="user/lembaga" class="nav-link btn btn-icon btn-lg btn-borderless">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->

@@ -21,7 +21,9 @@
         </style>
     </head>
     <body class="antialiased">
-        <center><h1>Selamat Datang di Get Card</h1></center>
+        <center><h1>Selamat Datang di Get Card</h1> 
+            <h4><a href="/login">Masuk</a>   <a href="/register">Daftar</a></h4>
+        </center>
         
     </body>
 </html>
