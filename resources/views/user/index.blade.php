@@ -1844,7 +1844,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</button>
+                            <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Keluar</button>
                         </form>
                     </div>
                 </div>
