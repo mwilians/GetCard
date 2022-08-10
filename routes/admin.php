@@ -34,18 +34,18 @@ Route::get('/login', function () {
 //     return view('admin.index');
 // });
 
-Route::get('/admin', [AdminController::class, 'home'])->name('home')->middleware('auth');
+Route::get('/admin', [AdminController::class, 'home'])->name('home')->middleware('admin');
 
 
 // list pengguna
 
-Route::get('admin/list-pengguna', [ListPenggunaController::class, 'index'])->name('index')->middleware('auth');
-Route::post('admin/list-pengguna/data', [ListPenggunaController::class, 'data'])->middleware('auth');
+Route::get('admin/list-pengguna', [ListPenggunaController::class, 'index'])->name('index')->middleware('admin');
+Route::post('admin/list-pengguna/data', [ListPenggunaController::class, 'data'])->middleware('admin');
 
 // list lembaga
 
-Route::get('admin/list-lembaga', [ListLembagaController::class, 'index'])->name('index')->middleware('auth');
-Route::post('admin/list-lembaga/data', [ListLembagaController::class, 'data'])->middleware('auth');
+Route::get('admin/list-lembaga', [ListLembagaController::class, 'index'])->name('index')->middleware('admin');
+Route::post('admin/list-lembaga/data', [ListLembagaController::class, 'data'])->middleware('admin');
 
 // card
 

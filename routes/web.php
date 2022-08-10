@@ -30,7 +30,7 @@ Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('guest');
 // Route::get('/welcome', [HomeController::class, 'home'])->name('home');
 
 // Route::get('register',[RegisterController::class,'index'])->name('register')->middleware('ceklogin');

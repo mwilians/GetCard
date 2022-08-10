@@ -83,11 +83,11 @@
                                 {{-- // Preview ID Card --}}
 
                                 <div class=" mr-7 mt-lg-0 mt-3 symbol-50 symbol-lg-120">
-                                    <img class="mt-5" src="{{ asset('assets/media/desain/1.png') }}" height="470" alt="image" />
+                                    <img class="mt-5" src="{{ asset('assets/media/desain/D-1-3.png') }}" height="830" alt="image" />
                                 </div> <br>
-                                <div class=" mr-7 mt-lg-0 mt-3 symbol-50 symbol-lg-120">
-                                    <img src="{{ asset('assets/media/desain/2.png') }}" height="470" alt="image" />
-                                </div>
+                                {{-- <div class=" mr-7 mt-lg-0 mt-3 symbol-50 symbol-lg-120">
+                                    <img src="{{ asset('assets/media/desain/D2-2.png') }}" height="470" alt="image" />
+                                </div> --}}
                             </div>
 
                             <div class="card-footer d-flex justify-content-between">
@@ -196,28 +196,10 @@
 
                                 <div class="flex-shrink-0 mr-7 mt-lg-0 mt-3">
                                     <div class="symbol symbol-50 symbol-lg-150">
-                                        <img src="{{ asset('assets/media/desain/A.jpg') }}" alt="image" />
+                                        <img src="{{ asset('assets/media/desain/DV1.png') }}" alt="image" />
                                     </div>
-                                    <div class="symbol symbol-50 symbol-lg-150">
-                                        <img src="{{ asset('assets/media/desain/B.jpg') }}" alt="image" />
-                                    </div>
-                                    <div class="symbol symbol-50 symbol-lg-150">
-                                        <img src="{{ asset('assets/media/desain/C.jpg') }}" alt="image" />
-                                    </div>
-                                    <div class="symbol symbol-50 symbol-lg-150">
-                                        <img src="{{ asset('assets/media/desain/D.jpg') }}" alt="image" />
-                                    </div>
-                                    <div class="symbol symbol-50 symbol-lg-150">
-                                        <img src="{{ asset('assets/media/desain/E.jpg') }}" alt="image" />
-                                    </div>
-                                    <div class="symbol symbol-50 symbol-lg-150">
-                                        <img src="{{ asset('assets/media/desain/F.jpg') }}" alt="image" />
-                                    </div>
-                                    <div class="symbol symbol-50 symbol-lg-150">
-                                        <img src="{{ asset('assets/media/desain/G.jpg') }}" alt="image" />
-                                    </div>
-                                    <div class="symbol symbol-50 symbol-lg-150">
-                                        <img src="{{ asset('assets/media/desain/H.jpg') }}" alt="image" />
+                                    <div class="symbol symbol-50 symbol-lg-150"> 
+                                        <img src="{{ asset('assets/media/desain/DV2.png') }}" alt="image" />
                                     </div>
                                 </div>
                             </div>
