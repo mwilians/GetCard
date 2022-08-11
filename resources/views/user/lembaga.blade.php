@@ -79,21 +79,6 @@
                                                     <!--end::Svg Icon-->
                                                 </span> perusahaan@gmail.com
                                             </a>
-                                            <a href="#" class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                <span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
-                                                    <!--begin::Svg Icon | path:assets/media/svg/icons/General/Lock.svg-->
-                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                            <mask fill="white">
-                                                                <use xlink:href="#path-1" />
-                                                            </mask>
-                                                        <g />
-                                                            <path d="M7,10 L7,8 C7,5.23857625 9.23857625,3 12,3 C14.7614237,3 17,5.23857625 17,8 L17,10 L18,10 C19.1045695,10 20,10.8954305 20,12 L20,18 C20,19.1045695 19.1045695,20 18,20 L6,20 C4.8954305,20 4,19.1045695 4,18 L4,12 C4,10.8954305 4.8954305,10 6,10 L7,10 Z M12,5 C10.3431458,5 9,6.34314575 9,8 L9,10 L15,10 L15,8 C15,6.34314575 13.6568542,5 12,5 Z" fill="#000000" />
-                                                        </g>
-                                                    </svg>
-                                                    <!--end::Svg Icon-->
-                                                </span> PR Manager
-                                            </a>
                                             <a href="#" class="text-muted text-hover-primary font-weight-bold">
                                                 <span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
                                                     <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Map/Marker1.svg-->
@@ -137,6 +122,9 @@
                     @csrf
                     <!--begin::Card-->
                     <div class="card card-custom gutter-bs">
+
+                        @foreach($l as $l)
+                            
                         <!--Begin::Header-->
                         <div class="card-header card-header-tabs-line">
                             <div class="card-toolbar">
@@ -196,7 +184,7 @@
                                         <!--begin::Heading-->
                                         <div class="row">
                                             <div class="col-lg-9 col-xl-6 offset-xl-3">
-                                                <h3 class="font-size-h6 mb-5">-------------</h3>
+                                                <h3 class="font-size-h6 mb-5"></h3>
                                             </div>
                                         </div>
                                         <!--end::Heading-->
@@ -292,35 +280,17 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <!-- <div class="separator separator-dashed my-8"></div> -->
-
-                                        <!--begin::Heading-->
-                                        <div class="row">
-                                            <div class="col-lg-9 col-xl-6 offset-xl-3">
-                                                <h3 class="font-size-h6 mb-5"></h3>
-                                            </div>
-                                        </div>
-                                        <!--end::Heading-->
-
-                                        <!-- <div class="form-group row">
-                                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Website</label>
-                                            <div class="col-lg-9 col-xl-6">
-                                                <div class="input-group input-group-lg input-group-solid">
-                                                    <input type="text"
-                                                        class="form-control form-control-lg form-control-solid"
-                                                        placeholder="Username" value="loop" />
-                                                    <div class="input-group-append"><span
-                                                            class="input-group-text">.com</span></div>
-                                                </div>
-                                            </div>
-                                        </div> -->
                                     </form>
                                 </div>
                                 <!--end::Tab Content-->
                             </div>
                         </div>
                         <!--end::Body-->
+                        
+                        @break
+                        
+                        @endforeach
+
                     </div>
                     <!--end::Card-->
                 </form>
