@@ -20,8 +20,4 @@ class Lembaga extends Model
         'website',
     ];
 
-    public function pengguna() {
-
-        return $this->hasMany(Pengguna::class);
-    }
 }

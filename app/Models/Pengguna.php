@@ -14,8 +14,6 @@ class Pengguna extends Model
     protected $fillable = [
         'foto',
         'nama',
-        'tempat_lahir',
-        'tanggal_lahir',
         'jenis_kelamin',
         'jabatan',
         'email',
@@ -23,8 +21,13 @@ class Pengguna extends Model
         'tanggal_berakhir',
     ];
 
-    public function lembaga() {
+    public function user() {
 
-        return $this->belongsTo(Lembaga::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function template() {
+
+        return $this->hasOne(Template::class);
     }
 }

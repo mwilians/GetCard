@@ -37,6 +37,7 @@ class LembagaController extends Controller
             $foto->move($lokasiFoto, $Foto);
 
             $lembaga = Lembaga::create([
+                'user_id' => Auth::user()->id,
                 'foto' => "$Foto",
                 'nama' => $request->nama,
                 'telepon' => $request->telepon,
@@ -50,6 +51,7 @@ class LembagaController extends Controller
             // $lembaga = Lembaga::create($request->all());
 
             DB::table('lembaga')->insert([
+                'user_id' => Auth::user()->id,
                 'nama' => $request->nama,
                 'telepon' => $request->telepon,
                 'alamat' => $request->alamat,

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\{DB, Auth};
 use Illuminate\Http\Request;
 use App\Models\Pengguna;
 use Alert;
@@ -14,18 +14,27 @@ class PenggunaController extends Controller
 {
     public function index() {
 
-        $pengguna = Pengguna::all();
+        $pengguna = Pengguna::where('user_id', Auth::user()->id)->get();
 
         return view('user.pengguna', compact('pengguna'));
     }
 
     public function data() {
 
-        $pengguna = Pengguna::all();
+        $pengguna = Pengguna::where('user_id', Auth::user()->id)->get();
 
         return response()->json([
             'data' => $pengguna
         ]);
+    }
+
+    public function generateUniqueCode()
+    {
+        do {
+            $no_id = random_int(100000, 999999);
+        } while (Pengguna::where("no_id", "=", $no_id)->first());
+  
+        return $no_id;
     }
 
     public function tambah() {
@@ -41,16 +50,18 @@ class PenggunaController extends Controller
             'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
+        $no = $this->generateUniqueCode();
+
         if ($foto = $request->file('foto')) {
             $lokasiFoto = 'assets/media/pengguna/';
             $Foto = $lokasiFoto . date('YmdHis') . "." . $foto->getClientOriginalExtension();
             $foto->move($lokasiFoto, $Foto);
 
             $pengguna = Pengguna::create([
+                'user_id' => Auth::user()->id,
+                'no_id' => $no,
                 'foto' => "$Foto",
                 'nama' => $request->nama,
-                'tempat_lahir' => $request->tempat_lahir,
-                'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'jabatan' => $request->jabatan,
                 'email' => $request->email,
@@ -63,9 +74,9 @@ class PenggunaController extends Controller
             // $pengguna = Pengguna::create($request->all());
 
             DB::table('pengguna')->insert([
+                'user_id' => Auth::user()->id,
+                'no_id' => $no,
                 'nama' => $request->nama,
-                'tempat_lahir' => $request->tempat_lahir,
-                'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'jabatan' => $request->jabatan,
                 'email' => $request->email,
@@ -107,8 +118,6 @@ class PenggunaController extends Controller
             $pengguna->update([
                 'foto' => "$Foto",
                 'nama' => $request->nama,
-                'tempat_lahir' => $request->tempat_lahir,
-                'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'jabatan' => $request->jabatan,
                 'email' => $request->email,

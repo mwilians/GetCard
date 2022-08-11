@@ -29,7 +29,7 @@
     position: absolute;
     width:250px;
     height:450px;
-    background: url('{{ asset("assets/media/desain/1.png") }}');   /*if you want to change the background image replace logo.png*/
+    background: url('{{ asset("assets/media/desain/D-1-3.png") }}');   /*if you want to change the background image replace logo.png*/
     background-repeat:repeat-x;
     background-size: 250px 445px;
     /* opacity: 0.2; */
@@ -46,7 +46,7 @@
         transition: 0.4s;
         width:250px;
         height:450px;
-        background: url('{{ asset("assets/media/desain/2.png") }}');   /*if you want to change the background image replace logo.png*/
+        background: url('{{ asset("assets/media/desain/D-1-3.png") }}');   /*if you want to change the background image replace logo.png*/
         text-align:center;
         font-size: 16px;
         font-family: 'Mouse Memoirs', sans-serif;
@@ -70,12 +70,6 @@
                             <div class="card-header">
                                 <div class="card-title">
                                     <h3 class="card-label">Preview</h3>
-                                </div>
-
-                                <div class="card-toolbar">
-                                    <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-1" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Putar Tampilan" data-card-tool="toggle">
-                                    <i class="ki ki-reload icon-nm"></i>
-                                    </a>
                                 </div>
                             </div>
 
