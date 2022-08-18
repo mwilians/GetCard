@@ -12,10 +12,13 @@ class Pengguna extends Model
     protected $table = 'pengguna';
 
     protected $fillable = [
+        'user_id',
+        'no_id',
         'foto',
         'nama',
         'jenis_kelamin',
         'jabatan',
+        'telepon',
         'email',
         'tanggal_bergabung',
         'tanggal_berakhir',
@@ -30,4 +33,9 @@ class Pengguna extends Model
 
         return $this->hasOne(Template::class);
     }
+
+    // public function list_kartu() {
+
+    //     return $this->belongsTo(ListKartu::class);
+    // }
 }

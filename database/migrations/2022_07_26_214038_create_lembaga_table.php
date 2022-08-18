@@ -20,8 +20,8 @@ class CreateLembagaTable extends Migration
             $table->string('nama');
             $table->biginteger('telepon');
             $table->string('alamat');
-            $table->string('email')->unique();
-            $table->string('website')->unique();
+            $table->string('email');
+            $table->string('website');
             $table->timestamps();
         });
     }

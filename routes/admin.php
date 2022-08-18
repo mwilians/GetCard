@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{AdminController, ListPenggunaController, ListLembagaController};
+use App\Http\Controllers\Admin\{AdminController, ListPenggunaController, ListLembagaController, TemplateController};
 
 use Illuminate\Support\Facades\Auth;
 
@@ -42,13 +42,15 @@ Route::get('/admin', [AdminController::class, 'home'])->name('home')->middleware
 Route::get('admin/list-pengguna', [ListPenggunaController::class, 'index'])->name('index')->middleware('admin');
 Route::post('admin/list-pengguna/data', [ListPenggunaController::class, 'data'])->middleware('admin');
 
-// list lembaga
+// list perusahaan
 
 Route::get('admin/list-lembaga', [ListLembagaController::class, 'index'])->name('index')->middleware('admin');
 Route::post('admin/list-lembaga/data', [ListLembagaController::class, 'data'])->middleware('admin');
 
-// card
+// template
 
-Route::get('/admin/card', function () {
-    return view('admin.card');
-});
+Route::get('admin/template', [TemplateController::class, 'index'])->name('index')->middleware('admin');
+
+Route::post('admin/template', [TemplateController::class, 'storeTemplate'])->name('storeTemplate')->middleware('admin');
+
+// Route::post('admin/deleteTemplate/{id}', [TemplateController::class, 'deleteTemplate'])->name('deleteTemplate')->middleware('admin');

@@ -46,7 +46,7 @@ var KTDatatableJsonRemoteDemo = function () {
                 textAlign: 'center',
             }, {
                 field: 'nama',
-                title: 'Lembaga',
+                title: 'Perusahaan',
                 width: 250,
                 template: function (data) {
                     var number = KTUtil.getRandomInt(1, 14);

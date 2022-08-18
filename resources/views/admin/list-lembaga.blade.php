@@ -13,7 +13,7 @@
                 <div class="d-flex align-items-center flex-wrap mr-2">
                     <!--begin::Title-->
                     <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">
-                        List Lembaga </h5>
+                        List Perusahaan </h5>
                     <!--end::Title-->
 
                     <!--begin::Separator-->
@@ -55,32 +55,14 @@
                                 </li>
                                 <li class="navi-item">
                                     <a href="#" class="navi-link">
-                                        <span class="navi-icon"><i class="la la-print"></i></span>
-                                        <span class="navi-text">Print</span>
-                                    </a>
-                                </li>
-                                <li class="navi-item">
-                                    <a href="#" class="navi-link">
-                                        <span class="navi-icon"><i class="la la-copy"></i></span>
-                                        <span class="navi-text">Copy</span>
+                                        <span class="navi-icon"><i class="la la-file-pdf-o"></i></span>
+                                        <span class="navi-text">PDF</span>
                                     </a>
                                 </li>
                                 <li class="navi-item">
                                     <a href="#" class="navi-link">
                                         <span class="navi-icon"><i class="la la-file-excel-o"></i></span>
                                         <span class="navi-text">Excel</span>
-                                    </a>
-                                </li>
-                                <li class="navi-item">
-                                    <a href="#" class="navi-link">
-                                        <span class="navi-icon"><i class="la la-file-text-o"></i></span>
-                                        <span class="navi-text">CSV</span>
-                                    </a>
-                                </li>
-                                <li class="navi-item">
-                                    <a href="#" class="navi-link">
-                                        <span class="navi-icon"><i class="la la-file-pdf-o"></i></span>
-                                        <span class="navi-text">PDF</span>
                                     </a>
                                 </li>
                             </ul>

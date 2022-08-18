@@ -46,12 +46,13 @@ Route::post('user/pengguna/hapus',[PenggunaController::class, 'delete'])->middle
 
 Route::get('user/pengguna/{id}/show',[PenggunaController::class, 'show'])->name('show')->middleware('user');
 
+Route::get('template/{id}', [PenggunaController::class, 'template']);
 
 // My Company
 
 Route::get('user/lembaga', [LembagaController::class, 'lembaga'])->name('lembaga')->middleware('user');
 
-Route::get('user/lembaga', [LembagaController::class, 'lembaga_tambah'])->name('lembaga_tambah')->middleware('user');
+// Route::get('user/lembaga', [LembagaController::class, 'lembaga_tambah'])->name('lembaga_tambah')->middleware('user');
 Route::post('user/lembaga-insert', [LembagaController::class, 'lembaga_insert'])->name('lembaga_insert')->middleware('user');
 
 // Route::get('user/lembaga', [LembagaController::class, 'lembaga_edit'])->name('lembaga_edit');

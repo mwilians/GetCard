@@ -26,7 +26,7 @@
                             <!--end::Menu Wrapper-->
 
                             <!--begin::Toolbar-->
-                            <div class="d-flex align-items-center py-3 py-lg-2">
+                            {{-- <div class="d-flex align-items-center py-3 py-lg-2">
                                 <!--begin::Dropdown-->
                                 <div class="dropdown mr-2" data-toggle="tooltip" title="Quick actions"
                                     data-placement="left">
@@ -283,7 +283,7 @@
                                     </div>
                                 </div>
                                 <!--end::Dropdown-->
-                            </div>
+                            </div> --}}
                             <!--end::Toolbar-->
                         </div>
                         <!--end::Container-->

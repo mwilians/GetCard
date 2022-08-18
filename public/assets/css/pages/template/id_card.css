@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+/* Card 1 */
+.container{
+    display: grid;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    grid-template-areas: "main";
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.container img{
+    width: 100%;
+}
+
+.image-section{
+    grid-area: main;
+}
+
+.text-section{
+    grid-area: main;
+    position: relative;
+}
+
+#nama-id{
+    font-size: 30px;
+}
+    
+#no-id{
+    font-size: 20px;
+}
+
+#profile-img{
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin-top: -3%;
+    margin-left: 13px;
+    border-radius: 50%;
+}
+
+.profile-nama{
+    margin-top: 20px;
+}
+
+#profile-jabatan{
+    margin-top: 13px;
+    font-size: large;
+    color: white;
+}
+
+#detail{
+    font-size: 18px;
+}
+
+#profile-telp{
+    margin-top: 30px;
+}
+
+#profile-email{
+    margin-top: -5%;
+}
+
+#profile-tanggal{
+    margin-top: -5%;
+    /* color: white; */
+}
+
+#logo-lembaga{
+    margin-top: 35px;
+    width: 145px;
+}
+
+#profile-telepon{
+    margin-top: 40px;
+}
+
+#profile-alamat-lembaga{
+    margin-top: -5%;
+}
+
+#profile-email-lembaga{
+    margin-top: -5%;
+}
+
+#profile-website-lembaga{
+    margin-top: -5%;
+}
+
+#qrcode{
+    margin-left: 12px;
+    margin-top: 30px;
+}
+
+.active{
+    display: block !important;
+}
+
+.container-1{
+    display: grid;
+    width: 340px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 30px;
+    grid-template-areas: "main";
+}
+
+.container-1 img{
+    width: 100%;
+}
+
+#id_card_2{
+    margin-top: 100px;
+}
+
+.section-kartu-nama{
+    grid-area: main;
+    margin-top: 940px;
+}
+
+.section-kartu-nama-belakang{
+    grid-area: main;
+    margin-top: 1155px;
+}

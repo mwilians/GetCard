@@ -70,8 +70,17 @@ var KTDatatableJsonRemoteDemo = function () {
                     return output;
                 },
             }, {
-                field: 'jenis_kelamin',
-                title: 'Jenis Kelamin',
+                field: 'telepon',
+                title: 'Telepon',
+                width: 150,
+            }, {
+                field: 'email',
+                title: 'Email',
+                width: 160,
+            }, {
+                field: 'no_id',
+                title: 'No ID',
+                width: 80,
             }, {
                 field: 'tanggal_bergabung',
                 title: 'Tanggal Bergabung',
@@ -80,9 +89,6 @@ var KTDatatableJsonRemoteDemo = function () {
                 field: 'tanggal_berakhir',
                 title: 'Tanggal Berakhir',
                 width: 150,
-            }, {
-                field: 'no_id',
-                title: 'No ID',
             }, {
                 field: '',
                 title: 'Aksi',

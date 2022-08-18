@@ -145,7 +145,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body"
-                            data-boundary="window" title="Pengguna">
+                            data-boundary="window" title="Kartu Saya">
                             <a href="user/pengguna" class="nav-link btn btn-icon btn-lg btn-borderless">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group.svg-->
@@ -186,8 +186,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body"
-                            data-boundary="window" title="Lembaga">
-                            <a href="user/mycard" class="nav-link btn btn-icon btn-lg btn-borderless">
+                            data-boundary="window" title="List Kartu">
+                            <a href="user/list-kartu" class="nav-link btn btn-icon btn-lg btn-borderless">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Shopping/Wallet3.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -237,7 +237,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!--end::Menu Wrapper-->
 
                             <!--begin::Toolbar-->
-                            <div class="d-flex align-items-center py-3 py-lg-2">
+                            {{-- <div class="d-flex align-items-center py-3 py-lg-2">
                                 <!--begin::Dropdown-->
                                 <div class="dropdown mr-2" data-toggle="tooltip" title="Quick actions"
                                     data-placement="left">
@@ -494,7 +494,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                                 <!--end::Dropdown-->
-                            </div>
+                            </div> --}}
                             <!--end::Toolbar-->
                         </div>
                         <!--end::Container-->

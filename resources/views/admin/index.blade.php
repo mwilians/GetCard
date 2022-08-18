@@ -185,8 +185,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body"
-                            data-boundary="window" title="Tambah">
-                            <a href="admin/card" class="nav-link btn btn-icon btn-lg btn-borderless">
+                            data-boundary="window" title="Template">
+                            <a href="admin/template" class="nav-link btn btn-icon btn-lg btn-borderless">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Communication/Adress-book2.svg-->
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -236,7 +236,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!--end::Menu Wrapper-->
 
                             <!--begin::Toolbar-->
-                            <div class="d-flex align-items-center py-3 py-lg-2">
+                            {{-- <div class="d-flex align-items-center py-3 py-lg-2">
                                 <!--begin::Dropdown-->
                                 <div class="dropdown mr-2" data-toggle="tooltip" title="Quick actions"
                                     data-placement="left">
@@ -493,7 +493,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                                 <!--end::Dropdown-->
-                            </div>
+                            </div> --}}
                             <!--end::Toolbar-->
                         </div>
                         <!--end::Container-->

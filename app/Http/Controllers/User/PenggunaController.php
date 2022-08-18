@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\{DB, Auth};
 use Illuminate\Http\Request;
-use App\Models\Pengguna;
+use App\Models\{Pengguna, Lembaga, Template};
 use Alert;
 use BaconQrCode\Encoder\QrCode;
 use Illuminate\Support\Facades\App;
@@ -51,6 +51,7 @@ class PenggunaController extends Controller
         ]);
 
         $no = $this->generateUniqueCode();
+        // dd($no);
 
         if ($foto = $request->file('foto')) {
             $lokasiFoto = 'assets/media/pengguna/';
@@ -64,10 +65,13 @@ class PenggunaController extends Controller
                 'nama' => $request->nama,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'jabatan' => $request->jabatan,
+                'telepon' => $request->telepon,
                 'email' => $request->email,
                 'tanggal_bergabung' => $request->tanggal_bergabung,
                 'tanggal_berakhir' => $request->tanggal_berakhir,
             ]);
+
+            // dd($pengguna);
             
         } else {
 
@@ -79,6 +83,7 @@ class PenggunaController extends Controller
                 'nama' => $request->nama,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'jabatan' => $request->jabatan,
+                'telepon' => $request->telepon,
                 'email' => $request->email,
                 'tanggal_bergabung' => $request->tanggal_bergabung,
                 'tanggal_berakhir' => $request->tanggal_berakhir,
@@ -120,6 +125,7 @@ class PenggunaController extends Controller
                 'nama' => $request->nama,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'jabatan' => $request->jabatan,
+                'telepon' => $request->telepon,
                 'email' => $request->email,
                 'tanggal_bergabung' => $request->tanggal_bergabung,
                 'tanggal_berakhir' => $request->tanggal_berakhir,
@@ -145,6 +151,22 @@ class PenggunaController extends Controller
 
         $pengguna = Pengguna::where('id', $id)->get();
 
-        return view('user.pengguna-show', compact('pengguna'));
+        $lembaga = Lembaga::where('user_id', Auth::user()->id)->get();
+        
+        $template = Template::all();
+
+        $default = Template::first();
+        // dd($default);
+
+        return view('user.pengguna-show', compact('pengguna', 'lembaga', 'template', 'default'));
+    }
+
+    public function template($id)
+    {
+        $template = Template::where('id', $id)->get();
+
+        return response()->json([
+            'data' => $template
+        ]);
     }
 }

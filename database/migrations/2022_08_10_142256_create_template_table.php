@@ -15,6 +15,10 @@ class CreateTemplateTable extends Migration
     {
         Schema::create('template', function (Blueprint $table) {
             $table->id();
+            $table->string('file_demo');
+            $table->string('file_kartu_app');
+            $table->string('file_kartu_nama1');
+            $table->string('file_kartu_nama2');
             $table->timestamps();
         });
     }

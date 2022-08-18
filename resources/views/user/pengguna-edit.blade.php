@@ -155,6 +155,19 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Telepon</label>
+                                            <div class="col-lg-9 col-xl-6">
+                                                <div class="input-group input-group-lg input-group-solid">
+                                                    <div class="input-group-prepend"><span
+                                                            class="input-group-text"><i
+                                                                class="la la-phone"></i></span></div>
+                                                    <input type="text" name="telepon"
+                                                        class="form-control form-control-lg form-control-solid"
+                                                        value="{{ $pengguna->telepon }}" placeholder="+6282278953712" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Email</label>
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="input-group input-group-lg input-group-solid">

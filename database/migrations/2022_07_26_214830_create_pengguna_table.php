@@ -15,13 +15,14 @@ class CreatePenggunaTable extends Migration
     {
         Schema::create('pengguna', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('template_id')->nullable();
             $table->string('no_id')->unique();
             $table->string('foto')->default('assets/media/users/default.jpg');
             $table->string('nama')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('jabatan')->nullable();
+            $table->bigInteger('telepon')->nullable();
             $table->string('email')->nullable();
             $table->string('tanggal_bergabung')->nullable();
             $table->string('tanggal_berakhir')->nullable();
