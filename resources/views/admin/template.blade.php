@@ -138,6 +138,14 @@
 
                                     @else
 
+                                    <div class="flex-shrink-0 mr-7 mt-lg-0 mt-3 desain">
+                                        @foreach ($template as $t)
+                                            <div class="symbol symbol-50 symbol-lg-150 gambar">
+                                                <button onclick="template({{ $t->id }})" class="btn symbol symbol-50 symbol-lg-150" style="border: none"><img src="{{ asset($t->file_demo) }}" alt="image" /></button>
+                                            </div>
+                                        @endforeach
+                                    </div>
+
                                     {{-- <div class="symbol symbol-50 symbol-lg-150">
                                         <img src="{{ asset($template->file_demo) }}" alt="image" />
                                     </div> --}}

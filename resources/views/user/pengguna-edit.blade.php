@@ -111,7 +111,7 @@
                                                                 class="la la-id-card"></i></span></div>
                                                     <input type="text" name="no_id"
                                                         class="form-control form-control-lg form-control-solid"
-                                                        value="{{ $pengguna->nama }}" placeholder="00xx-xxxx-xxx" readonly />
+                                                        value="{{ $pengguna->no_id }}" placeholder="00xx-xxxx" readonly />
                                                 </div>
                                             </div>
                                         </div>

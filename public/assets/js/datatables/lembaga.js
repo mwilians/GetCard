@@ -39,10 +39,10 @@ var KTDatatableJsonRemoteDemo = function () {
             // columns definition
             columns: [{
                 field: 'id',
-                title: '#',
+                title: 'No',
                 sortable: 'desc',
-                width: 20,
-                selector: true,
+                width: 25,
+                selector: false,
                 textAlign: 'center',
             }, {
                 field: 'nama',
@@ -69,12 +69,15 @@ var KTDatatableJsonRemoteDemo = function () {
             }, {
                 field: 'alamat',
                 title: 'Alamat',
+                width: 160,
             }, {
                 field: 'telepon',
                 title: 'Telepon',
+                width: 140,
             }, {
                 field: 'email',
                 title: 'Email',
+                width: 150,
             }, {
                 field: 'website',
                 title: 'Website',

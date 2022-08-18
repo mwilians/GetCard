@@ -11,14 +11,18 @@ class ListPenggunaController extends Controller
 {
     public function index() {
 
-        $user = User::all();
+        $user = User::where('role', 1)->get();
+        
+        // dd($user);
 
         return view('admin.list-pengguna', compact('user'));
     }
 
     public function data() {
 
-        $user = User::all();
+        $user = User::where('role', 1)->get();
+
+        // dd($user);
 
         return response()->json([
             'data' => $user

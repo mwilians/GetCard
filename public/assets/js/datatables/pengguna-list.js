@@ -12,6 +12,8 @@ var KTDatatableJsonRemoteDemo = function () {
 
     // basic demo
     var demo = function () {
+        let no = 1;
+        const n = no++;
         var datatable = $('#kt_datatable').KTDatatable({
             // datasource definition
             data: {
@@ -38,6 +40,13 @@ var KTDatatableJsonRemoteDemo = function () {
 
             // columns definition
             columns: [{
+                field: 'id',
+                title: 'No',
+                sortable: 'desc',
+                width: 25,
+                selector: false,
+                textAlign: 'center',
+            }, {
                 field: 'name',
                 title: 'Nama',
                 width: 250,
@@ -51,7 +60,7 @@ var KTDatatableJsonRemoteDemo = function () {
                                 <div class="symbol-label" style="' + user_img + '"></div>\
                             </div>\
                             <div class="ml-2">\
-                                <a href="admin/siswa/' + data.name + '" class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">' + data.name + '</a>\
+                                <a href="" class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">' + data.name + '</a>\
                             </div>\
                         </div>';
 
@@ -60,9 +69,7 @@ var KTDatatableJsonRemoteDemo = function () {
             }, {
                 field: 'email',
                 title: 'Email',
-            }, {
-                field: 'role',
-                title: 'Role',
+                width: 250,
             }],
         });
 

@@ -12,6 +12,7 @@ class Lembaga extends Model
     protected $table = 'lembaga';
 
     protected $fillable = [
+        'user_id',
         'foto',
         'nama',
         'telepon',

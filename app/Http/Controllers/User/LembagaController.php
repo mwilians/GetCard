@@ -11,22 +11,23 @@ class LembagaController extends Controller
 {
     public function lembaga() {
 
-        $lembaga = Lembaga::where('email', Auth::user()->email)->first();
-        dd($lembaga);
-
-        $l = Lembaga::where('user_id', Auth::user()->id)->first();
-
-        return view ('user.lembaga', compact('lembaga', 'id'));
-    }
-
-    public function lembaga_tambah() {
-
-        $lembaga = Lembaga::where('email', Auth::user()->email)->first();
-        $l = Lembaga::where('user_id', Auth::user()->id)->first();
+        $lembaga = Lembaga::where('id', Auth::user()->id)->first();
         // dd($lembaga);
+
+        $l = Lembaga::where('user_id', Auth::user()->id)->first();
 
         return view ('user.lembaga', compact('lembaga', 'l'));
     }
+
+    // public function lembaga_tambah() {
+
+    //     $lembaga = Lembaga::where('email', Auth::user()->email)->first();
+
+    //     $l = Lembaga::where('user_id', Auth::user()->id)->first();
+    //     // dd($lembaga);
+
+    //     return view ('user.lembaga', compact('lembaga', 'l'));
+    // }
 
     public function lembaga_insert(Request $request) {
 
