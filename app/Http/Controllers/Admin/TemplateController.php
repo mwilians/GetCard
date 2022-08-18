@@ -33,30 +33,30 @@ class TemplateController extends Controller
         ]);
 
         $file_demo = $request->file('file_demo');
-        $lokasiFileDemo = 'assets/media/desain/demo/';
+        $lokasiFileDemo = 'assets/media/desain/Demo/';
         $FileDemoName = date('YmdHis') . "." . $file_demo->extension();
         $file_demo->move(public_path($lokasiFileDemo), $FileDemoName);
 
         $file_kartu_app = $request->file('file_kartu_app');
-        $lokasiFileApp = 'assets/media/desain/app/';
+        $lokasiFileApp = 'assets/media/desain/App/';
         $FileAppName = date('YmdHis') . "." . $file_kartu_app->extension();
         $file_kartu_app->move(public_path($lokasiFileApp), $FileAppName);
 
         $file_kartu_nama1 = $request->file('file_kartu_nama1');
-        $lokasiFileKartuNama1 = 'assets/media/desain/kartu_nama/';
+        $lokasiFileKartuNama1 = 'assets/media/desain/Kartu-Nama/1/';
         $FileKartuNama1Name = date('YmdHis') . "." . $file_kartu_nama1->extension();
         $file_kartu_nama1->move(public_path($lokasiFileKartuNama1), $FileKartuNama1Name);
 
         $file_kartu_nama2 = $request->file('file_kartu_nama2');
-        $lokasiFileKartuNama2 = 'assets/media/desain/kartu_nama/';
+        $lokasiFileKartuNama2 = 'assets/media/desain/Kartu-Nama/2/';
         $FileKartuNama2Name = date('YmdHis') . "." . $file_kartu_nama2->extension();
-        $file_kartu_nama2->move(public_path($FileKartuNama2Name), $FileKartuNama2Name);
+        $file_kartu_nama2->move(public_path($lokasiFileKartuNama2), $FileKartuNama2Name);
 
         Template::create([
             'file_demo' => $lokasiFileDemo.$FileDemoName,
             'file_kartu_app' => $lokasiFileApp.$FileAppName,
             'file_kartu_nama1' => $lokasiFileKartuNama1.$FileKartuNama1Name,
-            'file_kartu_nama2' => $FileKartuNama2Name.$FileKartuNama2Name,
+            'file_kartu_nama2' => $lokasiFileKartuNama2.$FileKartuNama2Name,
         ]);
 
         return redirect()->back();

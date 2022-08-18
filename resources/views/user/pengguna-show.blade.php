@@ -170,7 +170,7 @@
                             </div>
 
                             <div class="card-body">
-                                {{-- // Tampilan Desain --}}
+                                {{-- // Pilihan Desain --}}
                                 <div class="flex-shrink-0 mr-7 mt-lg-0 mt-3 desain">
                                     @foreach ($template as $t)
                                         <div class="symbol symbol-50 symbol-lg-150 gambar">
@@ -208,13 +208,21 @@
             method: "GET",
             dataType: 'json',
             success: function(response){
+
+                // ----- preview desain ----- //
+
+                // file app
                 let foto = $('#template');
+                // file kartu nama 1
                 let foto_kartu_nama = $('#kartu_nama');
+                // file kartu nama 2
                 let foto_kartu_nama_belakang = $('#kartu_nama_belakang');
-                var file_demo = response.data[0].file_kartu_app;
+
+                var kartu_app = response.data[0].file_kartu_app;
                 var kartu_nama = response.data[0].file_kartu_nama1;
                 var kartu_nama_belakang = response.data[0].file_kartu_nama2;
-                foto.attr('src', file_demo);
+
+                foto.attr('src', kartu_app);
                 foto_kartu_nama.attr('src', kartu_nama);
                 foto_kartu_nama_belakang.attr('src', kartu_nama_belakang);
             }
