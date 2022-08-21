@@ -7,9 +7,9 @@
                 User Profile
                 <small class="text-muted font-size-sm ml-2"></small>
             </h3>
-            <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
+            <span class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
                 <i class="ki ki-close icon-xs text-muted"></i>
-            </a>
+            </span>
         </div>
         <!--end::Header-->
 
@@ -23,14 +23,14 @@
                     <i class="symbol-badge bg-success"></i>
                 </div>
                 <div class="d-flex flex-column">
-                    <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
+                    <span class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
                         {{ Auth::user()->name }}
-                    </a>
-                    <div class="text-muted mt-1">
+                    </span>
+                    {{-- <div class="text-muted mt-1">
                         Application Developer
-                    </div>
-                    <div class="navi mt-2">
-                        <a href="#" class="navi-item">
+                    </div> --}}
+                    <div class="navi">
+                        <span class="navi-item">
                             <span class="navi-link p-0 pb-2">
                                 <span class="navi-icon mr-1">
                                     <span class="svg-icon svg-icon-lg svg-icon-primary">
@@ -50,8 +50,9 @@
                                     </span> </span>
                                 <span class="navi-text text-muted text-hover-primary">{{ Auth::user()->email }}</span>
                             </span>
-                        </a>
-                        <form action="{{ route('logout') }}" method="POST">
+                        </span>
+
+                        <form action="{{ route('logout') }}" method="POST" class="navi mt-4">
                             @csrf
                             <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Keluar</button>
                         </form>

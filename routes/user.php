@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\{UserController, PenggunaController, LembagaController};
+use App\Http\Controllers\User\{UserController, PenggunaController, LembagaController, ListKartuController};
 
 use Illuminate\Support\Facades\Auth;
 
@@ -21,14 +21,14 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->middleware('guest');
 
-// Login
 
+// Login
 Route::get('/login', function () {
     return view('login.login');
- })->middleware('guest')->name('login');//->name('login');
+})->middleware('guest')->name('login');
+
 
 // Dashboard
-
 Route::get('/user', [UserController::class, 'home'])->name('home')->middleware('user');
 
 
@@ -48,20 +48,15 @@ Route::get('user/pengguna/{id}/show',[PenggunaController::class, 'show'])->name(
 
 Route::get('template/{id}', [PenggunaController::class, 'template']);
 
-// My Company
 
+// My Company
 Route::get('user/lembaga', [LembagaController::class, 'lembaga'])->name('lembaga')->middleware('user');
 
-// Route::get('user/lembaga', [LembagaController::class, 'lembaga_tambah'])->name('lembaga_tambah')->middleware('user');
 Route::post('user/lembaga-insert', [LembagaController::class, 'lembaga_insert'])->name('lembaga_insert')->middleware('user');
 
 // Route::get('user/lembaga', [LembagaController::class, 'lembaga_edit'])->name('lembaga_edit');
 // Route::post('user/lembaga-update', [LembagaController::class, 'lembaga_update'])->name('lembaga_update');
 
+
 // My List Card 
-
-Route::get('user/list-kartu', function () {
-    return view('user.list-kartu');
-});
-
-// Route::get('user/list-kartu', [ListKartuController::class, 'list_kartu'])->name('list_kartu');
+Route::get('user/list-kartu', [ListKartuController::class, 'index'])->name('list_kartu')->middleware('user');

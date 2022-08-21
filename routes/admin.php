@@ -17,38 +17,37 @@ use Illuminate\Support\Facades\Auth;
 */
 
 // laravel
-
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-// login
 
+// login
 Route::get('/login', function () {
     return view('login.login');
 })->middleware('guest')->name('login');//->name('login');
 
-// dashboard
 
+// dashboard
 // Route::get('/admin', function () {
 //     return view('admin.index');
 // });
-
 Route::get('/admin', [AdminController::class, 'home'])->name('home')->middleware('admin');
 
 
 // list pengguna
-
 Route::get('admin/list-pengguna', [ListPenggunaController::class, 'index'])->name('index')->middleware('admin');
+
 Route::post('admin/list-pengguna/data', [ListPenggunaController::class, 'data'])->middleware('admin');
 
-// list perusahaan
 
+// list perusahaan
 Route::get('admin/list-lembaga', [ListLembagaController::class, 'index'])->name('index')->middleware('admin');
+
 Route::post('admin/list-lembaga/data', [ListLembagaController::class, 'data'])->middleware('admin');
 
-// template
 
+// template
 Route::get('admin/template', [TemplateController::class, 'index'])->name('index')->middleware('admin');
 
 Route::post('admin/template', [TemplateController::class, 'storeTemplate'])->name('storeTemplate')->middleware('admin');

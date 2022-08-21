@@ -5,17 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\{Auth, DB};
 use Illuminate\Http\Request;
+use App\Models\{User, Lembaga, Template, Pengguna};
 use Redirect;
 
 class AdminController extends Controller
 {
     public function home() {
 
-        // if (Auth::check()) 
-        //     return Redirect::route('admin');
+        $dataUser = User::where('role', 1)->get();
+        
+        $dataLembaga = Lembaga::all();
 
-        return view ('admin.index');
+        $dataTemplate = Template::all();
 
-        // return Redirect::route('login');
+        return view ('admin.index', compact('dataUser', 'dataLembaga', 'dataTemplate'));
     }
 }
