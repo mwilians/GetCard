@@ -44,8 +44,13 @@ var KTDatatableJsonRemoteDemo = function () {
                 title: 'No',
                 sortable: 'desc',
                 width: 25,
+                type: 'number',
                 selector: false,
                 textAlign: 'center',
+                template: function(data, index) {
+                    index++
+                    return index
+                }
             }, {
                 field: 'name',
                 title: 'Nama',

@@ -42,12 +42,17 @@ var KTDatatableJsonRemoteDemo = function () {
                 title: 'No',
                 sortable: 'desc',
                 width: 25,
+                type: 'number',
                 selector: false,
                 textAlign: 'center',
+                template: function(data, index) {
+                    index++
+                    return index
+                }
             }, {
                 field: 'nama',
                 title: 'Perusahaan',
-                width: 250,
+                width: 210,
                 template: function (data) {
                     var number = KTUtil.getRandomInt(1, 14);
                     var user_img = 'background-image:url(\'' + data.foto + '\')';
@@ -58,9 +63,7 @@ var KTDatatableJsonRemoteDemo = function () {
                                 <div class="symbol-label" style="' + user_img + '"></div>\
                             </div>\
                             <div class="ml-2">\
-                                <a href="admin/siswa/' + data.id + '" class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">' + data.nama + '</a>\
-                                <br>\
-                                <a href="admin/sekolah/' + data.sekolah_id + '" class="font-size-sm text-dark-50 text-hover-primary">' + data.sekolah + '</a>\
+                                <a href="" class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">' + data.nama + '</a>\
                             </div>\
                         </div>';
 
@@ -73,11 +76,11 @@ var KTDatatableJsonRemoteDemo = function () {
             }, {
                 field: 'telepon',
                 title: 'Telepon',
-                width: 140,
+                width: 100,
             }, {
                 field: 'email',
                 title: 'Email',
-                width: 150,
+                width: 180,
             }, {
                 field: 'website',
                 title: 'Website',

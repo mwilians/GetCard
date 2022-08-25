@@ -61,9 +61,9 @@ var KTDatatableJsonRemoteDemo = function () {
                                 <div class="symbol-label" style="' + user_img + '"></div>\
                             </div>\
                             <div class="ml-2">\
-                                <a href="admin/siswa/' + data.id + '" class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">' + data.nama + '</a>\
+                                <a href="user/pengguna/' + data.id + '/show" class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">' + data.nama + '</a>\
                                 <br>\
-                                <a href="admin/sekolah/' + data.jabatan + '" class="font-size-sm text-dark-50 text-hover-primary">' + data.jabatan + '</a>\
+                                <a href="user/pengguna/' + data.jabatan + '" class="font-size-sm text-dark-50 text-hover-primary">' + data.jabatan + '</a>\
                             </div>\
                         </div>';
 
