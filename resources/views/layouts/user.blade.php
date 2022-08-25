@@ -36,9 +36,6 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="{{ asset('assets/css/style.bundle.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Theme Styles-->
 
-    <!--begin::Layout Themes(used by all pages)-->
-    <!--end::Layout Themes-->
-
     <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
 
 </head>

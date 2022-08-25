@@ -126,7 +126,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body"
                             data-boundary="window" title="Dashboard">
-                            <a href="/user" class="nav-link btn btn-icon btn-lg btn-borderless active">
+                            <a href="/user" class="nav-link btn btn-icon btn-lg btn-borderless {{ Route::is('home') ? 'active' : '' }}">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -146,7 +146,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body"
                             data-boundary="window" title="Kartu Saya">
-                            <a href="user/pengguna" class="nav-link btn btn-icon btn-lg btn-borderless">
+                            <a href="user/pengguna" class="nav-link btn btn-icon btn-lg btn-borderless {{ Route::is('index', 'edit', 'show') ? 'active' : '' }}">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group.svg-->
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -167,7 +167,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body"
                             data-boundary="window" title="Perusahaan">
-                            <a href="user/lembaga" class="nav-link btn btn-icon btn-lg btn-borderless">
+                            <a href="user/lembaga" class="nav-link btn btn-icon btn-lg btn-borderless {{ Route::is('lembaga') ? 'active' : '' }}">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -187,7 +187,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body"
                             data-boundary="window" title="List Kartu">
-                            <a href="user/list-kartu" class="nav-link btn btn-icon btn-lg btn-borderless">
+                            <a href="user/list-kartu" class="nav-link btn btn-icon btn-lg btn-borderless {{ Route::is('list_kartu') ? 'active' : '' }}">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Shopping/Wallet3.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -284,7 +284,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 </div>
                                                             </td>
                                                             <td class="pl-0">
-                                                                <a href="" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Kartu Saya</a>
+                                                                <a href="user/pengguna" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Kartu Saya</a>
                                                                 <span class="text-muted font-weight-bold d-block">{{ count($kartuSaya) }} Data Kartu</span>
                                                             </td>
                                                         </tr>
@@ -333,7 +333,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 </div>
                                                             </td>
                                                             <td class="pl-0">
-                                                                <a href="" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">List Kartu Saya</a>
+                                                                <a href="user/list-kartu" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">List Kartu Saya</a>
                                                                 <span class="text-muted font-weight-bold d-block">0 Kartu Nama</span>
                                                             </td>
                                                         </tr>
@@ -398,7 +398,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!--end::Row-->
 
                             <!--begin::Row-->
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-xl-12">
                                     <!--begin::Charts Widget 5-->
                                     <!--begin::Card-->
@@ -469,7 +469,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <!--end:: Card-->
                                     <!--end:: Charts Widget 5-->
                                 </div>
-                            </div>
+                            </div> --}}
                             <!--end::Row-->
                         </div>
                         <!--end::Container-->

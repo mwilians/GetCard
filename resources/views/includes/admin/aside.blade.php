@@ -19,7 +19,7 @@
                     <ul class="nav flex-column">
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Dashboard">
-                            <a href="{{ url('admin') }}" class="nav-link btn btn-icon btn-lg btn-borderless active">
+                            <a href="{{ url('admin') }}" class="nav-link btn btn-icon btn-lg btn-borderless {{ Route::is('home') ? 'active' : '' }}">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg--><svg
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -40,7 +40,7 @@
 
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Pengguna">
-                            <a href="{{ url('admin/list-pengguna') }}" class="nav-link btn btn-icon btn-lg btn-borderless">
+                            <a href="{{ url('admin/list-pengguna') }}" class="nav-link btn btn-icon btn-lg btn-borderless {{ Route::is('index') ? 'active' : '' }}">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group.svg--><svg
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -64,7 +64,7 @@
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body"
                             data-boundary="window" title="Perusahaan">
-                            <a href="{{ url('admin/list-lembaga') }}" class="nav-link btn btn-icon btn-lg btn-borderless"                                data-target="#kt_aside_tab_5" role="tab">
+                            <a href="{{ url('admin/list-lembaga') }}" class="nav-link btn btn-icon btn-lg btn-borderless {{ Route::is('perusahaan') ? 'active' : '' }}">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg--><svg
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -85,7 +85,7 @@
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body"
                             data-boundary="window" title="Template">
-                            <a href="{{ ('admin/template') }}" class="nav-link btn btn-icon btn-lg btn-borderless"                                data-target="#kt_aside_tab_6" role="tab">
+                            <a href="{{ ('admin/template') }}" class="nav-link btn btn-icon btn-lg btn-borderless {{ Route::is('template') ? 'active' : '' }}">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Communication/Adress-book2.svg-->
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

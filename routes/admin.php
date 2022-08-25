@@ -34,6 +34,8 @@ Route::get('/login', function () {
 // });
 Route::get('/admin', [AdminController::class, 'home'])->name('home')->middleware('admin');
 
+// Route::get('/admin', [AdminController::class, 'charts'])->name('charts')->middleware('admin');
+
 
 // list pengguna
 Route::get('admin/list-pengguna', [ListPenggunaController::class, 'index'])->name('index')->middleware('admin');
@@ -42,13 +44,13 @@ Route::post('admin/list-pengguna/data', [ListPenggunaController::class, 'data'])
 
 
 // list perusahaan
-Route::get('admin/list-lembaga', [ListLembagaController::class, 'index'])->name('index')->middleware('admin');
+Route::get('admin/list-lembaga', [ListLembagaController::class, 'perusahaan'])->name('perusahaan')->middleware('admin');
 
 Route::post('admin/list-lembaga/data', [ListLembagaController::class, 'data'])->middleware('admin');
 
 
 // template
-Route::get('admin/template', [TemplateController::class, 'index'])->name('index')->middleware('admin');
+Route::get('admin/template', [TemplateController::class, 'template'])->name('template')->middleware('admin');
 
 Route::post('admin/template', [TemplateController::class, 'storeTemplate'])->name('storeTemplate')->middleware('admin');
 

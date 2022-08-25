@@ -46,17 +46,20 @@ Route::post('user/pengguna/hapus',[PenggunaController::class, 'delete'])->middle
 
 Route::get('user/pengguna/{id}/show',[PenggunaController::class, 'show'])->name('show')->middleware('user');
 
+Route::get('user/pengguna/{id}/print',[PenggunaController::class, 'print'])->name('print')->middleware('user');
+
 Route::get('template/{id}', [PenggunaController::class, 'template']);
 
 
 // My Company
 Route::get('user/lembaga', [LembagaController::class, 'lembaga'])->name('lembaga')->middleware('user');
 
-Route::post('user/lembaga-insert', [LembagaController::class, 'lembaga_insert'])->name('lembaga_insert')->middleware('user');
+Route::post('user/lembaga-action', [LembagaController::class, 'lembaga_action'])->name('lembaga_action')->middleware('user');
 
-// Route::get('user/lembaga', [LembagaController::class, 'lembaga_edit'])->name('lembaga_edit');
-// Route::post('user/lembaga-update', [LembagaController::class, 'lembaga_update'])->name('lembaga_update');
+// Route::post('user/lembaga-insert', [LembagaController::class, 'lembaga_insert'])->name('lembaga_insert')->middleware('user');
+
+// Route::post('user/lembaga-update', [LembagaController::class, 'lembaga_update'])->name('lembaga_update')->middleware('user');
 
 
 // My List Card 
-Route::get('user/list-kartu', [ListKartuController::class, 'index'])->name('list_kartu')->middleware('user');
+Route::get('user/list-kartu', [ListKartuController::class, 'list_kartu'])->name('list_kartu')->middleware('user');
