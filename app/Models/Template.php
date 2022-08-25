@@ -18,8 +18,8 @@ class Template extends Model
         'file_kartu_nama2',
     ];
 
-    // public function pengguna() {
+    public function pengguna() {
 
-    //     return $this->hasOne(Pengguna::class);
-    // }
+        return $this->hasMany(Pengguna::class);
+    }
 }

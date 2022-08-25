@@ -9,7 +9,7 @@ use App\Models\Template;
 
 class TemplateController extends Controller
 {
-    public function index() {
+    public function template() {
 
         $template = Template::all();
 

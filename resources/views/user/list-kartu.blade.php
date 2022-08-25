@@ -43,6 +43,19 @@
                         <div class="card-title">
                             <h3 class="card-label">Pencarian Kartu Nama</h3>
                         </div>
+
+                        <form action="{{ url('user/list_kartu') }}" method="GET">
+                            {{-- @csrf --}}
+                            <div class="input-icon card-toolbar">
+                                <input type="text" class="form-control" placeholder="Cari ID" name="no_id" />
+                                <button type="submit" class="btn btn-primary font-weight-bold"><i class="flaticon2-search-1 text-muted"></i> Cari </button>
+                            </div>
+                        </form>
+
+                        {{-- <div class="input-icon card-toolbar">
+                            <input type="text" class="form-control" placeholder="Cari ID" />
+                            <span><i class="flaticon2-search-1 text-muted"></i></span>
+                        </div> --}}
                     </div>
                     <!--end::Body-->
 
@@ -50,11 +63,8 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-6 my-2 my-md-0">
-                                <div class="input-icon">
-                                    <input type="text" class="form-control" placeholder="Cari ID" id="kt_datatable_search_query" />
-                                    <span><i class="flaticon2-search-1 text-muted"></i></span>
-                                </div>
-                                <img class="mt-5 mr-4" src="{{ asset('assets/media/desain/DKN/C1-1.png') }}" height="190" alt="image" />
+                                {{-- <img src="{{asset('card/'.$value->file)}}" alt="" class="card-img" height="190" alt="image"> --}}
+                                <img class="mr-4" src="{{ asset('assets/media/desain/DKN/C1-1.png') }}" height="190" alt="image" />
                             </div>
                         </div>
                     </div>

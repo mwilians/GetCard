@@ -9,7 +9,7 @@ use App\Models\Lembaga;
 
 class ListLembagaController extends Controller
 {
-    public function index() {
+    public function perusahaan() {
 
         $lembaga = Lembaga::all();
 

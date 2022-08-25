@@ -220,3 +220,43 @@
         font-size: 32px;
     }
 }
+
+
+@media (max-width: 800px) {
+
+    .jumbotron {
+        background-color: #8B467A;
+        background-image: url(/assets/media/bg/bg-jpg.jpg);
+        background-size: cover;
+        height: 450px;
+        text-align: right;
+    }
+
+
+    .jumbotron .display-4 {
+        font-size: 25px;
+        margin-top: 80px;
+        margin-left: 250px;
+        margin-bottom: 30px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .jumbotron {
+        background-color: #8B467A;
+        background-image: url(/assets/media/bg/bg-jpg.jpg);
+        background-size: cover;
+        height: 400px;
+        text-align: right;
+    }
+
+
+    .jumbotron .display-4 {
+        font-size: 22px;
+        margin-top: 80px;
+        margin-left: 250px;
+        margin-bottom: 30px;
+    }
+}

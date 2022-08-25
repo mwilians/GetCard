@@ -275,17 +275,8 @@
                             <div class="card-header">
                                 <div class="card-title">
                                     <h3 class="card-label">Desain Card</h3>
-
-                                    {{-- @if(isset($id))
-                                        {{ !! Form::hidden('template_id', $id ) !!}}
-                                    @endif --}}
-
-                                    <button type="submit" class="btn btn-light-primary font-weight-bold card-toolbar"> Pilih Desain</button>
-                                    
                                 </div>
                             </div>
-
-                            
 
                             <div class="card-body">
                                 {{-- // Pilihan Desain --}}
@@ -301,9 +292,7 @@
                                 <div class="flex-shrink-0 mr-7 mt-lg-0 mt-3 desain">
                                     @foreach ($template as $t)
                                         <div class="symbol symbol-50 symbol-lg-150 gambar">
-                                            <button onclick="template({{ $t->id }})" class="btn symbol symbol-50 symbol-lg-150" style="border: none">
-                                                <img src="{{ asset($t->file_demo) }}" alt="image" />
-                                            </button>
+                                            <button onclick="template({{ $t->id }})" class="btn symbol symbol-50 symbol-lg-150" style="border: none"><img src="{{ asset($t->file_demo) }}" alt="image" /></button>
                                         </div>
                                     @endforeach
                                 </div>

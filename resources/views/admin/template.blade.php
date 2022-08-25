@@ -73,7 +73,7 @@
 
                                                 @csrf
 
-                                                <div class="form-group row">
+                                                {{-- <div class="form-group row">
                                                     <label class="col-4 font-size-lg">File Demo</label>
 
                                                     <div class="col-8">
@@ -106,6 +106,42 @@
                                                     <div class="col-8">
                                                         <input class="form-control form-control-solid" type="file"
                                                             name="file_kartu_nama2" placeholder="" required/>
+                                                    </div>
+                                                </div> --}}
+
+                                                <div class="form-group">
+                                                    <label for="tipeHeader">File Demo</label>
+
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="tipeHeader" name="file_demo">
+                                                        <label class="custom-file-label" for="tipeHeader">Pilih file</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="tipeHeader">File App</label>
+
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="tipeHeader" name="file_kartu_app">
+                                                        <label class="custom-file-label" for="tipeHeader">Pilih file</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="tipeHeader">File Kartu Depan</label>
+
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="tipeHeader" name="file_kartu_nama1">
+                                                        <label class="custom-file-label" for="tipeHeader">Pilih file</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="tipeHeader">File Kartu Belakang</label>
+
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="tipeHeader" name="file_kartu_nama2">
+                                                        <label class="custom-file-label" for="tipeHeader">Pilih file</label>
                                                     </div>
                                                 </div>
 

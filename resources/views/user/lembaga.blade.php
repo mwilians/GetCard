@@ -45,7 +45,7 @@
                             <div class="flex-shrink-0 mr-7">
                                 <div class="symbol symbol-50 symbol-lg-120 symbol-light-danger">
                                     {{-- <span class="font-size-h3 symbol-label font-weight-boldest">LOGO</span> --}}
-                                    <img src="{{ $lembaga ? $lembaga->foto : 'assets/media/logos/default.png' }}" alt="">
+                                    <img src="{{ $l ? $l->foto : 'assets/media/logos/default.png' }}" alt="">
                                 </div>
                             </div>
                             <!--end::Pic-->
@@ -151,13 +151,11 @@
                 <!--End::Card-->
 
                 <!--begin::Form-->
-                <form method="post" action="{{ route('lembaga_insert') }}" enctype="multipart/form-data" class="form"
+                <form method="post" action="{{ route('lembaga_action') }}" enctype="multipart/form-data" class="form"
                     id="kt_form">
                     @csrf
                     <!--begin::Card-->
                     <div class="card card-custom gutter-bs">
-
-                        {{-- @foreach($lembaga as $lembaga) --}}
                             
                         <!--Begin::Header-->
                         <div class="card-header card-header-tabs-line">
@@ -227,10 +225,8 @@
                                             <label class="col-xl-3 col-lg-3 text-right col-form-label">Logo</label>
                                             <div class="col-9">
                                                 <div class="image-input image-input-empty image-input-outline"
-                                                    id="kt_image_5" style="background-image: url(assets/media/logos/default.png)">
+                                                    id="kt_image_5" style="background-image: url({{ $l ? $l->foto : 'assets/media/logos/default.png' }})">
                                                     <div class="image-input-wrapper"></div>
-
-                                                    {{-- <img src="{{ $lembaga ? $lembaga->foto : 'assets/media/logos/default.png' }}" alt=""> --}}
 
                                                     <label
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -335,11 +331,6 @@
                             </div>
                         </div>
                         <!--end::Body-->
-                        
-                        {{-- @break --}}
-                        
-                        {{-- @endforeach --}}
-
                     </div>
                     <!--end::Card-->
                 </form>

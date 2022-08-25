@@ -161,6 +161,15 @@ class PenggunaController extends Controller
         return view('user.pengguna-show', compact('pengguna', 'lembaga', 'template', 'default'));
     }
 
+    public function print($id) {
+
+        $pengguna = Pengguna::where('id', $id)->get();
+
+        $lembaga = Lembaga::where('user_id', Auth::user()->id)->get();
+
+        return view('user.pengguna-print', compact('pengguna', 'lembaga'));
+    }
+
     public function template($id)
     {
         $template = Template::where('id', $id)->get();
