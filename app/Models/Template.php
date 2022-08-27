@@ -23,3 +23,5 @@ class Template extends Model
         return $this->hasMany(Pengguna::class);
     }
 }
+
+

@@ -112,155 +112,165 @@
 
                             <div class="card-body login login-5 login-signin-on col" align="center" id="kt_login" >
                                 
-                                {{-- // Preview ID Card --}}
+                                {{-- // Preview Kartu  --}}
 
                                 <div class="position-relative overflow-hidden">
                                     <div id="id_card_1" class="tabcontent">
-                                        <div class="container">
-                                            <div class="image-section">
-                                                <img src="{{ asset('assets/media/desain/DD/Demo1-B.png') }}" id="template" alt="">
-                                            </div>
 
-                                            <div class="section-kartu-nama">
-                                                <img src="{{ asset('assets/media/desain/DKN/C1-1-B.png') }}" id="kartu_nama" alt="">
-                                            </div>
-                                            
-                                            <div class="section-kartu-nama-belakang">
-                                                <img src="{{ asset('assets/media/desain/DKN/C1-2-A.png') }}" id="kartu_nama_belakang" alt="">
-                                            </div>
+                                        @if($previewDesain == null)
+                                            <div class="container">
+                                                <div class="image-section">
+                                                    <img src="{{ asset('assets/media/desain/DD/Demo1-B.png') }}" id="template" alt="">
+                                                </div>
 
-                                            <div class="text-section" align="center">
-                                                <h5 id="nama-id" class="text fw-bold mt-2"><bold>No ID :</bold></h5>
-                                                <p id="no-id">{{ $p->no_id }}</p>
-                                                <img id="profile-img" src="{{ asset($p->foto) }}"  alt="image" />
-                                                <h4 style="margin:auto; font-size: 30px;" class="profile-nama mt-5">{{ $p->nama }}</h4>
-                                                <p id="profile-jabatan" class="mx-auto"> {{ $p->jabatan }}</p>
-                                                <div id="detail-info-app">
-                                                    <p id="profile-telp">0{{ $p->telepon }}</p>
-                                                    <p id="profile-email">{{ $p->email }}</p>
-                                                    <p id="profile-tanggal">{{ $p->tanggal_bergabung }} / {{ $p->tanggal_berakhir }}</p>
+                                                <div class="section-kartu-nama">
+                                                    <img src="{{ asset('assets/media/desain/DKN/C1-1-B.png') }}" id="kartu_nama" alt="">
                                                 </div>
                                                 
+                                                <div class="section-kartu-nama-belakang">
+                                                    <img src="{{ asset('assets/media/desain/DKN/C1-2-A.png') }}" id="kartu_nama_belakang" alt="">
+                                                </div>
+
+                                                <div class="text-section" align="center">
+                                                    <h5 id="nama-id" class="text fw-bold mt-2"><bold>No ID :</bold></h5>
+                                                    <p id="no-id">{{ $p->no_id }}</p>
+                                                    <img id="profile-img" src="{{ asset($p->foto) }}"  alt="image" />
+                                                    <h4 style="margin:auto; font-size: 30px;" class="profile-nama mt-5">{{ $p->nama }}</h4>
+                                                    <p id="profile-jabatan" class="mx-auto"> {{ $p->jabatan }}</p>
+                                                    <div id="detail-info-app">
+                                                        <p id="profile-telp">0{{ $p->telepon }}</p>
+                                                        <p id="profile-email">{{ $p->email }}</p>
+                                                        <p id="profile-tanggal">{{ $p->tanggal_bergabung }} / {{ $p->tanggal_berakhir }}</p>
+                                                    </div>
+                                                    
+                                                        @foreach ($lembaga as $l)
+                                                        <div id="logo-lembaga">
+                                                            <img src="{{ asset($l->foto) }}" id="logo-lembaga" alt="Avatar">
+                                                        </div>
+                                                        <div id="detail-lembaga-app">
+                                                            <p id="profile-telepon">0{{ $l->telepon }}</p>
+                                                            <p id="profile-alamat-lembaga">{{ $l->alamat }}</p>
+                                                            <p id="profile-email-lembaga">{{ $l->email }}</p>
+                                                            <p id="profile-website-lembaga">{{ $l->website }}</p>
+                                                        </div>
+                                                        @endforeach
+                                                    <div id="qrcode">
+                                                        {!! QrCode::size(145)->generate($p); !!}
+                                                    </div>
+                                                </div>
+                                                
+                                                {{-- // Kartu Nama --}}
+
+                                                <div class="text-section-card" >
+                                                    <img id="profile-img-card" src="{{ asset($p->foto) }}"  alt="image" />
+                                                    <h4 style="font-size: 18px;" class="profile-nama-card">{{ $p->nama }}</h4>
+                                                    <p id="profile-jabatan-card" class="mx-auto"> {{ $p->jabatan }}</p>
+                                                    <div id="detail-card">
+                                                        <p id="profile-telp-card">0{{ $p->telepon }}</p>
+                                                        <p id="profile-email-card">{{ $p->email }}</p>
+                                                        <p id="profile-tanggal-card">{{ $p->tanggal_bergabung }} / {{ $p->tanggal_berakhir }}</p>
+                                                    </div>
+                                                    <div id="qrcode-card">
+                                                        {!! QrCode::size(50)->generate($p); !!}
+                                                    </div>
+
                                                     @foreach ($lembaga as $l)
-                                                    <div id="logo-lembaga">
-                                                        <img src="{{ asset($l->foto) }}" id="logo-lembaga" alt="Avatar">
-                                                    </div>
-                                                    <div id="detail-lembaga-app">
-                                                        <p id="profile-telepon">0{{ $l->telepon }}</p>
-                                                        <p id="profile-alamat-lembaga">{{ $l->alamat }}</p>
-                                                        <p id="profile-email-lembaga">{{ $l->email }}</p>
-                                                        <p id="profile-website-lembaga">{{ $l->website }}</p>
-                                                    </div>
+                                                        <img src="{{ asset($l->foto) }}" id="logo-lembaga-card" alt="Avatar">
+
+                                                        <div id="detail-lembaga-card">
+                                                            <p id="profile-telepon">0{{ $l->telepon }}</p>
+                                                            <p id="profile-alamat-lembaga">{{ $l->alamat }}</p>
+                                                            <p id="profile-email-lembaga">{{ $l->email }}</p>
+                                                            <p id="profile-website-lembaga">{{ $l->website }}</p>
+                                                        </div>
                                                     @endforeach
-                                                <div id="qrcode">
-                                                    {!! QrCode::size(145)->generate($p); !!}
+                                                    
                                                 </div>
                                             </div>
-                                            
-                                            {{-- Card 2 --}}
 
-                                            <div class="text-section-card" >
-                                                <!-- <h5 id="nama-id" class="text fw-bold mt-2"><bold>No ID :</bold></h5> -->
-                                                {{-- <p id="no-id">{{ $p->no_id }}</p> --}}
-                                                <img id="profile-img-card" src="{{ asset($p->foto) }}"  alt="image" />
-                                                <h4 style="font-size: 18px;" class="profile-nama-card">{{ $p->nama }}</h4>
-                                                <p id="profile-jabatan-card" class="mx-auto"> {{ $p->jabatan }}</p>
-                                                <div id="detail-card">
-                                                    <p id="profile-telp-card">0{{ $p->telepon }}</p>
-                                                    <p id="profile-email-card">{{ $p->email }}</p>
-                                                    <p id="profile-tanggal-card">{{ $p->tanggal_bergabung }} / {{ $p->tanggal_berakhir }}</p>
-                                                </div>
-                                                <div id="qrcode-card">
-                                                    {!! QrCode::size(50)->generate($p); !!}
+                                        @else
+
+                                            <div class="container">
+                                                <div class="image-section">
+                                                    <img src="{{ asset($previewDesain->file_kartu_app) }}" id="template" alt="">
                                                 </div>
 
-                                                @foreach ($lembaga as $l)
-                                                    <img src="{{ asset($l->foto) }}" id="logo-lembaga-card" alt="Avatar">
-
-                                                    <div id="detail-lembaga-card">
-                                                        <p id="profile-telepon">0{{ $l->telepon }}</p>
-                                                        <p id="profile-alamat-lembaga">{{ $l->alamat }}</p>
-                                                        <p id="profile-email-lembaga">{{ $l->email }}</p>
-                                                        <p id="profile-website-lembaga">{{ $l->website }}</p>
-                                                    </div>
-                                                @endforeach
+                                                <div class="section-kartu-nama">
+                                                    <img src="{{ asset($previewDesain->file_kartu_nama1) }}" id="kartu_nama" alt="">
+                                                </div>
                                                 
+                                                <div class="section-kartu-nama-belakang">
+                                                    <img src="{{ asset($previewDesain->file_kartu_nama2) }}" id="kartu_nama_belakang" alt="">
+                                                </div>
+
+                                                <div class="text-section" align="center">
+                                                    <h5 id="nama-id" class="text fw-bold mt-2"><bold>No ID :</bold></h5>
+                                                    <p id="no-id">{{ $p->no_id }}</p>
+                                                    <img id="profile-img" src="{{ asset($p->foto) }}"  alt="image" />
+                                                    <h4 style="margin:auto; font-size: 30px;" class="profile-nama mt-5">{{ $p->nama }}</h4>
+                                                    <p id="profile-jabatan" class="mx-auto"> {{ $p->jabatan }}</p>
+                                                    <div id="detail-info-app">
+                                                        <p id="profile-telp">0{{ $p->telepon }}</p>
+                                                        <p id="profile-email">{{ $p->email }}</p>
+                                                        <p id="profile-tanggal">{{ $p->tanggal_bergabung }} / {{ $p->tanggal_berakhir }}</p>
+                                                    </div>
+                                                    
+                                                        @foreach ($lembaga as $l)
+                                                        <div id="logo-lembaga">
+                                                            <img src="{{ asset($l->foto) }}" id="logo-lembaga" alt="Avatar">
+                                                        </div>
+                                                        <div id="detail-lembaga-app">
+                                                            <p id="profile-telepon">0{{ $l->telepon }}</p>
+                                                            <p id="profile-alamat-lembaga">{{ $l->alamat }}</p>
+                                                            <p id="profile-email-lembaga">{{ $l->email }}</p>
+                                                            <p id="profile-website-lembaga">{{ $l->website }}</p>
+                                                        </div>
+                                                        @endforeach
+                                                    <div id="qrcode">
+                                                        {!! QrCode::size(145)->generate($p); !!}
+                                                    </div>
+                                                </div>
+                                                
+                                                {{-- // Kartu Nama --}}
+
+                                                <div class="text-section-card" >
+                                                    <img id="profile-img-card" src="{{ asset($p->foto) }}"  alt="image" />
+                                                    <h4 style="font-size: 18px;" class="profile-nama-card">{{ $p->nama }}</h4>
+                                                    <p id="profile-jabatan-card" class="mx-auto"> {{ $p->jabatan }}</p>
+                                                    <div id="detail-card">
+                                                        <p id="profile-telp-card">0{{ $p->telepon }}</p>
+                                                        <p id="profile-email-card">{{ $p->email }}</p>
+                                                        <p id="profile-tanggal-card">{{ $p->tanggal_bergabung }} / {{ $p->tanggal_berakhir }}</p>
+                                                    </div>
+                                                    <div id="qrcode-card">
+                                                        {!! QrCode::size(50)->generate($p); !!}
+                                                    </div>
+
+                                                    @foreach ($lembaga as $l)
+                                                        <img src="{{ asset($l->foto) }}" id="logo-lembaga-card" alt="Avatar">
+
+                                                        <div id="detail-lembaga-card">
+                                                            <p id="profile-telepon">0{{ $l->telepon }}</p>
+                                                            <p id="profile-alamat-lembaga">{{ $l->alamat }}</p>
+                                                            <p id="profile-email-lembaga">{{ $l->email }}</p>
+                                                            <p id="profile-website-lembaga">{{ $l->website }}</p>
+                                                        </div>
+                                                    @endforeach
+                                                    
+                                                </div>
                                             </div>
-                                        </div>
+
+                                        @endif
+                                        
                                     </div>
                                 </div>
                             </div>
+
                             <div class="card-footer d-flex justify-content-between">
                                 <a href="#" class="btn btn-light-primary font-weight-bold"><i class="ki ki-copy icon-nm"></i> Salin Link</a>
                                 {{-- <button onclick="download()" class="btn btn-outline-secondary font-weight-bold"><i class="la la-print icon-dm"></i> Download</button> --}}
-                                <a href="{{ route('print', ['id' => $p->id]) }}" target="_blank" class="btn btn-outline-secondary font-weight-bold"><i class="la la-print icon-dm"></i> Print</a>
+                                <a href="{{ route('print', ['id' => $p->id]) }}" target="_blank" class="btn btn-outline-secondary font-weight-bold"><i class="la la-print icon-dm"></i> Cetak</a>
                             </div>
-                            
-                            {{-- <div class="dropdown">
-                                <button class="btn btn-outline-secondary font-weight-bold dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="la la-print icon-dm"></i> Download
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">PDF</a>
-                                    <a class="dropdown-item" href="#">PNG</a>
-                                </div>
-                            </div> --}}
-
-                            {{-- <div class="card-header flex-wrap py-3">
-                                <div class="card-toolbar">
-                                    <!--begin::Dropdown-->
-                                    <div class="dropdown dropdown-inline mr-2">
-                                        <button type="button"
-                                            class="btn btn-light-primary font-weight-bolder dropdown-toggle"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="la la-print icon-dm"></i> Download
-                                        </button>
-
-                                        <!--begin::Dropdown Menu-->
-                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                            <!--begin::Navigation-->
-                                            <ul class="navi flex-column navi-hover py-2">
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-icon"><i class="la la-print"></i></span>
-                                                        <span class="navi-text">Print</span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-icon"><i class="la la-copy"></i></span>
-                                                        <span class="navi-text">Copy</span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-icon"><i
-                                                                class="la la-file-excel-o"></i></span>
-                                                        <span class="navi-text">Excel</span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-icon"><i
-                                                                class="la la-file-text-o"></i></span>
-                                                        <span class="navi-text">CSV</span>
-                                                    </a>
-                                                </li>
-                                                <li class="navi-item">
-                                                    <a href="#" class="navi-link">
-                                                        <span class="navi-icon"><i
-                                                                class="la la-file-pdf-o"></i></span>
-                                                        <span class="navi-text">PDF</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <!--end::Navigation-->
-                                        </div>
-                                        <!--end::Dropdown Menu-->
-                                    </div>
-                                    <!--end::Dropdown-->
-                                </div>
-                            </div> --}}
 
                             @endforeach
                             <!--end::Body-->
@@ -273,20 +283,17 @@
                         <div class="card card-custom gutter-b card-stretch">
                             <!--begin::Body-->
                             <div class="card-header">
+                                <h5 class="card-label mt-8">Desain Kartu</h5>
+
                                 <div class="card-title">
-                                    <h3 class="card-label">Desain Card</h3>
-
-                                    {{-- @if(isset($id))
-                                        {{ !! Form::hidden('template_id', $id ) !!}}
-                                    @endif --}}
-
-                                    <button type="submit" class="btn btn-light-primary font-weight-bold card-toolbar"> Pilih Desain</button>
-                                    
+                                    <form action="{{ url('user/pengguna/'.$id.'/simpan-template') }}" method="POST">
+                                    @csrf
+                                        <div id="pilih-desain"></div>
+                                            <button type="submit" class="btn btn-light-primary font-weight-bold card-toolbar">Simpan Desain</button>
+                                    </form>
                                 </div>
                             </div>
-
                             
-
                             <div class="card-body">
                                 {{-- // Pilihan Desain --}}
 
@@ -356,6 +363,9 @@
                 foto.attr('src', kartu_app);
                 foto_kartu_nama.attr('src', kartu_nama);
                 foto_kartu_nama_belakang.attr('src', kartu_nama_belakang);
+
+                // ----- input desain ----- //
+                $('#pilih-desain').html(' <input type="hidden" name="template" value="'+response.data[0].id+'"> ')
             }
         });
     }

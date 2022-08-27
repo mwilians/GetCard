@@ -13,6 +13,7 @@ class Pengguna extends Model
 
     protected $fillable = [
         'user_id',
+        'template_id',
         'no_id',
         'foto',
         'nama',

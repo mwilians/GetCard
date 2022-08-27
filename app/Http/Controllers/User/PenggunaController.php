@@ -5,13 +5,15 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\{DB, Auth};
 use Illuminate\Http\Request;
-use App\Models\{Pengguna, Lembaga, Template};
+use App\Models\{Pengguna, Lembaga, Template, User};
 use Alert;
 use BaconQrCode\Encoder\QrCode;
 use Illuminate\Support\Facades\App;
 
 class PenggunaController extends Controller
 {
+    // Datatable //
+    
     public function index() {
 
         $pengguna = Pengguna::where('user_id', Auth::user()->id)->get();
@@ -136,18 +138,17 @@ class PenggunaController extends Controller
 
     public function delete(Request $request) {
 
-        // $pengguna = Pengguna::find($id);
-
         $pengguna = Pengguna::where('id', $request->id)->delete();
 
         return response()->json($pengguna);
         
-        // return redirect()->route('index')->with('success',' Data Berhasil di Hapus');
+        return redirect()->route('index')->with('success',' Data Berhasil di Hapus');
     }
 
-    public function show($id) {
 
-        // return view('user.pengguna-show');
+    // Tampilan Preview //
+
+    public function show($id) {
 
         $pengguna = Pengguna::where('id', $id)->get();
 
@@ -156,10 +157,28 @@ class PenggunaController extends Controller
         $template = Template::all();
 
         $default = Template::first();
-        // dd($default);
 
-        return view('user.pengguna-show', compact('pengguna', 'lembaga', 'template', 'default'));
+        $previewDesain = Pengguna::where('template_id', $id)->first();
+
+        // dd($previewDesain);
+
+        return view('user.pengguna-show', compact('id', 'pengguna', 'lembaga', 'template', 'default', 'previewDesain'));
     }
+
+
+    // Pilih Template //
+
+    public function template($id)
+    {
+        $template = Template::where('id', $id)->get();
+
+        return response()->json([
+            'data' => $template
+        ]);
+    }
+
+
+    // Fungsi Cetak Kartu Nama //
 
     public function print($id) {
 
@@ -170,12 +189,23 @@ class PenggunaController extends Controller
         return view('user.pengguna-print', compact('pengguna', 'lembaga'));
     }
 
-    public function template($id)
-    {
-        $template = Template::where('id', $id)->get();
 
-        return response()->json([
-            'data' => $template
-        ]);
+    // Simpan Template //
+
+    public function simpan(Request $request, $id) {
+
+        // $request->template;
+
+        $pengguna = Pengguna::find($id);
+
+        // $template = $user->template_id;
+
+        // $user->template_id = $request->template;
+
+        $pengguna->template_id = $request->template;
+
+        $pengguna->save();
+
+        return redirect('user/pengguna/'.$id.'/show')->with(compact('pengguna'), ['succes',' Template Berhasil di Simpan']);
     }
 }
