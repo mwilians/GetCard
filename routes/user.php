@@ -39,12 +39,16 @@ Route::post('user/pengguna/data', [PenggunaController::class, 'data'])->middlewa
 Route::get('user/pengguna-add', [PenggunaController::class, 'tambah'])->name('tambah')->middleware('user');
 Route::post('user/insert', [PenggunaController::class, 'insert'])->name('insert')->middleware('user');
 
+Route::post('user/import/pengguna', [PenggunaController::class, 'import'])->name('import')->middleware('user');
+
 Route::get('user/pengguna/{id}/edit',[PenggunaController::class, 'edit'])->name('edit')->middleware('user');
 Route::post('user/update/{id}',[PenggunaController::class, 'update'])->name('update')->middleware('user');
 
 Route::post('user/pengguna/hapus',[PenggunaController::class, 'delete'])->middleware('user');
 
 Route::get('user/pengguna/{id}/show',[PenggunaController::class, 'show'])->name('show')->middleware('user');
+
+Route::post('user/pengguna/{id}/simpan-template',[PenggunaController::class, 'simpan'])->name('simpan')->middleware('user');
 
 Route::get('user/pengguna/{id}/print',[PenggunaController::class, 'print'])->name('print')->middleware('user');
 

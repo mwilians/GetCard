@@ -3,12 +3,24 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\{DB, Auth};
-use Illuminate\Http\Request;
-use App\Models\{Pengguna, Lembaga, Template, User};
-use Alert;
-use BaconQrCode\Encoder\QrCode;
+
 use Illuminate\Support\Facades\App;
+
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\{DB, Auth};
+
+use App\Models\{Pengguna, Lembaga, Template, User};
+
+use BaconQrCode\Encoder\QrCode;
+
+use App\Imports\{DataImport, CobaImport};
+
+use Maatwebsite\Excel\Facades\Excel;
+
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
+
+use Alert;
 
 class PenggunaController extends Controller
 {
@@ -146,6 +158,31 @@ class PenggunaController extends Controller
     }
 
 
+    // Import Data //
+
+    public function import(Request $request) {
+
+        if($request->file('file')){
+
+            $file = $request->file('file');
+            
+            $import = new CobaImport;
+
+            Excel::import($import,$file);
+
+            // dd($import);
+            toast('success','success');
+            return redirect()->route('index')->with('success', 'Data Berhasil di Import');
+
+        }else{
+            
+            toast('gagal','error');
+            return back()->with('warning','Data Gagal di Import');
+        }
+
+    }
+
+
     // Tampilan Preview //
 
     public function show($id) {
@@ -158,7 +195,9 @@ class PenggunaController extends Controller
 
         $default = Template::first();
 
-        $previewDesain = Pengguna::where('template_id', $id)->first();
+        $previewDesain = Pengguna::where('id', $id)->first();
+
+        // dd($previewDesain->template->file_kartu_app);
 
         // dd($previewDesain);
 
@@ -186,7 +225,9 @@ class PenggunaController extends Controller
 
         $lembaga = Lembaga::where('user_id', Auth::user()->id)->get();
 
-        return view('user.pengguna-print', compact('pengguna', 'lembaga'));
+        $desainKartu = Pengguna::where('id', $id)->first();
+
+        return view('user.pengguna-print', compact('pengguna', 'lembaga', 'desainKartu'));
     }
 
 
