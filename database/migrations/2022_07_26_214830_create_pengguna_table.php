@@ -24,8 +24,8 @@ class CreatePenggunaTable extends Migration
             $table->string('jabatan')->nullable();
             $table->bigInteger('telepon')->nullable();
             $table->string('email')->nullable();
-            $table->string('tanggal_bergabung')->nullable();
-            $table->string('tanggal_berakhir')->nullable();
+            $table->date('tanggal_bergabung')->nullable();
+            $table->date('tanggal_berakhir')->nullable();
             $table->timestamps();
         });
     }

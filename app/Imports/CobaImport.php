@@ -35,8 +35,10 @@ class CobaImport implements ToModel, WithHeadingRow
             "jabatan" => $row['jabatan'],
             "telepon" => $row['telepon'],
             "email" => $row['email'],
-            "tanggal_bergabung" => $row['tgl_bergabung'],
-            "tanggal_berakhir" => $row['tgl_berakhir'],
+            "tanggal_bergabung" => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tgl_bergabung']),
+            "tanggal_berakhir" => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tgl_berakhir']),
         ]);
     }
+
+    // \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject
 }

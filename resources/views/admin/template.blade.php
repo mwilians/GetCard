@@ -55,8 +55,7 @@
                             </div>
 
 
-                            {{-- begin::Modal Tambah Desain --}}
-
+                            <!-- begin::Modal Tambah Desain -->
                             <div class="modal fade" id="desain" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -73,80 +72,64 @@
 
                                                 @csrf
 
-                                                {{-- <div class="form-group row">
-                                                    <label class="col-4 font-size-lg">File Demo</label>
+                                                {{-- <div class="label font-weight-bold label-lg label-light-warning label-inline mb-6">Gunakan file foto dengan ukuran minimal 88Kb</div> --}}
 
-                                                    <div class="col-8">
-                                                        <input class="form-control form-control-solid" type="file"
-                                                            name="file_demo" placeholder="" required/>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label class="col-4 font-size-lg">File App</label>
-
-                                                    <div class="col-8">
-                                                        <input class="form-control form-control-solid" type="file"
-                                                            name="file_kartu_app" placeholder="" required/>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label class="col-4 font-size-lg">File Kartu Nama Depan</label>
-
-                                                    <div class="col-8">
-                                                        <input class="form-control form-control-solid" type="file"
-                                                            name="file_kartu_nama1" placeholder="" required/>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label class="col-4 font-size-lg">File Kartu Nama Belakang</label>
-
-                                                    <div class="col-8">
-                                                        <input class="form-control form-control-solid" type="file"
-                                                            name="file_kartu_nama2" placeholder="" required/>
-                                                    </div>
-                                                </div> --}}
-
+                                                <br>
+                                                
                                                 <div class="form-group">
-                                                    <label for="tipeHeader">File Demo</label>
+                                                    <label for="tipeHeader">File Demo
+                                                        <span class="text-warning">|| Gunakan foto dengan ukuran 4200 x 4500 Pixels ||</span>
+                                                    </label>
 
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="tipeHeader" name="file_demo">
-                                                        <label class="custom-file-label" for="tipeHeader">Pilih file</label>
+                                                        <label class="custom-file-label" for="tipeHeader">Pilih file
+                                                            {{-- <div class="label label-lg label-light-warning label-inline">Gunakan foto dengan ukuran 4200 x 4500 Pixels</div> --}}
+                                                        </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="tipeHeader">File App</label>
+                                                    <label for="tipeHeader">File App
+                                                        <span class="text-warning">|| Gunakan foto dengan ukuran 1500 x 4500 Pixels ||</span>
+                                                    </label>
 
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="tipeHeader" name="file_kartu_app">
-                                                        <label class="custom-file-label" for="tipeHeader">Pilih file</label>
+                                                        <label class="custom-file-label" for="tipeHeader">Pilih file
+                                                            {{-- <div class="label label-lg label-light-warning label-inline toolbar">Gunakan foto dengan ukuran 1500 x 4500 Pixels</div> --}}
+                                                        </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="tipeHeader">File Kartu Depan</label>
+                                                    <label for="tipeHeader">File Kartu Depan
+                                                        <span class="text-warning">|| Gunakan foto dengan ukuran 3190 x 1950 Pixels ||</span>
+                                                    </label>
 
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="tipeHeader" name="file_kartu_nama1">
-                                                        <label class="custom-file-label" for="tipeHeader">Pilih file</label>
+                                                        <label class="custom-file-label" for="tipeHeader">Pilih file
+                                                            {{-- <div class="label label-lg label-light-warning label-inline toolbar">Gunakan foto dengan ukuran 3190 x 1950 Pixels</div> --}}
+                                                        </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="tipeHeader">File Kartu Belakang</label>
+                                                    <label for="tipeHeader">File Kartu Belakang
+                                                        <span class="text-warning">|| Gunakan foto dengan ukuran 3190 x 1950 Pixels ||</span>
+                                                    </label>
 
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="tipeHeader" name="file_kartu_nama2">
-                                                        <label class="custom-file-label" for="tipeHeader">Pilih file</label>
+                                                        <label class="custom-file-label" for="tipeHeader">Pilih file
+                                                            {{-- <div class="label label-lg label-light-warning label-inline">Gunakan foto dengan ukuran 3190 x 1950 Pixels</div> --}}
+                                                        </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Tutup</button>
+                                                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Batal</button>
                                                     <button type="submit" class="btn btn-primary font-weight-bold">Tambah</button>
                                                 </div>
                                             </form>
@@ -154,8 +137,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            {{-- end::Modal Tambah Desain --}}
+                            <!-- end::Modal Tambah Desain -->
 
 
                             <div class="card-body">

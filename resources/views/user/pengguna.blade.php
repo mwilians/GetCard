@@ -3,12 +3,14 @@
 @section('title', 'My Card')
 
 @section('content')
+
+@include('sweetalert::alert')
+
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Subheader-->
-        <div class="subheader py-2 py-lg-4  subheader-transparent " id="kt_subheader">
-            <div
-                class=" container-fluid  d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+        <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
+            <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
                 <!--begin::Details-->
                 <div class="d-flex align-items-center flex-wrap mr-2">
                     <!--begin::Title-->
@@ -29,9 +31,27 @@
                 </div>
                 <!--end::Details-->
 
+                {{-- @if(Session::has('error'))
+                    <div>
+                        <span class="text-danger">Import Error!</span>
+                    </div>
+                @elseif(Session::has('success'))
+                <div>
+                    <span class="text-success">Import Berhasil!</span>
+                </div>
+                @elseif(Session::has('gagal'))
+                <div>
+                    <span class="text-warning">Import Gagal!</span>
+                </div>
+                @endif --}}
+
                 <!--begin::Toolbar-->
                 <div class="d-flex align-items-center">
                     <!--begin::Button-->
+                    <a href="" class="btn btn-light-primary font-weight-bolder mr-2" data-toggle="modal" data-target="#import">
+                        Import
+                    </a>
+
                     <a href="user/pengguna-add" class="btn btn-primary font-weight-bolder">
                         <span class="svg-icon svg-icon-md">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
@@ -51,6 +71,57 @@
             </div>
         </div>
         <!--end::Subheader-->
+
+        <!-- begin::Modal Import -->
+        <div class="modal fade" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Import Data</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i aria-hidden="true" class="ki ki-close"></i>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="{{ url('user/import/pengguna') }}" class="form" id="kt_form" method="POST" enctype="multipart/form-data">
+
+                            @csrf
+
+                            Gunakan template yang telah disediakan untuk dapat menggunakan fitur import.
+
+                            <div>
+
+                                <a target="_blank"
+
+                                    href="https://docs.google.com/spreadsheets/d/1ezQ1RQHJaErZObzfhxL_P-ck3ndwXSFlGh1hlrmfYFo/edit?usp=sharing"
+
+                                    class="btn btn-primary btn-sm font-weight-bold mt-3 mb-10">Download Template</a>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-3">File</label>
+
+                                <div class="col-9">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="file" accept=".csv,.xlsx" required>
+                                        <label class="custom-file-label form-control form-control-solid">.csv atau .xlsx</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-primary font-weight-bold">Import</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end::Modal Import -->
 
         <!--begin::Entry-->
         <div class="d-flex flex-column-fluid">

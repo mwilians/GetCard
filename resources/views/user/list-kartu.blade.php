@@ -5,32 +5,6 @@
 @section('content')
     <!--begin::Content-->
     <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
-        <!--begin::Subheader-->
-        {{-- <div class="subheader py-2 py-lg-4  subheader-transparent " id="kt_subheader">
-            <div
-                class=" container-fluid  d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-                <!--begin::Details-->
-                <div class="d-flex align-items-center flex-wrap mr-2">
-                    <!--begin::Title-->
-                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">
-                        Perusahaan </h5>
-                    <!--end::Title-->
-
-                    <!--begin::Separator-->
-                    <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200">
-                    </div>
-                    <!--end::Separator-->
-
-                    <!--begin::Search Form-->
-                    <div class="d-flex align-items-center" id="kt_subheader_search">
-                        <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">{{ $l ? $l->nama : 'Nama Perusahaan' }}</span>
-                    </div>
-                    <!--end::Search Form-->
-                </div>
-                <!--end::Details-->
-            </div>
-        </div> --}}
-        <!--end::Subheader-->
 
         <!--begin::Entry-->
         <div class="d-flex flex-column-fluid">
@@ -44,16 +18,16 @@
                             <h3 class="card-label">Pencarian Kartu Nama</h3>
                         </div>
 
-                        <form action="{{ url('user/list_kartu') }}" method="GET">
+                        <form action="{{ url('user/list-kartu') }}" method="GET">
                             {{-- @csrf --}}
                             <div class="input-icon card-toolbar">
-                                <input type="text" class="form-control" placeholder="Cari ID" name="no_id" />
+                                <input type="text" class="form-control" placeholder="Cari No ID" name="search" />
                                 <button type="submit" class="btn btn-primary font-weight-bold"><i class="flaticon2-search-1 text-muted"></i> Cari </button>
                             </div>
                         </form>
 
                         {{-- <div class="input-icon card-toolbar">
-                            <input type="text" class="form-control" placeholder="Cari ID" />
+                            <input type="text" class="form-control" placeholder="Cari No ID" name="search" />
                             <span><i class="flaticon2-search-1 text-muted"></i></span>
                         </div> --}}
                     </div>
@@ -63,10 +37,15 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-6 my-2 my-md-0">
-                                {{-- <img src="{{asset('card/'.$value->file)}}" alt="" class="card-img" height="190" alt="image"> --}}
-                                <img class="mr-4" src="{{ asset('assets/media/desain/DKN/C1-1.png') }}" height="190" alt="image" />
+                                <img src="{{asset($data->template->template_id)}}" alt="" class="card-img" height="190" alt="image">
+                                {{-- <img class="mr-4" src="{{ asset('assets/media/desain/DKN/C1-1.png') }}" height="190" alt="image" /> --}}
+
                             </div>
                         </div>
+                    </div>
+
+                    <div class="card-footer d-flex justify-content-between card-toolbar">
+                        <a href="#" class="btn btn-light-primary font-weight-bold">Simpan Kartu Nama</a>
                     </div>
                     <!--end::Card-->
                 </div>
@@ -84,11 +63,9 @@
                     <div class="card-body">
                         {{-- // List My Card --}}
 
-                        <div class=" mr-7 mt-lg-0 mt-3 symbol-50 symbol-lg-120">
+                        {{-- <div class=" mr-7 mt-lg-0 mt-3 symbol-50 symbol-lg-120">
                             <img class="mt-5 mr-4" src="{{ asset('assets/media/desain/DKN/C1-1.png') }}" height="190" alt="image" />
-                            <img class="mt-5 mr-4" src="{{ asset('assets/media/desain/DKN/C2-1.png') }}" height="190" alt="image" />
-                            <img class="mt-5 mr-4" src="{{ asset('assets/media/desain/DKN/C3-1.png') }}" height="190" alt="image" />
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="card-footer d-flex justify-content-between">

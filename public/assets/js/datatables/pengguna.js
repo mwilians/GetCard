@@ -85,10 +85,18 @@ var KTDatatableJsonRemoteDemo = function () {
                 field: 'tanggal_bergabung',
                 title: 'Tanggal Bergabung',
                 width: 160,
+                template: function (data) {
+                    var tgl_bergabung = data.tanggal_bergabung.split(" ");
+                    return tgl_bergabung[0];
+                }
             }, {
                 field: 'tanggal_berakhir',
                 title: 'Tanggal Berakhir',
                 width: 150,
+                template: function (data) {
+                    var tgl_berakhir = data.tanggal_berakhir.split(" ");
+                    return tgl_berakhir[0];
+                }
             }, {
                 field: '',
                 title: 'Aksi',

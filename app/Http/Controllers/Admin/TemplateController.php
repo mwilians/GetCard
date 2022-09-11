@@ -20,15 +20,15 @@ class TemplateController extends Controller
         
         $request->validate([
 
-            // 'image|mimes:jpeg,png,jpg|max:2048'
+            // 'image|mimes:jpeg,png,jpg|min:88',
 
-            'file_demo' => 'image|mimes:jpeg,png,jpg|required',
+            'file_demo' => 'image|mimes:jpeg,png,jpg|required|min:1.70',
 
-            'file_kartu_app' => 'image|mimes:jpeg,png,jpg|required',
+            'file_kartu_app' => 'image|mimes:jpeg,png,jpg|required|min:110',
 
-            'file_kartu_nama1' => 'image|mimes:jpeg,png,jpg|required',
+            'file_kartu_nama1' => 'image|mimes:jpeg,png,jpg|required|min:85',
 
-            'file_kartu_nama2' => 'image|mimes:jpeg,png,jpg|required',
+            'file_kartu_nama2' => 'image|mimes:jpeg,png,jpg|required|min:85',
             
         ]);
 

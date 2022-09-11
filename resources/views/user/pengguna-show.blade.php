@@ -117,7 +117,11 @@
                                 <div class="position-relative overflow-hidden">
                                     <div id="id_card_1" class="tabcontent">
 
-                                        @if($previewDesain == null)
+                                        {{-- @php
+                                            dd($previewDesain->template->file_kartu_app)
+                                        @endphp --}}
+
+                                        @if($previewDesain->template_id == null)
                                             <div class="container">
                                                 <div class="image-section">
                                                     <img src="{{ asset('assets/media/desain/DD/Demo1-B.png') }}" id="template" alt="">
@@ -155,7 +159,7 @@
                                                         </div>
                                                         @endforeach
                                                     <div id="qrcode">
-                                                        {!! QrCode::size(145)->generate($p); !!}
+                                                        {!! QrCode::size(145)->generate(url('/getcard.kartusaya/'.$p->id.'/'.$p->no_id)); !!}
                                                     </div>
                                                 </div>
                                                 
@@ -171,9 +175,9 @@
                                                         <p id="profile-tanggal-card">{{ $p->tanggal_bergabung }} / {{ $p->tanggal_berakhir }}</p>
                                                     </div>
                                                     <div id="qrcode-card">
-                                                        {!! QrCode::size(50)->generate($p); !!}
+                                                        {!! QrCode::size(50)->generate(url('/getcard.kartusaya/'.$p->id.'/'.$p->no_id)); !!}
                                                     </div>
-
+ 
                                                     @foreach ($lembaga as $l)
                                                         <img src="{{ asset($l->foto) }}" id="logo-lembaga-card" alt="Avatar">
 
@@ -192,15 +196,15 @@
 
                                             <div class="container">
                                                 <div class="image-section">
-                                                    <img src="{{ asset($previewDesain->file_kartu_app) }}" id="template" alt="">
+                                                    <img src="{{ asset($previewDesain->template->file_kartu_app) }}" id="template" alt="">
                                                 </div>
 
                                                 <div class="section-kartu-nama">
-                                                    <img src="{{ asset($previewDesain->file_kartu_nama1) }}" id="kartu_nama" alt="">
+                                                    <img src="{{ asset($previewDesain->template->file_kartu_nama1) }}" id="kartu_nama" alt="">
                                                 </div>
                                                 
                                                 <div class="section-kartu-nama-belakang">
-                                                    <img src="{{ asset($previewDesain->file_kartu_nama2) }}" id="kartu_nama_belakang" alt="">
+                                                    <img src="{{ asset($previewDesain->template->file_kartu_nama2) }}" id="kartu_nama_belakang" alt="">
                                                 </div>
 
                                                 <div class="text-section" align="center">
@@ -227,7 +231,7 @@
                                                         </div>
                                                         @endforeach
                                                     <div id="qrcode">
-                                                        {!! QrCode::size(145)->generate($p); !!}
+                                                        {!! QrCode::size(145)->generate(url('/getcard.kartusaya/'.$p->id.'/'.$p->no_id)); !!}
                                                     </div>
                                                 </div>
                                                 
@@ -243,7 +247,7 @@
                                                         <p id="profile-tanggal-card">{{ $p->tanggal_bergabung }} / {{ $p->tanggal_berakhir }}</p>
                                                     </div>
                                                     <div id="qrcode-card">
-                                                        {!! QrCode::size(50)->generate($p); !!}
+                                                        {!! QrCode::size(50)->generate(url('/getcard.kartusaya/'.$p->id.'/'.$p->no_id)); !!}
                                                     </div>
 
                                                     @foreach ($lembaga as $l)
@@ -267,7 +271,8 @@
                             </div>
 
                             <div class="card-footer d-flex justify-content-between">
-                                <a href="#" class="btn btn-light-primary font-weight-bold"><i class="ki ki-copy icon-nm"></i> Salin Link</a>
+                                <input type="hidden" id="link" value="{{ url('/getcard.kartusaya/'.$p->id.'/'.$p->no_id) }}">
+                                <button onclick="salinLink()" class="btn btn-light-primary font-weight-bold"><i class="ki ki-copy icon-nm"></i> Salin Link</button>
                                 {{-- <button onclick="download()" class="btn btn-outline-secondary font-weight-bold"><i class="la la-print icon-dm"></i> Download</button> --}}
                                 <a href="{{ route('print', ['id' => $p->id]) }}" target="_blank" class="btn btn-outline-secondary font-weight-bold"><i class="la la-print icon-dm"></i> Cetak</a>
                             </div>
@@ -366,8 +371,27 @@
 
                 // ----- input desain ----- //
                 $('#pilih-desain').html(' <input type="hidden" name="template" value="'+response.data[0].id+'"> ')
+
             }
         });
+    }
+
+    function salinLink() {
+
+        var inputa = document.getElementById('link');
+        var inputb = document.body.appendChild(document.createElement("input"));
+
+        inputb.value = inputa.value;
+        inputb.focus();
+        inputb.select();
+        inputb.setSelectionRange(0, 99999);
+
+        document.execCommand('copy');
+
+        inputb.parentNode.removeChild(inputb);
+
+        alert("URL Copied.");
+
     }
     
     function download(){

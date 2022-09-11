@@ -3,6 +3,9 @@
 @section('title', 'Add Card')
 
 @section('content')
+
+@include('sweetalert::alert')
+
     <!--begin::Content-->
     <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Entry-->
@@ -110,8 +113,11 @@
                                                                 class="la la-user"></i></span></div>
                                                     <input type="text" name="nama"
                                                         class="form-control form-control-lg form-control-solid"
-                                                        value="" placeholder="Meita Wilianisa" required/>
+                                                        value="" placeholder="Meita Wilianisa"/>
                                                 </div>
+                                                @error('nama')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -123,8 +129,11 @@
                                                                 class="la la-transgender"></i></span></div>
                                                     <input type="text" name="jenis_kelamin"
                                                         class="form-control form-control-lg form-control-solid"
-                                                        value="" placeholder="Perempuan/Laki-Laki" required/>
+                                                        value="" placeholder="Perempuan/Laki-Laki"/>
                                                 </div>
+                                                @error('jenis_kelamin')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -136,8 +145,11 @@
                                                                 class="la la-map-pin"></i></span></div>
                                                     <input type="text" name="jabatan"
                                                         class="form-control form-control-lg form-control-solid"
-                                                        value="" placeholder="Assistant Manager" required/>
+                                                        value="" placeholder="Assistant Manager"/>
                                                 </div>
+                                                @error('jabatan')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -147,10 +159,13 @@
                                                     <div class="input-group-prepend"><span
                                                             class="input-group-text"><i
                                                                 class="la la-phone"></i></span></div>
-                                                    <input type="text" name="telepon"
+                                                    <input type="number" name="telepon"
                                                         class="form-control form-control-lg form-control-solid"
-                                                        value="" placeholder="+6282278953712" required/>
+                                                        value="" placeholder="+6282278953712"/>
                                                 </div>
+                                                @error('telepon')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -162,8 +177,11 @@
                                                                 class="la la-at"></i></span></div>
                                                     <input type="text" name="email"
                                                         class="form-control form-control-lg form-control-solid"
-                                                        value="" placeholder="user@gmail.com" required/>
+                                                        value="" placeholder="user@gmail.com"/>
                                                 </div>
+                                                @error('email')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -175,8 +193,11 @@
                                                                 class="la la-calendar"></i></span></div>
                                                     <input type="date" name="tanggal_bergabung"
                                                         class="form-control form-control-lg form-control-solid"
-                                                        value="" placeholder="Assistant Manager" required/>
+                                                        value="" placeholder="Assistant Manager"/>
                                                 </div>
+                                                @error('tanggal_bergabung')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -188,8 +209,11 @@
                                                                 class="la la-calendar"></i></span></div>
                                                     <input type="date" name="tanggal_berakhir"
                                                         class="form-control form-control-lg form-control-solid"
-                                                        value="" placeholder="" required/>
+                                                        value="" placeholder=""/>
                                                 </div>
+                                                @error('tanggal_berakhir')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </form>

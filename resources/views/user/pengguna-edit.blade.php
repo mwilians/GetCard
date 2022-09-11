@@ -126,6 +126,9 @@
                                                         class="form-control form-control-lg form-control-solid"
                                                         value="{{ $pengguna->nama }}" placeholder="Meita Wilianisa" />
                                                 </div>
+                                                @error('nama')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -139,6 +142,9 @@
                                                         class="form-control form-control-lg form-control-solid"
                                                         value="{{ $pengguna->jenis_kelamin }}" placeholder="Perempuan/Laki-Laki" />
                                                 </div>
+                                                @error('jenis_kelamin')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -152,6 +158,9 @@
                                                         class="form-control form-control-lg form-control-solid"
                                                         value="{{ $pengguna->jabatan }}" placeholder="Assistant Manager" />
                                                 </div>
+                                                @error('jabatan')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -165,6 +174,9 @@
                                                         class="form-control form-control-lg form-control-solid"
                                                         value="{{ $pengguna->telepon }}" placeholder="+6282278953712" required/>
                                                 </div>
+                                                @error('telepon')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -178,6 +190,9 @@
                                                         class="form-control form-control-lg form-control-solid"
                                                         value="{{ $pengguna->email }}" placeholder="user@gmail.com" required/>
                                                 </div>
+                                                @error('email')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -189,8 +204,11 @@
                                                                 class="la la-calendar"></i></span></div>
                                                     <input type="date" name="tanggal_bergabung"
                                                         class="form-control form-control-lg form-control-solid"
-                                                        value="{{ $pengguna->tanggal_bergabung }}" placeholder="Assistant Manager" required/>
+                                                        value="{{ $pengguna->tanggal_bergabung }}" placeholder="Assistant Manager" />
                                                 </div>
+                                                @error('tanggal_bergabung')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -202,8 +220,11 @@
                                                                 class="la la-calendar"></i></span></div>
                                                     <input type="date" name="tanggal_berakhir"
                                                         class="form-control form-control-lg form-control-solid"
-                                                        value="{{ $pengguna->tanggal_berakhir }}" placeholder="" required/>
+                                                        value="{{ $pengguna->tanggal_berakhir }}" placeholder="" />
                                                 </div>
+                                                @error('tanggal_berakhir')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </form>
