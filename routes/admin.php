@@ -16,11 +16,19 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+// Route::get('/chart', function(){
+//     return view("admin/chart");
+// });
+
+
 // laravel
 Route::get('/welcome', function () {
     return view('welcome');
-});
+})->middleware('guest');
 
+// Route::get('/landing-page', function () {
+//     return view('landing-page');
+// });
 
 // login
 Route::get('/login', function () {
@@ -34,7 +42,7 @@ Route::get('/login', function () {
 // });
 Route::get('/admin', [AdminController::class, 'home'])->name('home')->middleware('admin');
 
-// Route::get('/admin', [AdminController::class, 'charts'])->name('charts')->middleware('admin');
+Route::get('/chart', [AdminController::class, 'chart'])->name('chart')->middleware('admin');
 
 
 // list pengguna

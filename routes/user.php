@@ -16,10 +16,20 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('test', fn () => phpinfo());
+
 // Laravel
 Route::get('/welcome', function () {
     return view('welcome');
 })->middleware('guest');
+
+// Route::get('/landing-page', function () {
+//     return view('landing-page');
+// });
+
+Route::get('/card', function(){
+    return view("user/print");
+});
 
 
 // Login
@@ -52,6 +62,8 @@ Route::post('user/pengguna/{id}/simpan-template',[PenggunaController::class, 'si
 
 Route::get('user/pengguna/{id}/print',[PenggunaController::class, 'print'])->name('print')->middleware('user');
 
+Route::get('getcard.kartusaya/{id}/{no_id}', [PenggunaController::class, 'viewLink'])->name('viewLink')->middleware('user');
+
 Route::get('template/{id}', [PenggunaController::class, 'template']);
 
 
@@ -67,3 +79,6 @@ Route::post('user/lembaga-action', [LembagaController::class, 'lembaga_action'])
 
 // My List Card 
 Route::get('user/list-kartu', [ListKartuController::class, 'list_kartu'])->name('list_kartu')->middleware('user');
+
+Route::get('user/list-kartu/{no_id}', [ListKartuController::class, 'search'])->name('search')->middleware('user');
+
