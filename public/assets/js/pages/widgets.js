@@ -191,6 +191,142 @@ var KTWidgets = function() {
         chart.render();
     }
 
+    // Charts widgets
+
+    var _initChartsWidget3 = function() {
+        var element = document.getElementById("kt_charts_widget_3_chart");
+
+        if (!element) {
+            return;
+        }
+
+        var options = {
+            series: [{
+                name: 'Pendaftaran User',
+                data: newUser
+            }],
+            chart: {
+                type: 'area',
+                height: 350,
+                toolbar: {
+                    show: false
+                }
+            },
+            plotOptions: {
+
+            },
+            legend: {
+                show: false
+            },
+            dataLabels: {
+                enabled: false
+            },
+            fill: {
+                type: 'solid',
+                opacity: 1
+            },
+            stroke: {
+                curve: 'smooth',
+                show: true,
+                width: 3,
+                colors: [KTApp.getSettings()['colors']['theme']['base']['success']]
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+                axisBorder: {
+                    show: false,
+                },
+                axisTicks: {
+                    show: false
+                },
+                labels: {
+                    style: {
+                        colors: KTApp.getSettings()['colors']['gray']['gray-500'],
+                        fontSize: '12px',
+                        fontFamily: KTApp.getSettings()['font-family']
+                    }
+                },
+                crosshairs: {
+                    position: 'front',
+                    stroke: {
+                        color: KTApp.getSettings()['colors']['theme']['base']['success'],
+                        width: 1,
+                        dashArray: 3
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    formatter: undefined,
+                    offsetY: 0,
+                    style: {
+                        fontSize: '12px',
+                        fontFamily: KTApp.getSettings()['font-family']
+                    }
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: KTApp.getSettings()['colors']['gray']['gray-500'],
+                        fontSize: '12px',
+                        fontFamily: KTApp.getSettings()['font-family']
+                    }
+                }
+            },
+            states: {
+                normal: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                hover: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                active: {
+                    allowMultipleDataPointsSelection: false,
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                }
+            },
+            tooltip: {
+                style: {
+                    fontSize: '12px',
+                    fontFamily: KTApp.getSettings()['font-family']
+                },
+                y: {
+                    formatter: function(val) {
+                        return "+" + val
+                    }
+                }
+            },
+            colors: [KTApp.getSettings()['colors']['theme']['light']['success']],
+            grid: {
+                borderColor: KTApp.getSettings()['colors']['gray']['gray-200'],
+                strokeDashArray: 4,
+                yaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            markers: {
+                //size: 5,
+                //colors: [KTApp.getSettings()['colors']['theme']['light']['danger']],
+                strokeColor: KTApp.getSettings()['colors']['theme']['base']['success'],
+                strokeWidth: 3
+            }
+        };
+
+        var chart = new ApexCharts(element, options);
+        chart.render();
+    }
+
     // Public methods
     return {
         init: function() {
@@ -199,6 +335,9 @@ var KTWidgets = function() {
 
             // Stats Widgets
             _initStatsWidget11();
+
+            // Charts Widgets
+            _initChartsWidget3();
 
             // Education App
             _initEducationShowMoreBtn();

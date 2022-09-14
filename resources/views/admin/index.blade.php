@@ -400,7 +400,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="card-stretch gutter-b">
-                                        <!--begin::Stats Widget 11-->
+                                        <!--begin::Charts Widget 3-->
                                         <div class="card card-custom gutter-b">
                                             <!--begin::Body-->
                                             <div class="card-body p-0">
@@ -426,12 +426,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <span class="text-muted font-weight-bold mt-1">Jumlah User</span>
                                                     </div>
                                                 </div>
-                                                <div id="kt_stats_widget_11_chart" class="card-rounded-bottom"
+                                                <div id="kt_charts_widget_3_chart" class="card-rounded-bottom"
                                                     data-color="success" style="height: 150px"></div>
                                             </div>
                                             <!--end::Body-->
                                         </div>
-                                        <!--end::Stats Widget 11-->
+                                        <!--begin::Charts Widget 3-->
                                     </div>
                                 </div>
                             </div>
