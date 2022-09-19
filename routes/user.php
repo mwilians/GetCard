@@ -23,9 +23,6 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->middleware('guest');
 
-// Route::get('/landing-page', function () {
-//     return view('landing-page');
-// });
 
 Route::get('/card', function(){
     return view("user/print");
@@ -42,9 +39,11 @@ Route::get('/login', function () {
 Route::get('/user', [UserController::class, 'home'])->name('home')->middleware('user');
 
 
-// My Card
+// My Card - Data
 Route::get('user/pengguna', [PenggunaController::class, 'index'])->name('index')->middleware('user');
 Route::post('user/pengguna/data', [PenggunaController::class, 'data'])->middleware('user');
+
+Route::post('user/pengguna/dataLembaga', [PenggunaController::class, 'dataLembaga'])->middleware('user');
 
 Route::get('user/pengguna-add', [PenggunaController::class, 'tambah'])->name('tambah')->middleware('user');
 Route::post('user/insert', [PenggunaController::class, 'insert'])->name('insert')->middleware('user');
@@ -56,13 +55,21 @@ Route::post('user/update/{id}',[PenggunaController::class, 'update'])->name('upd
 
 Route::post('user/pengguna/hapus',[PenggunaController::class, 'delete'])->middleware('user');
 
+// My Card - Show
+
 Route::get('user/pengguna/{id}/show',[PenggunaController::class, 'show'])->name('show')->middleware('user');
 
 Route::post('user/pengguna/{id}/simpan-template',[PenggunaController::class, 'simpan'])->name('simpan')->middleware('user');
 
+// My Card - Fitur
+
 Route::get('user/pengguna/{id}/print',[PenggunaController::class, 'print'])->name('print')->middleware('user');
 
 Route::get('getcard.kartusaya/{id}/{no_id}', [PenggunaController::class, 'viewLink'])->name('viewLink')->middleware('user');
+
+Route::get('getcard.kartusaya.depan/{id}', [PenggunaController::class, 'viewPreviewD'])->name('viewPreviewD')->middleware('user');
+
+Route::get('getcard.kartusaya.belakang/{id}', [PenggunaController::class, 'viewPreviewB'])->name('viewPreviewB')->middleware('user');
 
 Route::get('template/{id}', [PenggunaController::class, 'template']);
 
@@ -72,13 +79,9 @@ Route::get('user/lembaga', [LembagaController::class, 'lembaga'])->name('lembaga
 
 Route::post('user/lembaga-action', [LembagaController::class, 'lembaga_action'])->name('lembaga_action')->middleware('user');
 
-// Route::post('user/lembaga-insert', [LembagaController::class, 'lembaga_insert'])->name('lembaga_insert')->middleware('user');
-
-// Route::post('user/lembaga-update', [LembagaController::class, 'lembaga_update'])->name('lembaga_update')->middleware('user');
-
 
 // My List Card 
 Route::get('user/list-kartu', [ListKartuController::class, 'list_kartu'])->name('list_kartu')->middleware('user');
 
-Route::get('user/list-kartu/{no_id}', [ListKartuController::class, 'search'])->name('search')->middleware('user');
+Route::post('user/list-kartu/simpan-kartu', [ListKartuController::class, 'simpan_kartu'])->name('simpan_kartu')->middleware('user');
 

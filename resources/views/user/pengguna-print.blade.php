@@ -37,7 +37,9 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Global Theme Styles-->
 
     
-    <link href="{{ asset('assets\css\pages\template\kartu-nama.print.css') }}" rel="stylesheet" type="text/css"/>
+    {{-- <link href="{{ asset('assets\css\pages\template\kartu-nama.print.css') }}" rel="stylesheet" type="text/css"/> --}}
+
+    <link href="{{ asset('assets\css\pages\template\coba.css') }}" rel="stylesheet" type="text/css"/>
     
     <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
 
@@ -46,8 +48,10 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <!--begin::Body-->
 <body onload="window.print()">
+
+    {{-- -- PERCOBAAN  1 --  --}}
     
-    @foreach ($pengguna as $p)
+    {{-- @foreach ($pengguna as $p)
 
     <div class="">
         @if($desainKartu->template_id == null)
@@ -117,6 +121,111 @@ License: You must have a valid license purchased only from themeforest(the above
         @endif
     </div>
 
+    @endforeach --}}
+
+
+    {{-- -- PERCOBAAN 2 -- --}}
+
+    {{-- @foreach($pengguna as $p)
+
+        @if($desainKartu->template_id == null)
+
+        <div class="kartu" style="width:498.5px; height:292.5px; background: url('assets/media/desain/DKN/C2-1-C.png') no-repeat; background-size:cover; ">
+        
+            <div class="col-left">
+                <p>{{ $p->telepon }}</p>
+                <p>{{ $p->email }}</p>
+                <p>{{ $p->tanggal_bergabung }} / {{ $p->tanggal_berakhir }}</p>
+            </div>
+            <div class="col-right">
+                <img src="{{ asset($p->foto) }}" alt="">
+                <h4>{{ $p->nama }}</h4>
+                <div class="bg-jabatan">
+                    <h4>{{ $p->jabatan }}</h4>
+                </div>
+                <div class="qrcode-card">
+                    {!! QrCode::size(88)->generate(url('/getcard.kartusaya/'.$p->id.'/'.$p->no_id)); !!}
+                </div>
+            </div>
+        </div>
+    
+        <br>
+    
+        <div class="kartu-belakang" style="width:498.5px; height:292.5px; background: url('assets/media/desain/DKN/C2-2-A.png') no-repeat; background-size:cover; ">
+    
+            @foreach($lembaga as $l)
+            
+            <div class="col-center">
+                <div class="flex-image">
+                    <img src="{{ asset($l->foto) }}" alt="">
+                </div>
+                <p>{{ $l->telepon }}</p>
+                <p>{{ $l->alamat }}</p>
+                <p>{{ $l->email }}</p>
+                <p>{{ $l->website }}</p>
+            </div>
+    
+            @endforeach
+            
+        </div>
+
+        @else
+
+        <div class="kartu" style="width:498.5px; height:292.5px; background: url({{ asset($desainKartu->template->file_kartu_nama1)  }}) no-repeat; background-size:cover; ">
+        
+            <div class="col-left">
+                <p>{{ $p->telepon }}</p>
+                <p>{{ $p->email }}</p>
+                <p>{{ $p->tanggal_bergabung }} / {{ $p->tanggal_berakhir }}</p>
+            </div>
+            <div class="col-right">
+                <img src="{{ asset($p->foto) }}" alt="">
+                <h4>{{ $p->nama }}</h4>
+                <div class="bg-jabatan">
+                    <h4>{{ $p->jabatan }}</h4>
+                </div>
+                <div class="qrcode-card">
+                    {!! QrCode::size(88)->generate(url('/getcard.kartusaya/'.$p->id.'/'.$p->no_id)); !!}
+                </div>
+            </div>
+        </div>
+    
+        <br>
+    
+        <div class="kartu-belakang" style="width:498.5px; height:292.5px; background: url({{ asset($desainKartu->template->file_kartu_nama2)  }}) no-repeat; background-size:cover; ">
+    
+            @foreach($lembaga as $l)
+            
+            <div class="col-center">
+                <div class="flex-image">
+                    <img src="{{ asset($l->foto) }}" alt="">
+                </div>
+                <p>{{ $l->telepon }}</p>
+                <p>{{ $l->alamat }}</p>
+                <p>{{ $l->email }}</p>
+                <p>{{ $l->website }}</p>
+            </div>
+    
+            @endforeach
+            
+        </div>
+            
+        @endif
+  
+    @endforeach --}}
+
+
+    {{-- -- PERCOBAAN 3 --  --}}
+
+    @foreach($pengguna as $p)
+
+    <div class="kartu" style="width: 480px; height:307;" no-repeat; background-size:cover;>
+
+        <img src="{{ ('/getcard.kartusaya.depan/'.$p->id) }}" width="100%" alt="KD">
+
+        <img src="{{ ('/getcard.kartusaya.belakang/'.$p->id) }}" width="100%" alt="KD">
+    </div>
+        
     @endforeach
 
 </body>

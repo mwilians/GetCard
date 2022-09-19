@@ -59354,7 +59354,7 @@ body {
       .header-fixed[data-header-scroll="on"] .header .header-wrapper {
         background-color: #ffffff; }
     .header-fixed[data-header-scroll="on"].sidebar-enabled .header {
-      right: 400px; }
+       right: 0px; }
     .header-fixed.subheader-fixed .header {
       -webkit-box-shadow: none !important;
       box-shadow: none !important; } }

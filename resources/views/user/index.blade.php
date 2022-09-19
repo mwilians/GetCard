@@ -250,7 +250,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class=" container">
                             <!--begin::Row-->
                             <div class="row mt-0 mt-lg-8">
-                                <div class="col-xl-4">
+                                <div class="col-xl-6">
                                     <!--begin::Card 1-->
                                     <div class="card card-custom card-stretch gutter-b">
                                         <!--begin::Body-->
@@ -298,7 +298,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <!--end::Card 1-->
                                 </div>
 
-                                <div class="col-xl-4">
+                                <div class="col-xl-6">
                                     <!--begin::Card 2-->
                                     <div class="card card-custom card-stretch gutter-b">
                                         <!--begin::Body-->
@@ -334,7 +334,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             </td>
                                                             <td class="pl-0">
                                                                 <a href="user/list-kartu" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">List Kartu Saya</a>
-                                                                <span class="text-muted font-weight-bold d-block">0 Kartu Nama</span>
+                                                                <span class="text-muted font-weight-bold d-block">{{ count($listKartu) }} Kartu Nama</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -347,7 +347,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <!--end::Card 2-->
                                 </div>
 
-                                <div class="col-xl-4">
+                                {{-- <div class="col-xl-4">
                                     <!--begin::Card 3-->
                                     <div class="card card-custom card-stretch gutter-b">
                                         <!--begin::Body-->
@@ -393,7 +393,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <!--end::Body-->
                                     </div>
                                     <!--end::Card 3-->
-                                </div>
+                                </div> --}}
                             </div>
                             <!--end::Row-->
 

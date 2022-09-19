@@ -29,10 +29,11 @@
     align-items: center;
     justify-content: flex-end;
     margin: 0rem 0 0rem;
+    margin-right: 4rem;
 }
 
 .col-right img{
-    width: 40%;
+    width: 45%;
     border-radius: 100%;
     margin: 20rem 0 0 0;
 }
