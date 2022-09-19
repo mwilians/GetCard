@@ -35,8 +35,8 @@ class Pengguna extends Model
         return $this->belongsTo(Template::class);
     }
 
-    // public function list_kartu() {
+    public function list_kartu() {
 
-    //     return $this->belongsTo(ListKartu::class);
-    // }
+        return $this->hasMany(ListKartu::class,'pengguna_id','id');
+    }
 }

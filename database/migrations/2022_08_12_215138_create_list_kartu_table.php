@@ -15,9 +15,8 @@ class CreateListKartuTable extends Migration
     {
         Schema::create('list_kartu', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('pengguna_id');
-            $table->foreignId('template_id');
             $table->timestamps();
         });
     }

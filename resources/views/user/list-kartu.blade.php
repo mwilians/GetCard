@@ -3,6 +3,22 @@
 @section('title', 'My List Card')
 
 @section('content')
+
+@include('sweetalert::alert')
+
+<style>
+    @media only screen and (max-width: 600px) {
+        .list{
+            width: 100%;
+            background: red;
+        }
+    }
+</style>
+
+{{-- @php 
+print_r($data);exit;
+@endphp --}}
+
     <!--begin::Content-->
     <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
 
@@ -18,18 +34,19 @@
                             <h3 class="card-label">Pencarian Kartu Nama</h3>
                         </div>
 
-                        <form action="{{ url('user/list-kartu') }}" method="GET">
-                            {{-- @csrf --}}
+                        {{-- <form action="{{ url('user/list-kartu') }}" method="GET">
                             <div class="input-icon card-toolbar">
-                                <input type="text" class="form-control" placeholder="Cari No ID" name="search" />
-                                <button type="submit" class="btn btn-primary font-weight-bold"><i class="flaticon2-search-1 text-muted"></i> Cari </button>
+                                <input type="text" class="form-control" placeholder="Cari No ID" name="search" value="{{ $search }}" />
+                                <button type="submit" class="btn btn-primary font-weight-bold"><i class="flaticon2-search-1 text-muted"></i> </button>
+                            </div>
+                        </form> --}}
+
+                        <form action="{{ url('user/list-kartu') }}" method="GET">
+                            <div class="input-icon card-toolbar mt-5">
+                                <input type="text" class="form-control" placeholder="Cari No ID" name="search" value="{{ $search }}" />
+                                <span><i class="flaticon2-search-1 text-muted"></i></span>
                             </div>
                         </form>
-
-                        {{-- <div class="input-icon card-toolbar">
-                            <input type="text" class="form-control" placeholder="Cari No ID" name="search" />
-                            <span><i class="flaticon2-search-1 text-muted"></i></span>
-                        </div> --}}
                     </div>
                     <!--end::Body-->
 
@@ -37,15 +54,31 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-6 my-2 my-md-0">
-                                <img src="{{asset($data->template->template_id)}}" alt="" class="card-img" height="190" alt="image">
-                                {{-- <img class="mr-4" src="{{ asset('assets/media/desain/DKN/C1-1.png') }}" height="190" alt="image" /> --}}
-
+                                @if($data)
+                                    <picture style="overflow: auto;">
+                                        <div class="list" style="float:left; width:0%; ">
+                                            <img src="{{ ('/getcard.kartusaya.depan/'.$data->id) }}" width="100%" style="width: 420px; height:247;" alt="KD">
+                                        </div>
+                                        <div class="list" style="float:right; width:0%; ">
+                                            <img src="{{ ('/getcard.kartusaya.belakang/'.$data->id) }}" width="100%" style="width: 420px; height:247;" alt="KB">
+                                        </div>
+                                    </picture>
+                                @endif
                             </div>
                         </div>
                     </div>
 
                     <div class="card-footer d-flex justify-content-between card-toolbar">
-                        <a href="#" class="btn btn-light-primary font-weight-bold">Simpan Kartu Nama</a>
+                        <form action="{{ url('user/list-kartu/simpan-kartu') }}" method="POST">
+                            @csrf
+                                @if($data)
+                                    <div>
+                                        <input type="hidden" name="simpan_kartu" value="{{ $data->id }}">
+                                    </div>
+                                @endif
+                                
+                                <button type="submit" class="btn btn-light-primary font-weight-bold card-toolbar">Simpan Kartu Nama</button>
+                        </form>
                     </div>
                     <!--end::Card-->
                 </div>
@@ -63,9 +96,26 @@
                     <div class="card-body">
                         {{-- // List My Card --}}
 
-                        {{-- <div class=" mr-7 mt-lg-0 mt-3 symbol-50 symbol-lg-120">
-                            <img class="mt-5 mr-4" src="{{ asset('assets/media/desain/DKN/C1-1.png') }}" height="190" alt="image" />
-                        </div> --}}
+                        @if(count($simpanKartu) == 0)
+
+                        <div class="d-flex justify-content-center">
+                            <p>-- Belum Ada List Kartu yang di Simpan --</p>
+                        </div>
+
+                        @else
+
+                        @foreach($simpanKartu as $sK)
+                            <picture style="overflow: auto;">
+                                <div class="list" style="float:left; width:48%;"> 
+                                    <img src="{{ ('/getcard.kartusaya.depan/'.$sK->pengguna_id) }}" width="100%" style="width: 480px; height:307;" alt="KD">
+                                </div>
+                                <div class="list" style="float: right; width:48%;">
+                                    <img src="{{ ('/getcard.kartusaya.belakang/'.$sK->pengguna_id) }}" width="100%" style="width: 480px; height:307;" alt="KB"> 
+                                </div>
+                            </picture>
+                        @endforeach
+
+                        @endif
                     </div>
 
                     <div class="card-footer d-flex justify-content-between">
@@ -85,5 +135,5 @@
 @endsection
 
 @push('script')
-    
+
 @endpush

@@ -48,8 +48,8 @@ class User extends Authenticatable
         return $this->hasMany(Pengguna::class);
     }
 
-    // public function list_kartu() {
+    public function list_kartu() {
 
-    //     return $this->hasOne(ListKartu::class);
-    // }
+        return $this->hasOne(ListKartu::class);
+    }
 }

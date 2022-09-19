@@ -9,24 +9,21 @@ class ListKartu extends Model
 {
     use HasFactory;
 
-    protected $table = 'listkartu';
+    protected $table = 'list_kartu';
 
     protected $fillable = [
-        // 'foto',
+        'user_id',
+        'pengguna_id',
     ];
 
-    // public function pengguna() {
+    public function user() {
 
-    //     return $this->hasMany(Pengguna::class);
-    // }
+        return $this->hasMany(User::class);
+    }
 
-    // public function user() {
+    public function pengguna() {
 
-    //     return $this->hasOne(User::class);
-    // }
+        return $this->belongsTo(Pengguna::class);
+    }
 
-    // public function template() {
-
-    //     return $this->hasOne(Template::class);
-    // }
 }
