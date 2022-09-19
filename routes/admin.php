@@ -50,11 +50,15 @@ Route::get('admin/list-pengguna', [ListPenggunaController::class, 'index'])->nam
 
 Route::post('admin/list-pengguna/data', [ListPenggunaController::class, 'data'])->middleware('admin');
 
+Route::get('admin/list-pengguna/pdf', [ListPenggunaController::class, 'PDF'])->name('admin.listpengguna_pdf')->middleware('admin');
+
 
 // list perusahaan
 Route::get('admin/list-lembaga', [ListLembagaController::class, 'perusahaan'])->name('perusahaan')->middleware('admin');
 
 Route::post('admin/list-lembaga/data', [ListLembagaController::class, 'data'])->middleware('admin');
+
+Route::get('admin/list-lembaga/pdf', [ListLembagaController::class, 'PDF'])->name('admin.listlembaga_pdf')->middleware('admin');
 
 
 // template

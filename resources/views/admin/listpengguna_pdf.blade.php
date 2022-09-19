@@ -16,7 +16,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <html lang="en">
 
 <head>
-    <title>PDF - List Perusahaan | Get Card</title>
+    <title>PDF - List Pengguna | Get Card</title>
 
     <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 
@@ -59,10 +59,10 @@ License: You must have a valid license purchased only from themeforest(the above
 
             <div class="text-center mb-15 text-dark-50 font-weight-bolder" style="text-align:center">
 
-                List Perusahaan | {{ count($dataLembaga) }} Data <br> <br> <br>
+                List Pengguna | {{ count($dataUser) }} Data <br> <br> <br>
 
             </div>
-            
+
             <br>
 
             <!--begin: Datatable-->
@@ -87,15 +87,9 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <th class="text-muted pt-2 font-size-sm" style="">No</th>
 
-                        <th class="text-muted pt-2 font-size-sm" style="">Perusahaan</th>
-
-                        <th class="text-muted pt-2 font-size-sm" style="">Alamat</th>
-
-                        <th class="text-muted pt-2 font-size-sm" style="">Telepon</th>
+                        <th class="text-muted pt-2 font-size-sm" style="">Nama</th>
 
                         <th class="text-muted pt-2 font-size-sm" style="">Email</th>
-
-                        <th class="text-muted pt-2 font-size-sm" style="">Website</th>
 
                     </tr>
 
@@ -110,7 +104,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     @endphp
 
-                    @foreach ($dataLembaga as $dL)
+                    @foreach ($dataUser as $dU)
 
                         <tr>
 
@@ -122,7 +116,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                     <div class="ml-2">
 
-                                        <span class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">{{ $dL->nama }}</span>
+                                        <span class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">{{ $dU->name }}</span>
 
                                     </div>
 
@@ -136,49 +130,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                     <div class="ml-2">
 
-                                        <span class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">{{ $dL->alamat }}</span>
-
-                                    </div>
-
-                                </div>
-
-                            </td>
-
-                            <td>
-
-                                <div class="d-flex align-items-center">
-
-                                    <div class="ml-2">
-
-                                        <span class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">{{ $dL->telepon }}</span>
-
-                                    </div>
-
-                                </div>
-
-                            </td>
-
-                            <td>
-
-                                <div class="d-flex align-items-center">
-
-                                    <div class="ml-2">
-
-                                        <span class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">{{ $dL->email }}</span>
-
-                                    </div>
-
-                                </div>
-
-                            </td>
-
-                            <td>
-
-                                <div class="d-flex align-items-center">
-
-                                    <div class="ml-2">
-
-                                        <span class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">{{ $dL->website }}</span>
+                                        <span class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">{{ $dU->email }}</span>
 
                                     </div>
 
