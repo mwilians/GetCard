@@ -7,12 +7,28 @@
 @include('sweetalert::alert')
 
 <style>
-    @media only screen and (max-width: 600px) {
-        .list{
-            width: 100%;
-            background: red;
+    @media only screen and (min-width: 992px) {
+        .list {
+            /* background: rgb(61, 49, 49); */
+        
         }
     }
+
+    @media only screen and (max-width: 600px) {
+        .list {
+        
+            /* background: rgb(157, 63, 63); */
+        }
+    }
+
+    @media only screen and (max-width: 576px) {
+        .list {
+            /* background: rgb(255, 0, 0); */
+            /* width: 100%; */
+        
+        }
+    }
+
 </style>
 
 {{-- @php 
@@ -52,20 +68,16 @@ print_r($data);exit;
 
                     <!--begin::Card-->
                     <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-md-6 my-2 my-md-0">
-                                @if($data)
-                                    <picture style="overflow: auto;">
-                                        <div class="list" style="float:left; width:0%; ">
-                                            <img src="{{ ('/getcard.kartusaya.depan/'.$data->id) }}" width="100%" style="width: 420px; height:247;" alt="KD">
-                                        </div>
-                                        <div class="list" style="float:right; width:0%; ">
-                                            <img src="{{ ('/getcard.kartusaya.belakang/'.$data->id) }}" width="100%" style="width: 420px; height:247;" alt="KB">
-                                        </div>
-                                    </picture>
-                                @endif
-                            </div>
-                        </div>
+                        @if($data)
+                            <picture class="row">
+                                <div class="list col-sm-12 col-md-6"> 
+                                    <img src="{{ ('/getcard.kartusaya.depan/'.$data->id) }}" width="100%" alt="KD">
+                                </div>
+                                <div class="list col-sm-12 col-md-6">
+                                    <img src="{{ ('/getcard.kartusaya.belakang/'.$data->id) }}" width="100%" alt="KB"> 
+                                </div>
+                            </picture>
+                        @endif
                     </div>
 
                     <div class="card-footer d-flex justify-content-between card-toolbar">
@@ -105,12 +117,12 @@ print_r($data);exit;
                         @else
 
                         @foreach($simpanKartu as $sK)
-                            <picture style="overflow: auto;">
-                                <div class="list" style="float:left; width:48%;"> 
-                                    <img src="{{ ('/getcard.kartusaya.depan/'.$sK->pengguna_id) }}" width="100%" style="width: 480px; height:307;" alt="KD">
+                            <picture class="row">
+                                <div class="list col-sm-12 col-md-6"> 
+                                    <img src="{{ ('/getcard.kartusaya.depan/'.$sK->pengguna_id) }}" width="100%" alt="KD">
                                 </div>
-                                <div class="list" style="float: right; width:48%;">
-                                    <img src="{{ ('/getcard.kartusaya.belakang/'.$sK->pengguna_id) }}" width="100%" style="width: 480px; height:307;" alt="KB"> 
+                                <div class="list col-sm-12 col-md-6">
+                                    <img src="{{ ('/getcard.kartusaya.belakang/'.$sK->pengguna_id) }}" width="100%" alt="KB"> 
                                 </div>
                             </picture>
                         @endforeach

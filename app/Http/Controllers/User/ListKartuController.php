@@ -11,16 +11,14 @@ class ListKartuController extends Controller
 {
     public function list_kartu(Request $request) {
 
-        // $search = Pengguna::where('no_id', $request->search)->first();
-
         $search = $request->search;
 
         $data = Pengguna::where('no_id', $search)->first();
+
         $simpanKartu = ListKartu::where('user_id',Auth::user()->id)->get();
 
         // $print_r($data);exit;
 
-        // $template = Pengguna::where('id', $id)->first();
 
         return view('user.list-kartu', compact('search', 'data','simpanKartu'));
     }
@@ -31,6 +29,14 @@ class ListKartuController extends Controller
 
         $list = ListKartu::where('pengguna_id',$request->simpan_kartu)->where('user_id',Auth::user()->id)->first();
 
+        if (!$request->simpan_kartu) {
+
+            toast('Tidak ada Kartu yang akan di Simpan!','warning');
+
+            return redirect()->back();
+
+        }
+
         if($list){
 
             toast('Kartu Nama telah Anda Tambahkan!','info');
@@ -40,8 +46,11 @@ class ListKartuController extends Controller
         }else{
 
             ListKartu::create([
+
                 'user_id' => Auth::user()->id,
+
                 'pengguna_id' => $request->simpan_kartu,
+
             ]);
 
             toast('Kartu Nama Berhasil di Simpan!','success');
