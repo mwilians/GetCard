@@ -106,6 +106,11 @@ var KTDatatableJsonRemoteDemo = function () {
                 textAlign: 'center',
                 autoHide: false,
                 template: function (data) {
+                    // var detail;
+                    // if (data.lembaga == 0) {
+                    //     alert('Isi Data Perusahaan untuk dapat mengakses Detail!')
+                    // }
+                    
                     return '\
                         <a href="user/pengguna/' + data.id + '/show" class="btn btn-sm btn-clean btn-icon mr-2" title="Detail">\
                             <span class="svg-icon svg-icon-success svg-icon-lg">\

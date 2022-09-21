@@ -43,8 +43,6 @@ Route::get('/user', [UserController::class, 'home'])->name('home')->middleware('
 Route::get('user/pengguna', [PenggunaController::class, 'index'])->name('index')->middleware('user');
 Route::post('user/pengguna/data', [PenggunaController::class, 'data'])->middleware('user');
 
-Route::post('user/pengguna/dataLembaga', [PenggunaController::class, 'dataLembaga'])->middleware('user');
-
 Route::get('user/pengguna-add', [PenggunaController::class, 'tambah'])->name('tambah')->middleware('user');
 Route::post('user/insert', [PenggunaController::class, 'insert'])->name('insert')->middleware('user');
 

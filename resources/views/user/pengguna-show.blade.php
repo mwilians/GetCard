@@ -4,6 +4,8 @@
 
 @section('content')
 
+@include('sweetalert::alert')
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,84 +14,37 @@
 
 <link href="{{ asset('assets\css\pages\template\id_card.css') }}" rel="stylesheet" type="text/css"/>
 
-{{-- <style>
-
-    #img {
-      border-radius: 50%;
-      margin-left: 10px; 
-    }
-    
-    #id {
-    width:250px;
-    height:450px;
-    position:absolute;
-    top: 75px;
-    left: -51px;
-    opacity: 0.88;
-    margin:auto;
-    margin-left: 100px;
-    font-family: 'Josefin Sans', sans-serif;
-    transition: 0.4s;
-    border-radius: 2%;
-    }
-    #profile{
-        width: 120px;
-        border-radius: 50%;
-    }
-
-    #id::before {
-    content: "";
-    position: absolute;
-    /* width:250px; */
-    height:830px;
-    background: url('{{ asset("assets/media/desain/D-1-3.png") }}');
-    background-repeat:repeat-x;
-    background-size: 250px 445px;
-    /* opacity: 0.2; */
-    z-index: -1;
-    margin:auto;
-    text-align:center;
-    }
-
-    .container{
-        font-size: 12px;
-        font-family: 'Josefin Sans', sans-serif;
-    }
-    .id-1{
-        transition: 0.4s;
-        height:830px;
-        background: url('{{ asset("assets/media/desain/D-1-3.png") }}');
-        text-align:center;
-        font-size: 16px;
-        font-family: 'Mouse Memoirs', sans-serif;
-        background-size: 250px 445px;
-        margin:auto;
-        margin-top:500px;
-    }
-    .jabatan{
-        position: relative;
-        top: 16px;
-        font-size: 16px;
-        color: #E7E3DC;
-    }
-    .image-section{
-    grid-area: main;
+<style> 
+.iframe {
+    border-style:solid;
 }
 
-    .data{
-        position: relative;
-        top: 50px;
-        font-size: 14px;
-        color: #41624F;
-    }
-    .foto{
-        width: 200px;
-        border-radius: 10px;
-    }
-    #profile-alamat{
-        margin-top: -5%;
-    }
-</style> --}}
+.wrap {
+    width: 320px;
+    height: 700px;
+    padding: 0;
+    overflow: hidden;
+}
+.frame {
+    width: 2500px;
+    height: 5000px !important;
+    border: 0;
+    -ms-transform: scale(0.15);
+    -moz-transform: scale(0.15);
+    -o-transform: scale(0.15);
+    -webkit-transform: scale(0.15);
+    transform: scale(0.15);
+
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+.kartusaya {
+    border-color: blue;
+}
+</style> 
 
     <!--begin::Content-->
     <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
@@ -98,7 +53,51 @@
             <!--begin::Container-->
             <div class="container-fluid ">
                 <div class="row">
-                    <div class="col-xl-5 col-lg-6 col-md-6 col-sm-6">
+                    <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6">
+                        <!--begin::Card-->
+                        <div class="card card-custom gutter-b card-stretch">
+                            <!--begin::Body-->
+                            <div class="card-header">
+                                <h5 class="card-label mt-8">Desain Kartu</h5>
+
+                                <div class="card-title">
+                                    <form action="{{ url('user/pengguna/'.$id.'/simpan-template') }}" method="POST">
+                                    @csrf
+                                        <div id="pilih-desain"></div>
+                                            <button type="submit" class="btn btn-light-primary font-weight-bold card-toolbar">Simpan Desain</button>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <div class="card-body">
+                                {{-- // Pilihan Desain --}}
+
+                                @if(count($template) == 0)
+
+                                <div class="d-flex justify-content-center">
+                                    <p>-- Belum Ada Desain Template --</p>
+                                </div>
+
+                                @else
+
+                                <div class="flex-shrink-0 mr-7 mt-lg-0 mt-3 desain">
+                                    @foreach ($template as $t)
+                                        <div class="symbol symbol-50 symbol-lg-150 gambar">
+                                            <button onclick="template({{ $t->id }})" class="btn symbol symbol-50 symbol-lg-150" style="border: none">
+                                                <img src="{{ asset($t->file_demo) }}" alt="image" />
+                                            </button>
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                                @endif
+                            </div>
+                            <!--end::Body-->
+                        </div>
+                        <!--end::Card-->
+                    </div>
+
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                         <!--begin::Card-->
                         <div class="card card-custom gutter-b card-stretch overflow-hidden">
                             <!--begin::Body-->
@@ -115,11 +114,8 @@
                                 {{-- // Preview Kartu  --}}
 
                                 <div class="position-relative overflow-hidden">
-                                    <div id="id_card_1" class="tabcontent">
 
-                                        {{-- @php
-                                            dd($previewDesain->template->file_kartu_app)
-                                        @endphp --}}
+                                    {{-- <div id="id_card_1" class="tabcontent">
 
                                         @if($previewDesain->template_id == null)
                                             <div class="container">
@@ -136,7 +132,7 @@
                                                 </div>
 
                                                 <div class="text-section" align="center">
-                                                    <h5 id="nama-id" class="text fw-bold mt-2"><bold>No ID :</bold></h5>
+                                                    <h5 id="nama-id" class="text fw-bold mt-2"><bold>{{ $p->no_id }}</bold></h5>
                                                     <p id="no-id">{{ $p->no_id }}</p>
                                                     <img id="profile-img" src="{{ asset($p->foto) }}"  alt="image" />
                                                     <h4 style="margin:auto; font-size: 30px;" class="profile-nama mt-5">{{ $p->nama }}</h4>
@@ -163,7 +159,7 @@
                                                     </div>
                                                 </div>
                                                 
-                                                {{-- // Kartu Nama --}}
+                                                // Kartu Nama
 
                                                 <div class="text-section-card" >
                                                     <img id="profile-img-card" src="{{ asset($p->foto) }}"  alt="image" />
@@ -208,7 +204,7 @@
                                                 </div>
 
                                                 <div class="text-section" align="center">
-                                                    <h5 id="nama-id" class="text fw-bold mt-2"><bold>No ID :</bold></h5>
+                                                    <h5 id="nama-id" class="text fw-bold mt-2"><bold>{{ $p->no_id }}</bold></h5>
                                                     <p id="no-id">{{ $p->no_id }}</p>
                                                     <img id="profile-img" src="{{ asset($p->foto) }}"  alt="image" />
                                                     <h4 style="margin:auto; font-size: 30px;" class="profile-nama mt-5">{{ $p->nama }}</h4>
@@ -235,7 +231,7 @@
                                                     </div>
                                                 </div>
                                                 
-                                                {{-- // Kartu Nama --}}
+                                                // Kartu Nama
 
                                                 <div class="text-section-card" >
                                                     <img id="profile-img-card" src="{{ asset($p->foto) }}"  alt="image" />
@@ -266,7 +262,24 @@
 
                                         @endif
                                         
-                                    </div>
+                                    </div> --}}
+
+                                    {{-- <div class="wrap">
+                                        <iframe id="iframe" src="{{ ('/getcard.kartusaya/'.$p->id.'/'.$p->no_id) }}" title="card" class="frame" height="500"></iframe>
+                                    </div> --}}
+                                    
+                                    <picture class="kartusaya">
+                                        <img src="{{ ('/getcard.kartusaya/'.$p->id.'/'.$p->no_id) }}" width="100%" alt="KA">
+                                    </picture>
+
+                                    <picture>
+                                        <img src="{{ ('/getcard.kartusaya.depan/'.$p->id) }}" width="100%" alt="KD" class="mt-5">
+                                    </picture>
+
+                                    <picture>
+                                        <img src="{{ ('/getcard.kartusaya.belakang/'.$p->id) }}" width="100%" alt="KB" class="mt-5">
+                                    </picture>
+
                                 </div>
                             </div>
 
@@ -283,49 +296,6 @@
                         <!--end::Card-->
                     </div>
 
-                    <div class="col-xl-7 col-lg-6 col-md-6 col-sm-6">
-                        <!--begin::Card-->
-                        <div class="card card-custom gutter-b card-stretch">
-                            <!--begin::Body-->
-                            <div class="card-header">
-                                <h5 class="card-label mt-8">Desain Kartu</h5>
-
-                                <div class="card-title">
-                                    <form action="{{ url('user/pengguna/'.$id.'/simpan-template') }}" method="POST">
-                                    @csrf
-                                        <div id="pilih-desain"></div>
-                                            <button type="submit" class="btn btn-light-primary font-weight-bold card-toolbar">Simpan Desain</button>
-                                    </form>
-                                </div>
-                            </div>
-                            
-                            <div class="card-body">
-                                {{-- // Pilihan Desain --}}
-
-                                @if(count($template) == 0)
-
-                                <div class="d-flex justify-content-center">
-                                    <p>-- Belum Ada Desain Template --</p>
-                                </div>
-
-                                @else
-
-                                <div class="flex-shrink-0 mr-7 mt-lg-0 mt-3 desain">
-                                    @foreach ($template as $t)
-                                        <div class="symbol symbol-50 symbol-lg-150 gambar">
-                                            <button onclick="template({{ $t->id }})" class="btn symbol symbol-50 symbol-lg-150" style="border: none">
-                                                <img src="{{ asset($t->file_demo) }}" alt="image" />
-                                            </button>
-                                        </div>
-                                    @endforeach
-                                </div>
-
-                                @endif
-                            </div>
-                            <!--end::Body-->
-                        </div>
-                        <!--end::Card-->
-                    </div>
                 </div>
             </div>
             <!--end::Container-->

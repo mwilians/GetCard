@@ -24,8 +24,8 @@ use Validator;
 
 use Alert;
 
-class PenggunaController extends Controller
-{
+class PenggunaController extends Controller {
+
     // Datatable //
     
     public function index() {
@@ -38,9 +38,11 @@ class PenggunaController extends Controller
     public function data() {
 
         $pengguna = Pengguna::where('user_id', Auth::user()->id)->get();
+        $lembaga = Lembaga::where('user_id', Auth::user()->id)->first();
 
         return response()->json([
-            'data' => $pengguna
+            'data' => $pengguna,
+            'dataLembaga' => $lembaga
         ]);
     }
 
@@ -84,13 +86,6 @@ class PenggunaController extends Controller
             'tanggal_bergabung.required' => 'Tanggal Bergabung tidak boleh kosong',
             'tanggal_berakhir.required' => 'Tanggal Berakhir tidak boleh kosong',
         ]);
-
-        // $validasi = Validator::make($request->all(), $request, $messages);
-
-        // if ($validasi->fails()) {
-        //     // return redirect()->route('index')->with(['error' => 0, 'messages' => $validasi->errors()->first]);
-        //     return $request->with(['error' => 0, 'messages' => $validasi->errors()->first]);
-        // }
 
         
         $no = $this->generateUniqueCode();
@@ -251,6 +246,16 @@ class PenggunaController extends Controller
         $default = Template::first();
 
         $previewDesain = Pengguna::where('id', $id)->first();
+        
+        $le = Lembaga::where('user_id', Auth::user()->id)->first();
+
+        if ($le == null) {
+
+            toast('Isi Data Perusahaan untuk dapat mengakses Detail!', 'warning');
+
+            return redirect()->route('lembaga');
+        }
+
 
         return view('user.pengguna-show', compact('id', 'pengguna', 'no_id', 'lembaga', 'template', 'default', 'previewDesain'));
     }
@@ -316,14 +321,15 @@ class PenggunaController extends Controller
         // Lokasi file yang ingin di edit
 
         if ($pengguna->template_id == null) {
-            $image = imagecreatefrompng(public_path('assets/media/desain/DD/Demo1-B.png'));
+            $image = imagecreatefrompng(public_path('assets/media/desain/DD/Demo2-A.png'));
+            $image_width = imagesx($image);
+            $image_height = imagesy($image);
         } else {
             $image = imagecreatefrompng(public_path($template->file_kartu_app));
             $image_width = imagesx($image);
             $image_height = imagesy($image);
         }
         
-
 
         // tempel qr code ke template id card
         $qr_image = QrCode::format('png')->size(100)->generate(url('/getcard.kartusaya/'.$pengguna->id.'/'.$pengguna->no_id));
@@ -334,7 +340,9 @@ class PenggunaController extends Controller
         $logo_image = imagecreatefrompng(public_path($lembaga->foto));
         $logo_image_width = imagesx($logo_image);
         $logo_image_height = imagesy($logo_image);
-        imagecopyresized($image, $logo_image, 620, 2380, 0, 0, 300, 300, $logo_image_width, $logo_image_height);
+        // imagecopyresized($image, $logo_image, ($image_width / 2)-($logo_image_width / 2), 2380, 0, 0, $logo_image_width, $logo_image_height, $logo_image_width, $logo_image_height);
+
+        imagecopyresized($image, $logo_image, ($image_width / 2)-($logo_image_width / 2), ($image_height / 2)-($logo_image_height / 2) + 200, 0, 0, $logo_image_width, $logo_image_height, $logo_image_width, $logo_image_height);
 
         $explode = last(explode('.', $pengguna->foto));
 
@@ -388,10 +396,10 @@ class PenggunaController extends Controller
         $username = $pengguna->nama ?? "Nama";
 
         // untuk menghitung berapa panjang dari text
-        $bbox = imagettfbbox(150, 0, $abrilFatface, $username);
+        $bbox = imagettfbbox(120, 0, $abrilFatface, $username);
         // untuk menentukan titik tengah dari text
-        $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2) + 10;
-        imagettftext($image, 150, 0, $x, 1317, $black, $abrilFatface, $username);
+        $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
+        imagettftext($image, 120, 0, $x, 1317, $black, $abrilFatface, $username);
 
 
         // Ambil data jabatan dari query parameter
@@ -413,7 +421,7 @@ class PenggunaController extends Controller
         $bbox = imagettfbbox($fontSize, 0, $poppins, $phone);
         // untuk menentukan titik tengah dari text
         $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
-        imagettftext($image, $fontSize, 0, $x, 1863, $black, $poppins, $phone);
+        imagettftext($image, $fontSize, 0, $x, 1780, $black, $poppins, $phone);
 
 
         // Ambil data email dari query parameter
@@ -424,19 +432,278 @@ class PenggunaController extends Controller
         $bbox = imagettfbbox($fontSize, 0, $poppins, $email);
         // untuk menentukan titik tengah dari text
         $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
-        imagettftext($image, $fontSize, 0, $x, 1983, $black, $poppins, $email);
+        imagettftext($image, $fontSize, 0, $x, 1890, $black, $poppins, $email);
 
 
         // Ambil data bergabung dari query parameter
-        $bergabung = $pengguna->tanggal_bergabung ?? "1 Jan 2022 / 1 Feb 2022";
+        $bergabung = $pengguna->tanggal_bergabung .'/'. $pengguna->tanggal_berakhir ?? "1 Jan 2022 / 1 Feb 2022";
 
         $fontSize = 65;
         // untuk menghitung berapa panjang dari text
         $bbox = imagettfbbox($fontSize, 0, $poppins, $bergabung);
         // untuk menentukan titik tengah dari text
         $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
-        imagettftext($image, $fontSize, 0, $x, 2100, $black, $poppins, $bergabung);
+        imagettftext($image, $fontSize, 0, $x, 2015, $black, $poppins, $bergabung);
 
+
+        // Ambil data telp dari query parameter
+        $telp_office = $lembaga->telepon ?? "+62 xxx-xxxx-xxx";
+
+        $fontSize = 60;
+        // untuk menghitung berapa panjang dari text
+        $bbox = imagettfbbox($fontSize, 0, $poppins, $telp_office);
+        // untuk menentukan titik tengah dari text
+        $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
+        imagettftext($image, $fontSize, 0, $x, 2935, $black, $poppins, $telp_office);
+
+
+        // Ambil data alamat dari query parameter
+        $tmpAddres = [];
+        $address = $lembaga->alamat ?? "Alamat";
+        $pjgAlamat = strlen($address);
+        $jmlRow = ceil($pjgAlamat / 34);
+        for($i = 0; $i < $jmlRow; $i++){
+            $baris = substr($address, $i * 34, 34);
+            array_push($tmpAddres, $baris);
+        }
+
+        // $address = explode(",", $address);
+
+        $fontSize = 60;
+        // untuk menghitung berapa panjang dari text
+        $i = 1;
+        foreach($tmpAddres as $a){
+            $bbox = imagettfbbox($fontSize, 0, $poppins, $a);
+            // untuk menentukan titik tengah dari text
+            $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
+            imagettftext($image, $fontSize, 0, $x, 2955 + ($i * 100), $black, $poppins, $a);
+            $i++;
+        }
+
+        // Ambil data email dari query parameter
+        $email_office = $lembaga->email ?? "email@gmail.com";
+
+        $fontSize = 60;
+        // untuk menghitung berapa panjang dari text
+        $bbox = imagettfbbox($fontSize, 0, $poppins, $email_office);
+        // untuk menentukan titik tengah dari text
+        $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
+        imagettftext($image, $fontSize, 0, $x, 2970 + ($i * 100), $black, $poppins, $email_office);
+
+
+        // Ambil data url dari query parameter
+        $url_office = $lembaga->website ?? "www.website.com";
+
+        $fontSize = 60;
+        // untuk menghitung berapa panjang dari text
+        $bbox = imagettfbbox($fontSize, 0, $poppins, $url_office);
+        // untuk menentukan titik tengah dari text
+        $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
+        imagettftext($image, $fontSize, 0, $x, 3080 + ($i * 100), $black, $poppins, $url_office);
+
+
+        imagepng($image);
+        imagedestroy($image);
+        imagedestroy($qr_image);
+        imagedestroy($logo_image);
+        imagedestroy($user_img_color);
+        imagedestroy($mask);
+ 
+        return redirect('user/pengguna/'.$id.'/show')->with('success',' Link Berhasil di Salin!');
+    }
+
+
+    // Preview //
+
+    public function viewPreviewD($id) {
+
+        $pengguna = Pengguna::where('id', $id)->first();
+
+        $template = Template::where('id', $pengguna->template_id)->first();
+
+        $lembaga = Lembaga::where('user_id', $pengguna->user_id)->first();
+
+        header("Content-type: image/png");
+        // Lokasi file yang ingin di edit
+
+        if ($pengguna->template_id == null) {
+            $image = imagecreatefrompng(public_path('assets/media/desain/DKN/C2-1-B.png'));
+            $image_width = imagesx($image);
+            $image_height = imagesy($image);
+        } else {
+            $image = imagecreatefrompng(public_path($template->file_kartu_nama1));
+            $image_width = imagesx($image);
+            $image_height = imagesy($image);
+        }
+        
+
+        // tempel qr code ke template id card
+        $qr_image = QrCode::format('png')->size(88)->generate(url('/getcard.kartusaya/'.$pengguna->id.'/'.$pengguna->no_id));
+        $q = imagecreatefromstring($qr_image);
+        imagecopyresized($image, $q, 1715, 1280, 0, 0, 600, 600, 88, 88);
+
+        $explode = last(explode('.', $pengguna->foto));
+
+        // tempel foto user
+        if ($explode =='jpg') {
+            $user_img = imagecreatefromjpeg(public_path($pengguna->foto));
+        } elseif ($explode =='png') {
+            $user_img = imagecreatefrompng(public_path($pengguna->foto));
+        } else {
+            $user_img = imagecreatefromjpeg(public_path($pengguna->foto));
+        }
+
+        $user_img_width = imagesx($user_img);
+        $user_img_height = imagesy($user_img);
+
+        $user_img_new_width = 675;
+        $user_img_new_height = 675;
+
+        $user_img_color = imagecreatetruecolor($user_img_new_width, $user_img_new_height);
+        imagealphablending($user_img_color, true);
+        imagecopyresampled($user_img_color, $user_img, 0, 0, 0, 0, $user_img_new_width, $user_img_new_height, $user_img_width, $user_img_height);
+
+        $mask = imagecreatetruecolor($user_img_new_width, $user_img_new_height);
+
+        $transparent = imagecolorallocate($mask, 255, 0, 0);
+        imagecolortransparent($mask, $transparent);
+
+        imagefilledellipse($mask, $user_img_new_width/2, $user_img_new_height/2, $user_img_new_width, $user_img_new_height, $transparent);
+
+        $red = imagecolorallocate($mask, 0, 0, 0);
+        imagecopymerge($user_img_color, $mask, 0, 0, 0, 0, $user_img_new_width, $user_img_new_height, 100);
+        imagecolortransparent($user_img_color, $red);
+        imagefill($user_img_color, 0, 0, $red);
+
+        imagecopy($image, $user_img_color, 1680, 100, 0, 0, $user_img_new_width, $user_img_new_height);
+
+        // warna
+        $black = imagecolorallocate($image, 0,0,0);
+        $white = imagecolorallocate($image, 255,255,255);
+        $green = imagecolorallocate($image, 65,98,79);
+
+        // lokasi font
+        $roboto = public_path('font/Roboto-Regular.ttf');
+        $abrilFatface = public_path('font/AbrilFatface-Regular.otf');
+        $josefinSans = public_path('font/JosefinSans-Light.ttf');
+        $openSans = public_path('font/OpenSans-Regular.ttf');
+        $poppins = public_path('font/Poppins-Regular.ttf');
+
+        // Ambil data nama dari query parameter
+        $username = $pengguna->nama ?? "Nama";
+
+        // untuk menghitung berapa panjang dari text
+        $bbox = imagettfbbox(120, 0, $abrilFatface, $username);
+        // untuk menentukan titik tengah dari text
+        $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2) + 400;
+        imagettftext($image, 120, 0, $x, 1010, $black, $abrilFatface, $username);
+
+
+        // Ambil data jabatan dari query parameter
+        $jabatan = $pengguna->jabatan ?? "Jabatan";
+
+        $fontSize = 90;
+        // untuk menghitung berapa panjang dari text
+        $bbox = imagettfbbox($fontSize, 0, $poppins, $jabatan);
+        // untuk menentukan titik tengah dari text
+        $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2) + 400;
+        imagettftext($image, $fontSize, 0, $x, 1185, $white, $poppins, $jabatan);
+
+
+        // Ambil data telp dari query parameter
+        $phone = $pengguna->telepon ?? "+62 xxx-xxxx-xxx";
+
+        $fontSize = 65;
+        // untuk menghitung berapa panjang dari text
+        $bbox = imagettfbbox($fontSize, 0, $poppins, $phone);
+        // untuk menentukan titik tengah dari text
+        $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
+        imagettftext($image, $fontSize, 0, 170, 1573, $black, $poppins, $phone);
+
+
+        // Ambil data email dari query parameter
+        $email = $pengguna->email ?? "email@gmail.com";
+
+        $fontSize = 65;
+        // untuk menghitung berapa panjang dari text
+        $bbox = imagettfbbox($fontSize, 0, $poppins, $email);
+        // untuk menentukan titik tengah dari text
+        $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
+        imagettftext($image, $fontSize, 0, 170, 1683, $black, $poppins, $email);
+
+
+        // Ambil data bergabung dari query parameter
+        $bergabung = $pengguna->tanggal_bergabung .'/'. $pengguna->tanggal_berakhir ?? "1 Jan 2022 / 1 Feb 2022";
+
+        $fontSize = 65;
+        // untuk menghitung berapa panjang dari text
+        $bbox = imagettfbbox($fontSize, 0, $poppins, $bergabung);
+        // untuk menentukan titik tengah dari text
+        $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
+        imagettftext($image, $fontSize, 0, 170, 1793, $black, $poppins, $bergabung);
+
+
+        imagepng($image);
+        imagedestroy($image);
+        imagedestroy($qr_image);
+        imagedestroy($logo_image);
+        imagedestroy($user_img_color);
+        imagedestroy($mask);
+ 
+        return redirect('user/pengguna/'.$id.'/show')->with('succes',' Link Berhasil di Salin!');
+    }
+
+    public function viewPreviewB($id) {
+
+        $pengguna = Pengguna::where('id', $id)->first();
+
+        $template = Template::where('id', $pengguna->template_id)->first();
+
+        $lembaga = Lembaga::where('user_id', $pengguna->user_id)->first();
+
+        header("Content-type: image/png");
+        // Lokasi file yang ingin di edit
+
+        if ($pengguna->template_id == null) {
+            $image = imagecreatefrompng(public_path('assets/media/desain/DKN/C2-2-A.png'));
+            $image_width = imagesx($image);
+            $image_height = imagesy($image);
+        } else {
+            $image = imagecreatefrompng(public_path($template->file_kartu_nama2));
+            $image_width = imagesx($image);
+            $image_height = imagesy($image);
+        }
+
+        // tempel logo perusahaan ke template id card
+        $explode = last(explode('.', $lembaga->foto));
+
+        if ($explode =='jpg') {
+            $logo_image = imagecreatefromjpeg(public_path($lembaga->foto));
+        } elseif ($explode =='png') {
+            $logo_image = imagecreatefrompng(public_path($lembaga->foto));
+        } else {
+            $logo_image = imagecreatefromjpeg(public_path($lembaga->foto));
+        }
+
+        $logo_image_width = imagesx($logo_image);
+        $logo_image_height = imagesy($logo_image);
+
+        // imagecopyresized($image, $logo_image, ($image_width / 2)-($logo_image_width / 4), 580, 0, 0, $logo_image_width, $logo_image_height, $logo_image_width, $logo_image_height);
+
+        imagecopyresized($image, $logo_image, ($image_width / 2)-($logo_image_width / 2), ($image_height / 2)-($logo_image_height / 2) - 280, 0, 0, $logo_image_width, $logo_image_height, $logo_image_width, $logo_image_height);
+
+        
+        // warna
+        $black = imagecolorallocate($image, 0,0,0);
+        $white = imagecolorallocate($image, 255,255,255);
+        $green = imagecolorallocate($image, 65,98,79);
+
+        // lokasi font
+        $roboto = public_path('font/Roboto-Regular.ttf');
+        $abrilFatface = public_path('font/AbrilFatface-Regular.otf');
+        $josefinSans = public_path('font/JosefinSans-Light.ttf');
+        $openSans = public_path('font/OpenSans-Regular.ttf');
+        $poppins = public_path('font/Poppins-Regular.ttf');
 
         // Ambil data telp dari query parameter
         $telp_office = $lembaga->telepon ?? "+62 xxx-xxxx-xxx";
@@ -446,18 +713,30 @@ class PenggunaController extends Controller
         $bbox = imagettfbbox($fontSize, 0, $poppins, $telp_office);
         // untuk menentukan titik tengah dari text
         $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
-        imagettftext($image, $fontSize, 0, $x, 2890, $black, $poppins, $telp_office);
+        imagettftext($image, $fontSize, 0, $x, 1190, $black, $poppins, $telp_office);
 
 
         // Ambil data alamat dari query parameter
+        $tmpAddres = [];
         $address = $lembaga->alamat ?? "Alamat";
+        $pjgAlamat = strlen($address);
+        $jmlRow = ceil($pjgAlamat / 58);
+        for($i = 0; $i < $jmlRow; $i++){
+            $baris = substr($address, $i * 58, 58);
+            array_push($tmpAddres, $baris);
+        }
 
         $fontSize = 65;
         // untuk menghitung berapa panjang dari text
-        $bbox = imagettfbbox($fontSize, 0, $poppins, $address);
-        // untuk menentukan titik tengah dari text
-        $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
-        imagettftext($image, $fontSize, 0, $x, 3010, $black, $poppins, $address);
+        $i = 1;
+        foreach($tmpAddres as $a){
+            $bbox = imagettfbbox($fontSize, 0, $poppins, $a);
+            // untuk menentukan titik tengah dari text
+            $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
+            imagettftext($image, $fontSize, 0, $x, 1210 + ($i * 110), $black, $poppins, $a);
+            $i++;
+        }
+        
 
 
         // Ambil data email dari query parameter
@@ -468,7 +747,7 @@ class PenggunaController extends Controller
         $bbox = imagettfbbox($fontSize, 0, $poppins, $email_office);
         // untuk menentukan titik tengah dari text
         $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
-        imagettftext($image, $fontSize, 0, $x, 3120, $black, $poppins, $email_office);
+        imagettftext($image, $fontSize, 0, $x, 1220 + ($i * 110), $black, $poppins, $email_office);
 
 
         // Ambil data url dari query parameter
@@ -479,7 +758,7 @@ class PenggunaController extends Controller
         $bbox = imagettfbbox($fontSize, 0, $poppins, $url_office);
         // untuk menentukan titik tengah dari text
         $x = $bbox[0] + (imagesx($image) / 2) - ($bbox[4] / 2);
-        imagettftext($image, $fontSize, 0, $x, 3228, $black, $poppins, $url_office);
+        imagettftext($image, $fontSize, 0, $x, 1335 + ($i * 110), $black, $poppins, $url_office);
 
 
         imagepng($image);
