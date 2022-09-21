@@ -3,6 +3,9 @@
 @section('title', 'Desain Card')
 
 @section('content')
+
+@include('sweetalert::alert')
+
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Entry-->

@@ -59,6 +59,8 @@ class TemplateController extends Controller
             'file_kartu_nama2' => $lokasiFileKartuNama2.$FileKartuNama2Name,
         ]);
 
+        toast('Template Berhasil di Tambah!','success');
+
         return redirect()->back();
     }
 
