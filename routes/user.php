@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\{UserController, PenggunaController, LembagaController, ListKartuController};
+use App\Http\Controllers\User\{UserController, PenggunaController, LembagaController, ListKartuController, PaymentController};
 
 use Illuminate\Support\Facades\Auth;
 
@@ -83,3 +83,10 @@ Route::get('user/list-kartu', [ListKartuController::class, 'list_kartu'])->name(
 
 Route::post('user/list-kartu/simpan-kartu', [ListKartuController::class, 'simpan_kartu'])->name('simpan_kartu')->middleware('user');
 
+Route::post('user/deleteKartu/{id}', [ListKartuController::class, 'deleteKartu'])->name('deleteKartu')->middleware('user');
+
+
+// Premium
+Route::get('user/premium', [PaymentController::class, 'premium'])->name('premium')->middleware('user');
+
+Route::get('user/premium/pembayaran', [PaymentController::class, 'payment'])->name('payment')->middleware('user');
