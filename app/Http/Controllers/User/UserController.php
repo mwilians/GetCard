@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function home() {
 
-        $kartuSaya = Pengguna::where('user_id', Auth::user()->id)->get();
+        $kartuSaya = Pengguna::where('user_id', Auth::user()->id)->limit(3)->get();
 
         $listKartu = ListKartu::where('user_id', Auth::user()->id)->get();
 
@@ -28,7 +28,7 @@ class UserController extends Controller
             return false;
         }
 
-        $paid = Payment::where('user_id', Auth::user()->id)->first();
+        $paid = Payment::where('user_id', Auth::user()->id)->where('status','paid')->first();
 
         if(!$paid){
             return false;

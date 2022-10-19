@@ -336,23 +336,19 @@ var KTWidgets = function() {
 
         var options = {
             series: [{
-                name: 'Net Profit',
+                name: 'Pendapatan',
                 type: 'bar',
                 stacked: true,
-                data: [40, 50, 65, 70, 50, 30]
+                data: [1]
             }, {
-                name: 'Revenue',
+                name: 'User Berlangganan',
                 type: 'bar',
                 stacked: true,
-                data: [20, 20, 25, 30, 30, 20]
-            }, {
-                name: 'Expenses',
-                type: 'area',
-                data: [50, 80, 60, 90, 50, 70]
+                data: userBerlangganan
             }],
             chart: {
                 stacked: true,
-                height: 350,
+                height: 300,
                 toolbar: {
                     show: false
                 }
@@ -394,7 +390,6 @@ var KTWidgets = function() {
                 }
             },
             yaxis: {
-                max: 120,
                 labels: {
                     style: {
                         colors: KTApp.getSettings()['colors']['gray']['gray-500'],
@@ -434,7 +429,7 @@ var KTWidgets = function() {
                 },
                 y: {
                     formatter: function(val) {
-                        return "$" + val + " thousands"
+                        return val + " User"
                     }
                 }
             },

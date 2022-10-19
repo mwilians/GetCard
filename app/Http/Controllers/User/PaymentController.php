@@ -59,7 +59,7 @@ class PaymentController extends Controller
     public function premium_post(Request $request) {
 
         $json = json_decode($request->get('json'));
-        // dd($json);
+        dd($json);
 
         $order = new Payment(); 
         $order->user_id = Auth::user()->id;

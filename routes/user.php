@@ -59,6 +59,8 @@ Route::get('user/pengguna/{id}/show',[PenggunaController::class, 'show'])->name(
 
 Route::post('user/pengguna/{id}/simpan-template',[PenggunaController::class, 'simpan'])->name('simpan')->middleware('user');
 
+Route::get('user/ubah-template/{id_user}/{id_template}',[PenggunaController::class, 'simpanTemplate']);
+
 // My Card - Fitur
 
 Route::get('user/pengguna/{id}/print',[PenggunaController::class, 'print'])->name('print')->middleware('user');

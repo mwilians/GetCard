@@ -305,6 +305,17 @@ class PenggunaController extends Controller {
         return redirect('user/pengguna/'.$id.'/show')->with(compact('pengguna'), ['succes',' Template Berhasil di Simpan']);
     }
 
+    public function simpanTemplate($id_user, $id_template){
+
+        $pengguna = Pengguna::where('id', $id_user)->first();
+        
+        $pengguna->update(['template_id' => $id_template]);
+
+        return response()->json([
+            'sukses'
+        ]);
+    }
+
 
     // Salin Link //
 
@@ -320,7 +331,7 @@ class PenggunaController extends Controller {
         // Lokasi file yang ingin di edit
 
         if ($pengguna->template_id == null) {
-            $image = imagecreatefrompng(public_path('assets/media/desain/DAPP/A2B.png'));
+            $image = imagecreatefrompng(public_path('assets/media/desain/DAPP/A2C.png'));
             $image_width = imagesx($image);
             $image_height = imagesy($image);
         } else {

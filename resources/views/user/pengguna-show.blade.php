@@ -60,13 +60,13 @@
                             <div class="card-header">
                                 <h5 class="card-label mt-8">Desain Kartu</h5>
 
-                                <div class="card-title">
+                                {{-- <div class="card-title">
                                     <form action="{{ url('user/pengguna/'.$id.'/simpan-template') }}" method="POST">
                                     @csrf
                                         <div id="pilih-desain"></div>
                                             <button type="submit" class="btn btn-light-primary font-weight-bold card-toolbar">Simpan Desain</button>
                                     </form>
-                                </div>
+                                </div> --}}
                             </div>
                             
                             <div class="card-body">
@@ -86,8 +86,10 @@
 
                                         @if($t->tipe != 'Gratis')
 
+                                            @if(!\App\Http\Controllers\User\UserController::cekPremium())
+
                                             <div class="symbol symbol-50 symbol-lg-150 gambar">
-                                                <button onclick="template({{ $t->id }})" class="btn symbol symbol-50 symbol-lg-150" style="border: none">
+                                                <button class="btn symbol symbol-50 symbol-lg-150 alertPremium" style="border: none">
                                                     <span class="svg-icon svg-icon-md svg-icon-warning">
                                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-opened.svg-->
                                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -102,6 +104,27 @@
                                                     <img src="{{ asset($t->file_demo) }}" alt="image" style="filter:blur(5px)"/>
                                                 </button>
                                             </div>
+
+                                            @else
+
+                                            <div class="symbol symbol-50 symbol-lg-150 gambar">
+                                                <button onclick="template({{ $t->id }})" class="btn symbol symbol-50 symbol-lg-150" style="border: none">
+                                                    <span class="svg-icon svg-icon-md svg-icon-warning">
+                                                        <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-opened.svg-->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                <polygon points="0 0 24 0 24 24 0 24"/>
+                                                                <path d="M11.2600599,5.81393408 L2,16 L22,16 L12.7399401,5.81393408 C12.3684331,5.40527646 11.7359848,5.37515988 11.3273272,5.7466668 C11.3038503,5.7680094 11.2814025,5.79045722 11.2600599,5.81393408 Z" fill="#000000" opacity="0.3"/>
+                                                                <path d="M12.0056789,15.7116802 L20.2805786,6.85290308 C20.6575758,6.44930487 21.2903735,6.42774054 21.6939717,6.8047378 C21.8964274,6.9938498 22.0113578,7.25847607 22.0113578,7.535517 L22.0113578,20 L16.0113578,20 L2,20 L2,7.535517 C2,7.25847607 2.11493033,6.9938498 2.31738608,6.8047378 C2.72098429,6.42774054 3.35378194,6.44930487 3.7307792,6.85290308 L12.0056789,15.7116802 Z" fill="#000000"/>
+                                                            </g>
+                                                        </svg>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                    <img src="{{ asset($t->file_demo) }}" alt="image" />
+                                                </button>
+                                            </div>
+
+                                            @endif
 
                                         @else
 
@@ -349,32 +372,33 @@
         });
 
     function template(id){
-        let url = HOST_URL + '/template/' + id;
+        let url = HOST_URL + '/user/ubah-template/{{ $id }}/' + id;
         $.ajax({
             url: url,
             method: "GET",
-            dataType: 'json',
             success: function(response){
 
-                // ----- preview desain ----- //
+                window.location.href = '/user/pengguna/{{ $id }}/show'
 
-                // file app
-                let foto = $('#template');
-                // file kartu nama 1
-                let foto_kartu_nama = $('#kartu_nama');
-                // file kartu nama 2
-                let foto_kartu_nama_belakang = $('#kartu_nama_belakang');
+                // // ----- preview desain ----- //
 
-                var kartu_app = response.data[0].file_kartu_app;
-                var kartu_nama = response.data[0].file_kartu_nama1;
-                var kartu_nama_belakang = response.data[0].file_kartu_nama2;
+                // // file app
+                // let foto = $('#template');
+                // // file kartu nama 1
+                // let foto_kartu_nama = $('#kartu_nama');
+                // // file kartu nama 2
+                // let foto_kartu_nama_belakang = $('#kartu_nama_belakang');
 
-                foto.attr('src', kartu_app);
-                foto_kartu_nama.attr('src', kartu_nama);
-                foto_kartu_nama_belakang.attr('src', kartu_nama_belakang);
+                // var kartu_app = response.data[0].file_kartu_app;
+                // var kartu_nama = response.data[0].file_kartu_nama1;
+                // var kartu_nama_belakang = response.data[0].file_kartu_nama2;
 
-                // ----- input desain ----- //
-                $('#pilih-desain').html(' <input type="hidden" name="template" value="'+response.data[0].id+'"> ')
+                // foto.attr('src', kartu_app);
+                // foto_kartu_nama.attr('src', kartu_nama);
+                // foto_kartu_nama_belakang.attr('src', kartu_nama_belakang);
+
+                // // ----- input desain ----- //
+                // $('#pilih-desain').html(' <input type="hidden" name="template" value="'+response.data[0].id+'"> ')
 
             }
         });
@@ -420,7 +444,26 @@
             });
     }
 
-    </script> 
+    $('body').on('click', '.alertPremium', function () {
+        // var id = $(this).data('id');
+        Swal.fire({
+            title: 'Akun Anda Belum Premium!',
+            text: 'Silahkan berlangganan untuk mendapatkan fitur premium!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Berlangganan!'
+            // cancelButtonText: 'Batal'
+        }).then((result)=>{
+            if(result.isConfirmed){
+                window.location.href = 'user/premium'
+            }
+        });
+    });
+    </script>
+
+{{-- <script src="https://www.jsdelivr.com/package/npm/sweetalert2"></script> --}}
 
     <!--begin::Global Theme Bundle(used by all pages)-->
     <script src="{{ asset('assets/plugins/global/plugins.bundle.js?v=7.0.6') }}"></script>

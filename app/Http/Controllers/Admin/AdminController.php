@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\{Auth, DB};
 use Illuminate\Http\Request;
-use App\Models\{User, Lembaga, Template, Pengguna};
+use App\Models\{User, Lembaga, Template, Pengguna, Payment};
 use Carbon\Carbon;
 use Redirect;
 
@@ -19,8 +19,10 @@ class AdminController extends Controller
 
         $dataTemplate = Template::all();
 
+        $dataBerlangganan = Payment::all();
 
-        $newUser = User::where('role', 1)->select(DB::raw("COUNT(*) as newUser"),DB::raw("Month(created_at) as month"))
+
+        $newUser = User::where('role', 1)->select(DB::raw("COUNT(*) as newUser"), DB::raw("Month(created_at) as month"))
         
         ->whereYear('created_at', date('Y'))
 
@@ -48,46 +50,25 @@ class AdminController extends Controller
             $newUser[Carbon::parse($u->created_at)->month-1]=$user+1;
         }
 
-        return view ('admin.index', compact('dataUser', 'dataLembaga', 'dataTemplate', 'newUser', 'bulan'));
-    }
-
-    public function chart() {
-
-        $dataUser = User::where('role', 1)->get();
         
-        $dataLembaga = Lembaga::all();
 
-        $dataTemplate = Template::all();
+        $userBerlanggan = Payment::all();
 
-
-        $newUser = User::where('role', 1)->select(DB::raw("COUNT(*) as newUser"),DB::raw("Month(created_at) as month"))
-        
-        ->whereYear('created_at', date('Y'))
-
-        ->orderBy('month','asc')
-
-        ->groupBy(DB::raw("Month(created_at)"))
-
-        ->pluck('newUser');
-
-        // dd($newUser);
-
-        $bulan = User::select(DB::raw("MONTHNAME(created_at) as bulan"))
+        $bulanBerlangganan = Payment::select(DB::raw("MONTHNAME(created_at) as bulanBerlangganan"))
 
         ->GroupBy(DB::raw("MONTHNAME(created_at)"))
 
-        ->pluck('bulan');
+        ->pluck('bulanBerlangganan');
 
+        $userBerlangganan = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-        $newUser = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        foreach ($userBerlanggan as $uB) {
 
-        foreach ($dataUser as $u) {
+            $berlangganan = $userBerlangganan[Carbon::parse($uB->created_at)->month-1];
 
-            $user = $newUser[Carbon::parse($u->created_at)->month-1];
-
-            $newUser[Carbon::parse($u->created_at)->month-1]=$user+1;
+            $userBerlangganan[Carbon::parse($uB->created_at)->month-1]=$berlangganan+1;
         }
 
-        return view ('admin.chart', compact('dataUser', 'dataLembaga', 'dataTemplate', 'newUser', 'bulan'));
+        return view ('admin.index', compact('dataUser', 'dataLembaga', 'dataTemplate', 'newUser', 'bulan', 'userBerlangganan', 'bulanBerlangganan', 'dataBerlangganan'));
     }
 }

@@ -237,7 +237,34 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!--begin::Entry-->
                     <div class="d-flex flex-column-fluid">
                         <!--begin::Container-->
-                        <div class=" container">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card card-custom bg-primary">
+                                        <div class="card-header border-0">
+                                            <div class="card-title">
+                                                {{-- <span class="svg-icon svg-icon-white svg-icon-2x mr-2">
+                                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo10\dist/../src/media/svg/icons\General\Lock.svg-->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <mask fill="white">
+                                                                <use xlink:href="#path-1"/>
+                                                            </mask>
+                                                            <g/>
+                                                            <path d="M7,10 L7,8 C7,5.23857625 9.23857625,3 12,3 C14.7614237,3 17,5.23857625 17,8 L17,10 L18,10 C19.1045695,10 20,10.8954305 20,12 L20,18 C20,19.1045695 19.1045695,20 18,20 L6,20 C4.8954305,20 4,19.1045695 4,18 L4,12 C4,10.8954305 4.8954305,10 6,10 L7,10 Z M12,5 C10.3431458,5 9,6.34314575 9,8 L9,10 L15,10 L15,8 C15,6.34314575 13.6568542,5 12,5 Z" fill="#000000"/>
+                                                        </g>
+                                                    </svg><!--end::Svg Icon-->
+                                                </span> --}}
+                                                <h3 class="card-label text-white">
+                                                    Selamat Datang Admin!
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Row-->
+
                             <!--begin::Row-->
                             <div class="row mt-0 mt-lg-8">
                                 <div class="col-xl-4">
@@ -434,12 +461,12 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="card-title py-5">
 												<h3 class="card-label">
 													<span class="d-block text-dark font-weight-bolder">Riwayat Pembayaran</span>
-													<span class="d-block text-muted mt-2 font-size-sm">200+  Akun Berlangganan</span>
+													<span class="d-block text-muted mt-2 font-size-sm">{{ count($dataBerlangganan) }}  Akun Berlangganan</span>
 												</h3>
 											</div>
 											<div class="card-toolbar">
 												<span class="mr-5 d-flex align-items-center font-weight-bold">
-													<i class="label label-dot label-xl label-light-primary mr-2"></i> Paket Terbeli
+													<i class="label label-dot label-xl label-primary mr-2"></i> User Berlangganan
 												</span>
 												<span class="d-flex align-items-center font-weight-bold">
 													<i class="label label-dot label-xl label-info mr-2"></i> Pendapatan
@@ -453,27 +480,52 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="row">
 												<div class="col-4 d-flex flex-column">
 													<!--begin::Block-->
-													<div class="bg-light-warning p-8 rounded-xl flex-grow-1">
+													<div class="bg-light-primary p-8 rounded-xl flex-grow-1">
 														<!--begin::Item-->
 														<div class="d-flex align-items-center mb-5">
 															<div class="symbol symbol-circle symbol-white symbol-30 flex-shrink-0 mr-3">
 																<div class="symbol-label">
 																	<span class="svg-icon svg-icon-md svg-icon-danger">
-																		<!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Cart3.svg--><svg
+																		<!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg--><svg
+                                                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                            <polygon points="0 0 24 0 24 24 0 24" />
+                                                                            <path d="M18,14 C16.3431458,14 15,12.6568542 15,11 C15,9.34314575 16.3431458,8 18,8 C19.6568542,8 21,9.34314575 21,11 C21,12.6568542 19.6568542,14 18,14 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                                                            <path d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                                                                        </g>
+                                                                    </svg>
+                                                                    <!--end::Svg Icon-->
+																	</span>
+																</div>
+															</div>
+															<div>
+																<div class="font-size-sm font-weight-bold">{{ count($dataBerlangganan) }} User</div>
+																<div class="font-size-sm text-muted">Berlangganan</div>
+															</div>
+														</div>
+														<!--end::Item-->
+
+														<!--begin::Item-->
+														<div class="d-flex align-items-center mb-5">
+															<div class="symbol symbol-circle symbol-white symbol-30 flex-shrink-0 mr-3">
+																<div class="symbol-label">
+																	<span class="svg-icon svg-icon-md svg-icon-warning">
+																		<!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg--><svg
 																			xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 																			<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																				<rect x="0" y="0" width="24" height="24" />
-																				<path d="M12,4.56204994 L7.76822128,9.6401844 C7.4146572,10.0644613 6.7840925,10.1217854 6.3598156,9.76822128 C5.9355387,9.4146572 5.87821464,8.7840925 6.23177872,8.3598156 L11.2317787,2.3598156 C11.6315738,1.88006147 12.3684262,1.88006147 12.7682213,2.3598156 L17.7682213,8.3598156 C18.1217854,8.7840925 18.0644613,9.4146572 17.6401844,9.76822128 C17.2159075,10.1217854 16.5853428,10.0644613 16.2317787,9.6401844 L12,4.56204994 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-																				<path d="M3.5,9 L20.5,9 C21.0522847,9 21.5,9.44771525 21.5,10 C21.5,10.132026 21.4738562,10.2627452 21.4230769,10.3846154 L17.7692308,19.1538462 C17.3034221,20.271787 16.2111026,21 15,21 L9,21 C7.78889745,21 6.6965779,20.271787 6.23076923,19.1538462 L2.57692308,10.3846154 C2.36450587,9.87481408 2.60558331,9.28934029 3.11538462,9.07692308 C3.23725479,9.02614384 3.36797398,9 3.5,9 Z M12,17 C13.1045695,17 14,16.1045695 14,15 C14,13.8954305 13.1045695,13 12,13 C10.8954305,13 10,13.8954305 10,15 C10,16.1045695 10.8954305,17 12,17 Z" fill="#000000" />
-																			</g>
+                                                                                <rect x="0" y="0" width="24" height="24"/>
+                                                                                <rect fill="#000000" opacity="0.3" x="11.5" y="2" width="2" height="4" rx="1"/>
+                                                                                <rect fill="#000000" opacity="0.3" x="11.5" y="16" width="2" height="5" rx="1"/>
+                                                                                <path d="M15.493,8.044 C15.2143319,7.68933156 14.8501689,7.40750104 14.4005,7.1985 C13.9508311,6.98949895 13.5170021,6.885 13.099,6.885 C12.8836656,6.885 12.6651678,6.90399981 12.4435,6.942 C12.2218322,6.98000019 12.0223342,7.05283279 11.845,7.1605 C11.6676658,7.2681672 11.5188339,7.40749914 11.3985,7.5785 C11.2781661,7.74950085 11.218,7.96799867 11.218,8.234 C11.218,8.46200114 11.2654995,8.65199924 11.3605,8.804 C11.4555005,8.95600076 11.5948324,9.08899943 11.7785,9.203 C11.9621676,9.31700057 12.1806654,9.42149952 12.434,9.5165 C12.6873346,9.61150047 12.9723317,9.70966616 13.289,9.811 C13.7450023,9.96300076 14.2199975,10.1308324 14.714,10.3145 C15.2080025,10.4981676 15.6576646,10.7419985 16.063,11.046 C16.4683354,11.3500015 16.8039987,11.7268311 17.07,12.1765 C17.3360013,12.6261689 17.469,13.1866633 17.469,13.858 C17.469,14.6306705 17.3265014,15.2988305 17.0415,15.8625 C16.7564986,16.4261695 16.3733357,16.8916648 15.892,17.259 C15.4106643,17.6263352 14.8596698,17.8986658 14.239,18.076 C13.6183302,18.2533342 12.97867,18.342 12.32,18.342 C11.3573285,18.342 10.4263378,18.1741683 9.527,17.8385 C8.62766217,17.5028317 7.88033631,17.0246698 7.285,16.404 L9.413,14.238 C9.74233498,14.6433354 10.176164,14.9821653 10.7145,15.2545 C11.252836,15.5268347 11.7879973,15.663 12.32,15.663 C12.5606679,15.663 12.7949989,15.6376669 13.023,15.587 C13.2510011,15.5363331 13.4504991,15.4540006 13.6215,15.34 C13.7925009,15.2259994 13.9286662,15.0740009 14.03,14.884 C14.1313338,14.693999 14.182,14.4660013 14.182,14.2 C14.182,13.9466654 14.1186673,13.7313342 13.992,13.554 C13.8653327,13.3766658 13.6848345,13.2151674 13.4505,13.0695 C13.2161655,12.9238326 12.9248351,12.7908339 12.5765,12.6705 C12.2281649,12.5501661 11.8323355,12.420334 11.389,12.281 C10.9583312,12.141666 10.5371687,11.9770009 10.1255,11.787 C9.71383127,11.596999 9.34650161,11.3531682 9.0235,11.0555 C8.70049838,10.7578318 8.44083431,10.3968355 8.2445,9.9725 C8.04816568,9.54816454 7.95,9.03200304 7.95,8.424 C7.95,7.67666293 8.10199848,7.03700266 8.406,6.505 C8.71000152,5.97299734 9.10899753,5.53600171 9.603,5.194 C10.0970025,4.85199829 10.6543302,4.60183412 11.275,4.4435 C11.8956698,4.28516587 12.5226635,4.206 13.156,4.206 C13.9160038,4.206 14.6918294,4.34533194 15.4835,4.624 C16.2751706,4.90266806 16.9686637,5.31433061 17.564,5.859 L15.493,8.044 Z" fill="#000000"/>
+                                                                            </g>
 																		</svg>
 																		<!--end::Svg Icon-->
 																	</span>
 																</div>
 															</div>
 															<div>
-																<div class="font-size-sm font-weight-bold">Rp. 650.000</div>
-																<div class="font-size-sm text-muted">Transaksi bulan ini</div>
+																<div class="font-size-sm font-weight-bold">Rp. 150.000</div>
+																<div class="font-size-sm text-muted">Pendapatan Bulan ini</div>
 															</div>
 														</div>
 														<!--end::Item-->
@@ -482,41 +534,7 @@ License: You must have a valid license purchased only from themeforest(the above
 														<div class="d-flex align-items-center mb-5">
 															<div class="symbol symbol-circle symbol-white symbol-30 flex-shrink-0 mr-3">
 																<div class="symbol-label">
-																	<span class="svg-icon svg-icon-md svg-icon-info">
-																		<!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg--><svg
-																			xmlns="http://www.w3.org/2000/svg"
-																			xmlns:xlink="http://www.w3.org/1999/xlink"
-																			width="24px" height="24px"
-																			viewBox="0 0 24 24" version="1.1">
-																			<g stroke="none" stroke-width="1"
-																				fill="none" fill-rule="evenodd">
-																				<rect x="0" y="0" width="24"
-																					height="24" />
-																				<path
-																					d="M5,3 L6,3 C6.55228475,3 7,3.44771525 7,4 L7,20 C7,20.5522847 6.55228475,21 6,21 L5,21 C4.44771525,21 4,20.5522847 4,20 L4,4 C4,3.44771525 4.44771525,3 5,3 Z M10,3 L11,3 C11.5522847,3 12,3.44771525 12,4 L12,20 C12,20.5522847 11.5522847,21 11,21 L10,21 C9.44771525,21 9,20.5522847 9,20 L9,4 C9,3.44771525 9.44771525,3 10,3 Z"
-																					fill="#000000" />
-																				<rect fill="#000000" opacity="0.3"
-																					transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519) "
-																					x="16.3255682" y="2.94551858"
-																					width="3" height="18" rx="1" />
-																			</g>
-																		</svg>
-																		<!--end::Svg Icon-->
-																	</span>
-																</div>
-															</div>
-															<div>
-																<div class="font-size-sm font-weight-bold">30 User</div>
-																<div class="font-size-sm text-muted">Jumlah Pembelian</div>
-															</div>
-														</div>
-														<!--end::Item-->
-
-														<!--begin::Item-->
-														<div class="d-flex align-items-center mb-5">
-															<div class="symbol symbol-circle symbol-white symbol-30 flex-shrink-0 mr-3">
-																<div class="symbol-label">
-																	<span class="svg-icon svg-icon-md svg-icon-primary">
+																	<span class="svg-icon svg-icon-md svg-icon-success">
 																		<!--begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg--><svg
 																			xmlns="http://www.w3.org/2000/svg"
 																			xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -542,10 +560,8 @@ License: You must have a valid license purchased only from themeforest(the above
 																</div>
 															</div>
 															<div>
-																<div class="font-size-sm font-weight-bold">$346,000
-																</div>
-																<div class="font-size-sm text-muted">Total Author Sales
-																</div>
+																<div class="font-size-sm font-weight-bold">Rp. 1.432.000</div>
+																<div class="font-size-sm text-muted">Total Pendapatan</div>
 															</div>
 														</div>
 														<!--end::Item-->
@@ -565,7 +581,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!--end::Row-->
 
                             <!--begin::Data User-->
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-lg-12 col-xxl-4">
                                     <div class="card card-custom card-stretch gutter-b">
                                         <!--begin::Header-->
@@ -667,7 +683,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <!--end::Body-->
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!--end::Data User-->
                         </div>
                         <!--end::Container-->
@@ -813,6 +829,40 @@ License: You must have a valid license purchased only from themeforest(the above
             series: [{
                 name: 'Pendaftaran User',
                 // data: newUser
+            }]
+        });
+    </script>
+
+    <script>
+
+        var userBerlangganan = <?php echo json_encode ($userBerlangganan) ?> ;
+
+        var bulanBerlangganan = <?php echo json_encode ($bulanBerlangganan) ?> ;
+
+        Highcharts.chart('kt_charts_widget_6_chart', {
+
+            title : {
+                text: 'User Berlangganan'
+            },
+
+            xAxis : {
+                categories : bulanBerlangganan
+            },
+
+            yAxis : {
+                title: {
+                    text : 'Jumlah User Berlangganan'
+                }
+            },
+
+            plotOptions: {
+                series: {
+                    allowPointSelect: true
+                }
+            },
+
+            series: [{
+                name: 'User Berlangganan',
             }]
         });
     </script>

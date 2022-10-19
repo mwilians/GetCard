@@ -76,4 +76,5 @@ Route::post('admin/package', [PackageController::class, 'storePackage'])->name('
 
 Route::post('admin/package/{id}', [PackageController::class, 'updatePackage'])->name('updatePackage')->middleware('admin');
 
-Route::post('admin/deletePackage/{id}', [PackageController::class, 'deletePackage'])->name('deletePackage')->middleware('admin');
+Route::post('admin/deletePackage/{id}', [PackageController::class, 'deletePa
+ckage'])->name('deletePackage')->middleware('admin');

@@ -17,7 +17,7 @@
                     <div class="col-12">
                         @if (!\App\Http\Controllers\User\UserController::cekPremium ())
 
-                        <div class="card card-custom bg-warning">
+                        <div class="card card-custom bg-primary">
                             <div class="card-header border-0">
                                 <div class="card-title">
                                     <span class="svg-icon svg-icon-white svg-icon-2x mr-2">
@@ -33,7 +33,7 @@
                                         </svg><!--end::Svg Icon-->
                                     </span>
                                     <h3 class="card-label text-white">
-                                        Akun Anda belum Premium
+                                        Selamat Datang {{ Auth::user()->name }}!
                                     </h3>
                                 </div>
                                 <div class="card-toolbar">
@@ -46,7 +46,7 @@
 
                         @else
 
-                        <div class="card card-custom bg-success">
+                        <div class="card card-custom bg-warning">
                             <div class="card-header border-0">
                                 <div class="card-title">
                                     <span class="svg-icon svg-icon-white svg-icon-2x mr-2">
@@ -62,7 +62,7 @@
                                         </svg><!--end::Svg Icon-->
                                     </span>
                                     <h3 class="card-label text-white">
-                                        Akun Anda Premium
+                                        Selamat Datang! Akun Anda Premium
                                     </h3>
                                 </div>
                                 <div class="card-toolbar">
