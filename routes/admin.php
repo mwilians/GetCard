@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{AdminController, ListPenggunaController, ListLembagaController, TemplateController};
+use App\Http\Controllers\Admin\{AdminController, ListPenggunaController, ListLembagaController, TemplateController, PackageController};
 
 use Illuminate\Support\Facades\Auth;
 
@@ -66,4 +66,14 @@ Route::get('admin/template', [TemplateController::class, 'template'])->name('tem
 
 Route::post('admin/template', [TemplateController::class, 'storeTemplate'])->name('storeTemplate')->middleware('admin');
 
-// Route::post('admin/deleteTemplate/{id}', [TemplateController::class, 'deleteTemplate'])->name('deleteTemplate')->middleware('admin');
+Route::post('admin/deleteTemplate/{id}', [TemplateController::class, 'deleteTemplate'])->name('deleteTemplate')->middleware('admin');
+
+
+// package
+Route::get('admin/package', [PackageController::class, 'package'])->name('package')->middleware('admin');
+
+Route::post('admin/package', [PackageController::class, 'storePackage'])->name('storePackage')->middleware('admin');
+
+Route::post('admin/package/{id}', [PackageController::class, 'updatePackage'])->name('updatePackage')->middleware('admin');
+
+Route::post('admin/deletePackage/{id}', [PackageController::class, 'deletePackage'])->name('deletePackage')->middleware('admin');

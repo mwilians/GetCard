@@ -150,22 +150,6 @@ var KTDatatableJsonRemoteDemo = function () {
             }],
         });
 
-
-        $('#search_sekolah').on('change', function (e) {
-            datatable.search($(this).val().toLowerCase(), 'sekolah_id');
-        });
-        $('#search_ajaran').on('change', function (e) {
-            datatable.search($(this).val().toLowerCase(), 'tahun_ajaran');
-        });
-        $('#search_angkatan').on('change', function () {
-            datatable.search($(this).val().toLowerCase(), 'angkatan');
-        });
-        $('#search_kelas').on('change', function () {
-            datatable.search($(this).val().toLowerCase(), 'kelas');
-        });
-
-        $('#search_sekolah, #search_ajaran, #search_angkatan, #search_kelas').selectpicker();
-
         datatable.on(
             'datatable-on-check datatable-on-uncheck',
             function (e) {
@@ -259,3 +243,4 @@ $('body').on('click', '.delete', function () {
         }
     })
 });
+

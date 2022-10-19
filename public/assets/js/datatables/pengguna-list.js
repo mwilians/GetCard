@@ -65,7 +65,7 @@ var KTDatatableJsonRemoteDemo = function () {
                                 <div class="symbol-label" style="' + user_img + '"></div>\
                             </div>\
                             <div class="ml-2">\
-                                <a href="" class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">' + data.name + '</a>\
+                                <span class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">' + data.name + '</span>\
                             </div>\
                         </div>';
 
@@ -74,6 +74,10 @@ var KTDatatableJsonRemoteDemo = function () {
             }, {
                 field: 'email',
                 title: 'Email',
+                width: 250,
+            }, {
+                field: 'status',
+                title: 'Status',
                 width: 250,
             }],
         });

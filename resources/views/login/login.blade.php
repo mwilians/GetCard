@@ -81,7 +81,7 @@ License: You must have a valid license purchased only from themeforest(the above
     
                             <div class="row mb-5">
     
-                                <input id="email" type="email" class="form-control h-auto form-control-solid py-4 px-8 @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control h-auto form-control-solid py-4 px-8 @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') }}" autocomplete="email" autofocus>
     
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -92,7 +92,7 @@ License: You must have a valid license purchased only from themeforest(the above
     
                             <div class="row mb-5">
     
-                                <input id="password" type="password" class="form-control h-auto form-control-solid py-4 px-8 @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control h-auto form-control-solid py-4 px-8 @error('password') is-invalid @enderror" name="password" placeholder="Password" autocomplete="current-password">
     
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -235,6 +235,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <script src="assets/js/scripts.bundle.js?v=7.0.6"></script>
     <!--end::Global Theme Bundle-->
 
+    @include('sweetalert::alert')
 
     <!--begin::Page Scripts(used by this page)-->
     <script src="assets/js/pages/custom/login/login-general.js?v=7.0.6"></script>

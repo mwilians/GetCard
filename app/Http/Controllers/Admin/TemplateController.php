@@ -29,7 +29,20 @@ class TemplateController extends Controller
             'file_kartu_nama1' => 'image|mimes:jpeg,png,jpg|required',
 
             'file_kartu_nama2' => 'image|mimes:jpeg,png,jpg|required',
+
+            'tipe' => 'required',
             
+        ], [
+
+            'file_demo.required' => 'File Demo tidak boleh kosong',
+
+            'file_kartu_app.required' => 'File App tidak boleh kosong',
+
+            'file_kartu_nama1.required' => 'File Kartu Depan tidak boleh kosong',
+
+            'file_kartu_nama2.required' => 'File Kartu Belakang tidak boleh kosong',
+
+            'tipe.required' => 'Tipe tidak boleh kosong',
         ]);
 
         $file_demo = $request->file('file_demo');
@@ -53,10 +66,16 @@ class TemplateController extends Controller
         $file_kartu_nama2->move(public_path($lokasiFileKartuNama2), $FileKartuNama2Name);
 
         Template::create([
+
             'file_demo' => $lokasiFileDemo.$FileDemoName,
+
             'file_kartu_app' => $lokasiFileApp.$FileAppName,
+
             'file_kartu_nama1' => $lokasiFileKartuNama1.$FileKartuNama1Name,
+
             'file_kartu_nama2' => $lokasiFileKartuNama2.$FileKartuNama2Name,
+
+            'tipe' => $request->tipe,
         ]);
 
         toast('Template Berhasil di Tambah!','success');
@@ -67,5 +86,11 @@ class TemplateController extends Controller
     public function deleteTemplate($id) {
         
         Template::where('id', $id)->delete();
+
+        // DB::table('pengguna')->where('template_id', $id)->delete();
+
+        toast('Desain Kartu Berhasil di Hapus!', 'success');
+
+        return redirect()->back();
     }
 }

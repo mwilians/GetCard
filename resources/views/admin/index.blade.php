@@ -17,7 +17,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <head>
     <base href="../../../">
     <meta charset="utf-8" />
-    <title>Dasboard | Get Card</title>
+    <title>Dashboard | Get Card</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="description" content="Advanced search datatables examples" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -118,7 +118,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body"
-                            data-boundary="window" title="Pengguna">
+                            data-boundary="window" title="List Pengguna">
                             <a href="admin/list-pengguna" class="nav-link btn btn-icon btn-lg btn-borderless {{ Route::is('index') ? 'active' : '' }}">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group.svg-->
@@ -139,7 +139,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <!--begin::Item-->
                         <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body"
-                            data-boundary="window" title="Perusahaan">
+                            data-boundary="window" title="List Perusahaan">
                             <a href="admin/list-lembaga" class="nav-link btn btn-icon btn-lg btn-borderless {{ Route::is('perusahaan') ? 'active' : '' }}">
                                 <span class="svg-icon svg-icon-xxl">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
@@ -174,6 +174,24 @@ License: You must have a valid license purchased only from themeforest(the above
                             </a>
                         </li>
                         <!--end::Item-->
+
+                        <!--begin::Item-->
+                        <li class="nav-item mb-2" data-toggle="tooltip" data-placement="right" data-container="body"
+                            data-boundary="window" title="Package">
+                            <a href="{{ ('admin/package') }}" class="nav-link btn btn-icon btn-lg btn-borderless">
+                                <span class="svg-icon svg-icon-xxl">
+                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo10/dist/../src/media/svg/icons/Communication/Adress-book2.svg-->
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <polygon points="0 0 24 0 24 24 0 24"/>
+                                            <path d="M11.2600599,5.81393408 L2,16 L22,16 L12.7399401,5.81393408 C12.3684331,5.40527646 11.7359848,5.37515988 11.3273272,5.7466668 C11.3038503,5.7680094 11.2814025,5.79045722 11.2600599,5.81393408 Z" fill="#000000" opacity="0.3"/>
+                                            <path d="M12.0056789,15.7116802 L20.2805786,6.85290308 C20.6575758,6.44930487 21.2903735,6.42774054 21.6939717,6.8047378 C21.8964274,6.9938498 22.0113578,7.25847607 22.0113578,7.535517 L22.0113578,20 L16.0113578,20 L2,20 L2,7.535517 C2,7.25847607 2.11493033,6.9938498 2.31738608,6.8047378 C2.72098429,6.42774054 3.35378194,6.44930487 3.7307792,6.85290308 L12.0056789,15.7116802 Z" fill="#000000"/>
+                                        </g>
+                                    </svg><!--end::Svg Icon-->
+                                </span>
+                            </a>
+                        </li>
+                        <!--end::Item-->
                     </ul>
                     <!--end::Nav-->
                 </div>
@@ -188,8 +206,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!--begin::Header Wrapper-->
                     <div class="header-wrapper rounded-top-xl d-flex flex-grow-1 align-items-center">
                         <!--begin::Container-->
-                        <div
-                            class=" container-fluid  d-flex align-items-center justify-content-end justify-content-lg-between flex-wrap">
+                        <div class=" container-fluid  d-flex align-items-center justify-content-end justify-content-lg-between flex-wrap">
                             <!--begin::Menu Wrapper-->
                             <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
                                 <!--begin::Menu-->
@@ -197,10 +214,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                     class="header-menu header-menu-mobile  header-menu-layout-default ">
                                     <!--begin::Nav-->
                                     <ul class="menu-nav ">
-                                        <li class="menu-item  menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here"
-                                            data-menu-toggle="click" aria-haspopup="true"><a href=""
-                                                class="menu-link menu-toggle"><span class="menu-text">Get Card</span><i
-                                                    class="menu-arrow"></i></a>
+                                        <li class="menu-item  menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here" data-menu-toggle="click" aria-haspopup="true">
+                                            <a href="" class="menu-link menu-toggle"><span class="menu-text">Get Card</span>
+                                                <i class="menu-arrow"></i>
+                                            </a>
                                         </li>
                                     </ul>
                                     <!--end::Nav-->
@@ -372,7 +389,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                             <!--begin::Row-->
                             <div class="row">
-                                <div class="col-xl-12">
+                                <div class="col-xl-5">
                                     <div class="card-stretch gutter-b">
                                         <!--begin::Charts Widget 3-->
                                         <div class="card card-custom gutter-b">
@@ -408,6 +425,142 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <!--begin::Charts Widget 3-->
                                     </div>
                                 </div>
+
+								<div class="col-xl-7">
+									<!--begin::Charts Widget 6-->
+									<div class="card card-custom card-stretch gutter-b">
+										<!--begin::Header-->
+										<div class="card-header h-auto border-0">
+											<div class="card-title py-5">
+												<h3 class="card-label">
+													<span class="d-block text-dark font-weight-bolder">Riwayat Pembayaran</span>
+													<span class="d-block text-muted mt-2 font-size-sm">200+  Akun Berlangganan</span>
+												</h3>
+											</div>
+											<div class="card-toolbar">
+												<span class="mr-5 d-flex align-items-center font-weight-bold">
+													<i class="label label-dot label-xl label-light-primary mr-2"></i> Paket Terbeli
+												</span>
+												<span class="d-flex align-items-center font-weight-bold">
+													<i class="label label-dot label-xl label-info mr-2"></i> Pendapatan
+												</span>
+											</div>
+										</div>
+										<!--end::Header-->
+
+										<!--begin::Body-->
+										<div class="card-body">
+											<div class="row">
+												<div class="col-4 d-flex flex-column">
+													<!--begin::Block-->
+													<div class="bg-light-warning p-8 rounded-xl flex-grow-1">
+														<!--begin::Item-->
+														<div class="d-flex align-items-center mb-5">
+															<div class="symbol symbol-circle symbol-white symbol-30 flex-shrink-0 mr-3">
+																<div class="symbol-label">
+																	<span class="svg-icon svg-icon-md svg-icon-danger">
+																		<!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Cart3.svg--><svg
+																			xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+																			<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+																				<rect x="0" y="0" width="24" height="24" />
+																				<path d="M12,4.56204994 L7.76822128,9.6401844 C7.4146572,10.0644613 6.7840925,10.1217854 6.3598156,9.76822128 C5.9355387,9.4146572 5.87821464,8.7840925 6.23177872,8.3598156 L11.2317787,2.3598156 C11.6315738,1.88006147 12.3684262,1.88006147 12.7682213,2.3598156 L17.7682213,8.3598156 C18.1217854,8.7840925 18.0644613,9.4146572 17.6401844,9.76822128 C17.2159075,10.1217854 16.5853428,10.0644613 16.2317787,9.6401844 L12,4.56204994 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+																				<path d="M3.5,9 L20.5,9 C21.0522847,9 21.5,9.44771525 21.5,10 C21.5,10.132026 21.4738562,10.2627452 21.4230769,10.3846154 L17.7692308,19.1538462 C17.3034221,20.271787 16.2111026,21 15,21 L9,21 C7.78889745,21 6.6965779,20.271787 6.23076923,19.1538462 L2.57692308,10.3846154 C2.36450587,9.87481408 2.60558331,9.28934029 3.11538462,9.07692308 C3.23725479,9.02614384 3.36797398,9 3.5,9 Z M12,17 C13.1045695,17 14,16.1045695 14,15 C14,13.8954305 13.1045695,13 12,13 C10.8954305,13 10,13.8954305 10,15 C10,16.1045695 10.8954305,17 12,17 Z" fill="#000000" />
+																			</g>
+																		</svg>
+																		<!--end::Svg Icon-->
+																	</span>
+																</div>
+															</div>
+															<div>
+																<div class="font-size-sm font-weight-bold">Rp. 650.000</div>
+																<div class="font-size-sm text-muted">Transaksi bulan ini</div>
+															</div>
+														</div>
+														<!--end::Item-->
+
+														<!--begin::Item-->
+														<div class="d-flex align-items-center mb-5">
+															<div class="symbol symbol-circle symbol-white symbol-30 flex-shrink-0 mr-3">
+																<div class="symbol-label">
+																	<span class="svg-icon svg-icon-md svg-icon-info">
+																		<!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg--><svg
+																			xmlns="http://www.w3.org/2000/svg"
+																			xmlns:xlink="http://www.w3.org/1999/xlink"
+																			width="24px" height="24px"
+																			viewBox="0 0 24 24" version="1.1">
+																			<g stroke="none" stroke-width="1"
+																				fill="none" fill-rule="evenodd">
+																				<rect x="0" y="0" width="24"
+																					height="24" />
+																				<path
+																					d="M5,3 L6,3 C6.55228475,3 7,3.44771525 7,4 L7,20 C7,20.5522847 6.55228475,21 6,21 L5,21 C4.44771525,21 4,20.5522847 4,20 L4,4 C4,3.44771525 4.44771525,3 5,3 Z M10,3 L11,3 C11.5522847,3 12,3.44771525 12,4 L12,20 C12,20.5522847 11.5522847,21 11,21 L10,21 C9.44771525,21 9,20.5522847 9,20 L9,4 C9,3.44771525 9.44771525,3 10,3 Z"
+																					fill="#000000" />
+																				<rect fill="#000000" opacity="0.3"
+																					transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519) "
+																					x="16.3255682" y="2.94551858"
+																					width="3" height="18" rx="1" />
+																			</g>
+																		</svg>
+																		<!--end::Svg Icon-->
+																	</span>
+																</div>
+															</div>
+															<div>
+																<div class="font-size-sm font-weight-bold">30 User</div>
+																<div class="font-size-sm text-muted">Jumlah Pembelian</div>
+															</div>
+														</div>
+														<!--end::Item-->
+
+														<!--begin::Item-->
+														<div class="d-flex align-items-center mb-5">
+															<div class="symbol symbol-circle symbol-white symbol-30 flex-shrink-0 mr-3">
+																<div class="symbol-label">
+																	<span class="svg-icon svg-icon-md svg-icon-primary">
+																		<!--begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg--><svg
+																			xmlns="http://www.w3.org/2000/svg"
+																			xmlns:xlink="http://www.w3.org/1999/xlink"
+																			width="24px" height="24px"
+																			viewBox="0 0 24 24" version="1.1">
+																			<g stroke="none" stroke-width="1"
+																				fill="none" fill-rule="evenodd">
+																				<rect x="0" y="0" width="24"
+																					height="24" />
+																				<rect fill="#000000" opacity="0.3"
+																					x="13" y="4" width="3" height="16"
+																					rx="1.5" />
+																				<rect fill="#000000" x="8" y="9"
+																					width="3" height="11" rx="1.5" />
+																				<rect fill="#000000" x="18" y="11"
+																					width="3" height="9" rx="1.5" />
+																				<rect fill="#000000" x="3" y="13"
+																					width="3" height="7" rx="1.5" />
+																			</g>
+																		</svg>
+																		<!--end::Svg Icon-->
+																	</span>
+																</div>
+															</div>
+															<div>
+																<div class="font-size-sm font-weight-bold">$346,000
+																</div>
+																<div class="font-size-sm text-muted">Total Author Sales
+																</div>
+															</div>
+														</div>
+														<!--end::Item-->
+													</div>
+													<!--end::Block-->
+												</div>
+												<div class="col-8">
+													<div id="kt_charts_widget_6_chart"></div>
+												</div>
+											</div>
+										</div>
+										<!--end::Body-->
+									</div>
+									<!--end::Charts Widget 6-->
+								</div>
                             </div>
                             <!--end::Row-->
 

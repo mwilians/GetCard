@@ -16,6 +16,7 @@ class Template extends Model
         'file_kartu_app',
         'file_kartu_nama1',
         'file_kartu_nama2',
+        'tipe',
     ];
 
     public function pengguna() {

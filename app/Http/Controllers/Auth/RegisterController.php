@@ -53,6 +53,15 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ],[
+            'name.required' => 'Nama tidak boleh kosong',
+            'name.max' => 'Nama maximal 255 karakter',
+            'email.required' => 'Email tidak boleh kosong',
+            'email.max' => 'Email maximal 255 karakter',
+            'email.unique' => 'Email telah terdaftar',
+            'password.required' => 'Password tidak boleh kosong',
+            'password.min' => 'Password minimal 6 karakter',
+            'password.confirmed' => 'Konfrimasi Password tidak cocok',
         ]);
     }
 

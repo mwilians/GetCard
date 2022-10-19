@@ -219,12 +219,14 @@ class PenggunaController extends Controller {
             Excel::import($import,$file);
 
             // dd($import);
-            toast('success','success');
+            toast('Data Berhasil di Import','success');
+
             return redirect()->route('index')->with('success', 'Data Berhasil di Import');
 
         }else{
             
-            toast('gagal','error');
+            toast('Data Gagal di Import','error');
+
             return back()->with('warning','Data Gagal di Import');
         }
 
@@ -241,9 +243,7 @@ class PenggunaController extends Controller {
 
         $lembaga = Lembaga::where('user_id', Auth::user()->id)->get();
         
-        $template = Template::all();
-
-        $default = Template::first();
+        $template = Template::paginate(15);
 
         $previewDesain = Pengguna::where('id', $id)->first();
         
@@ -256,8 +256,7 @@ class PenggunaController extends Controller {
             return redirect()->route('lembaga');
         }
 
-
-        return view('user.pengguna-show', compact('id', 'pengguna', 'no_id', 'lembaga', 'template', 'default', 'previewDesain'));
+        return view('user.pengguna-show', compact('id', 'pengguna', 'no_id', 'lembaga', 'template', 'previewDesain'));
     }
 
 
@@ -321,7 +320,7 @@ class PenggunaController extends Controller {
         // Lokasi file yang ingin di edit
 
         if ($pengguna->template_id == null) {
-            $image = imagecreatefrompng(public_path('assets/media/desain/DD/Demo2-A.png'));
+            $image = imagecreatefrompng(public_path('assets/media/desain/DAPP/A2B.png'));
             $image_width = imagesx($image);
             $image_height = imagesy($image);
         } else {
@@ -334,7 +333,7 @@ class PenggunaController extends Controller {
         // tempel qr code ke template id card
         $qr_image = QrCode::format('png')->size(100)->generate(url('/getcard.kartusaya/'.$pengguna->id.'/'.$pengguna->no_id));
         $q = imagecreatefromstring($qr_image);
-        imagecopyresized($image, $q, 440, 3600, 0, 0, 679, 679, 100, 100);
+        imagecopyresized($image, $q, 450, 3610, 0, 0, 679, 679, 100, 100);
 
         // tempel logo perusahaan ke template id card
         $logo_image = imagecreatefrompng(public_path($lembaga->foto));
@@ -378,7 +377,7 @@ class PenggunaController extends Controller {
         imagecolortransparent($user_img_color, $red);
         imagefill($user_img_color, 0, 0, $red);
 
-        imagecopy($image, $user_img_color, 449, 416, 0, 0, $user_img_new_width, $user_img_new_height);
+        imagecopy($image, $user_img_color, 456, 405, 0, 0, $user_img_new_width, $user_img_new_height);
 
         // warna
         $black = imagecolorallocate($image, 0,0,0);
@@ -527,7 +526,7 @@ class PenggunaController extends Controller {
         // Lokasi file yang ingin di edit
 
         if ($pengguna->template_id == null) {
-            $image = imagecreatefrompng(public_path('assets/media/desain/DKN/C2-1-B.png'));
+            $image = imagecreatefrompng(public_path('assets/media/desain/DKARTU/K2C.png'));
             $image_width = imagesx($image);
             $image_height = imagesy($image);
         } else {
@@ -665,7 +664,7 @@ class PenggunaController extends Controller {
         // Lokasi file yang ingin di edit
 
         if ($pengguna->template_id == null) {
-            $image = imagecreatefrompng(public_path('assets/media/desain/DKN/C2-2-A.png'));
+            $image = imagecreatefrompng(public_path('assets/media/desain/DKARTU/K2D.png'));
             $image_width = imagesx($image);
             $image_height = imagesy($image);
         } else {

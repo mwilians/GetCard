@@ -63,7 +63,7 @@ var KTDatatableJsonRemoteDemo = function () {
                                 <div class="symbol-label" style="' + user_img + '"></div>\
                             </div>\
                             <div class="ml-2">\
-                                <a href="" class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">' + data.nama + '</a>\
+                                <span class="text-dark-75 font-weight-bold line-height-sm text-hover-primary">' + data.nama + '</span>\
                             </div>\
                         </div>';
 
@@ -87,23 +87,6 @@ var KTDatatableJsonRemoteDemo = function () {
             }],
         });
 
-
-
-        $('#search_sekolah').on('change', function (e) {
-            datatable.search($(this).val().toLowerCase(), 'sekolah_id');
-        });
-        $('#search_ajaran').on('change', function (e) {
-            datatable.search($(this).val().toLowerCase(), 'tahun_ajaran');
-        });
-        $('#search_angkatan').on('change', function () {
-            datatable.search($(this).val().toLowerCase(), 'angkatan');
-        });
-        $('#search_kelas').on('change', function () {
-            datatable.search($(this).val().toLowerCase(), 'kelas');
-        });
-
-        $('#search_sekolah, #search_ajaran, #search_angkatan, #search_kelas').selectpicker();
-
         datatable.on(
             'datatable-on-check datatable-on-uncheck',
             function (e) {
@@ -115,48 +98,6 @@ var KTDatatableJsonRemoteDemo = function () {
                 } else {
                     $('#kt_datatable_group_action_form').collapse('hide');
                 }
-            });
-
-            // ubah angkatan
-            $('#kt_datatable_fetch_modal').on('show.bs.modal', function(e) {
-                var ids = datatable.rows('.datatable-row-active').
-                nodes().
-                find('.checkbox > [type="checkbox"]').
-                map(function(i, chk) {
-                    return $(chk).val();
-                });
-                var c = document.createDocumentFragment();
-                for (var i = 0; i < ids.length; i++) {
-                    var li = document.createElement('input');
-                    li.setAttribute('name', 'ids[]');
-                    li.setAttribute('value', ids[i]);
-                    c.appendChild(li);
-                }
-                $('#kt_datatable_fetch_display').append(c);
-            }).on('hide.bs.modal', function(e) {
-                $('#kt_datatable_fetch_display').empty();
-            });
-
-            // hapus siswa
-            $('#kt_datatable_fetch_modal2').on('show.bs.modal', function(e) {
-                var ids = datatable.rows('.datatable-row-active').
-                nodes().
-                find('.checkbox > [type="checkbox"]').
-                map(function(i, chk) {
-                    return $(chk).val();
-                });
-                console.log(ids);
-                var c = document.createDocumentFragment();
-                for (var i = 0; i < ids.length; i++) {
-                    var li = document.createElement('input');
-                    li.setAttribute('name', 'ids[]');
-                    li.setAttribute('value', ids[i]);
-                    li.innerHTML = 'Selected record ID: ' + ids[i];
-                    c.appendChild(li);
-                }
-                $('#kt_datatable_fetch_display2').append(c);
-            }).on('hide.bs.modal', function(e) {
-                $('#kt_datatable_fetch_display2').empty();
             });
         };
 

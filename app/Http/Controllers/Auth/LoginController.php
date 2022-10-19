@@ -39,36 +39,6 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // public function login(Request $request) {
-
-    //     $input = $request->all();
-
-    //     $this->validate($request,[
-
-    //         'email' => 'required|email:dns',
-
-    //         'password' => 'required',
-
-    //     ]);
-
-    //     // dd('berhasil login!');
-
-    //     if(Auth::attempt(['email' => $input['email'], 'password' => $input['password']])){
-
-    //         if(auth()->user()->role == 1) {
-
-    //             return redirect()->route('home');
-    //         } else {
-
-    //             return redirect()->route('admin');
-    //         }
-    //     } else {
-            
-    //         return redirect()->route('login.login')->with('error', 'Email atau Password salah');
-        
-    //     }
-    // }
-
     public function login(Request $request) {
 
         $credentials = $request->validate([
@@ -77,6 +47,10 @@ class LoginController extends Controller
 
             'password' => 'required',
 
+        ],[
+            'email.required' => 'Email tidak boleh kosong',
+            
+            'password.required' => 'Password tidak boleh kosong',
         ]);
 
         // dd('berhasil login!');
@@ -88,17 +62,18 @@ class LoginController extends Controller
 
             if(auth()->user()->role == 1) {
 
-                return redirect()->intended('/user');
+                // return redirect()->intended('/user')->withToastSuccess('Berhasil Login!');
+
+                return redirect('/user')->withToastSuccess('Berhasil Login!');
 
             } else {
 
-                return redirect()->intended('/admin');
+                return redirect()->intended('/admin')->withToastSuccess('Berhasil Login!');
             }
             
-            // return redirect()->route('login.login')->with('error', 'Email atau Password salah');
-            
         } else {
-            return back()->with('error', 'Login Gagal!');
+
+            return back()->withToast('Login Gagal!','error');
         }
     }
 }

@@ -71,7 +71,7 @@ License: You must have a valid license purchased only from themeforest(the above
     
                             <div class="row mb-5">
     
-                                <input id="name" type="text" class="form-control h-auto form-control-solid py-4 px-8 @error('name') is-invalid @enderror" name="name" placeholder="Nama" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control h-auto form-control-solid py-4 px-8 @error('name') is-invalid @enderror" name="name" placeholder="Nama" value="{{ old('name') }}" autocomplete="name" autofocus>
     
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -82,7 +82,7 @@ License: You must have a valid license purchased only from themeforest(the above
     
                             <div class="row mb-5">
     
-                                <input id="email" type="email" class="form-control h-auto form-control-solid py-4 px-8 @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control h-auto form-control-solid py-4 px-8 @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') }}" autocomplete="email">
     
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -93,7 +93,7 @@ License: You must have a valid license purchased only from themeforest(the above
     
                             <div class="row mb-5">
     
-                                <input id="password" type="password" class="form-control h-auto form-control-solid py-4 px-8 @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control h-auto form-control-solid py-4 px-8 @error('password') is-invalid @enderror" name="password" placeholder="Password" autocomplete="new-password">
     
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -104,7 +104,7 @@ License: You must have a valid license purchased only from themeforest(the above
     
                             <div class="row mb-5">
     
-                                <input id="password-confirm" type="password" class="form-control h-auto form-control-solid py-4 px-8" name="password_confirmation" placeholder="Konfirmasi Password" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control h-auto form-control-solid py-4 px-8" name="password_confirmation" placeholder="Konfirmasi Password" autocomplete="new-password">
                             </div>
 
                             <button type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">

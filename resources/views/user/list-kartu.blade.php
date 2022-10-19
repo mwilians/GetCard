@@ -103,6 +103,13 @@ print_r($data);exit;
                         <div class="card-title">
                             <h3 class="card-label">List Kartu Saya</h3>
                         </div>
+
+                        <form action="{{ url('user/list-kartu') }}" method="GET">
+                            <div class="input-icon card-toolbar mt-5">
+                                <input type="text" class="form-control" placeholder="Cari Kartu" name="cariKartu" value="{{ $cariKartu }}" />
+                                <span><i class="flaticon2-search-1 text-muted"></i></span>
+                            </div>
+                        </form>
                     </div>
 
                     <div class="card-body">
@@ -116,24 +123,62 @@ print_r($data);exit;
 
                         @else
 
-                        @foreach($simpanKartu as $sK)
-                            <picture class="row">
-                                <div class="list col-sm-12 col-md-6"> 
-                                    <img src="{{ ('/getcard.kartusaya.depan/'.$sK->pengguna_id) }}" width="100%" alt="KD">
+                        <picture class="row">
+                            @foreach($simpanKartu as $sK)
+                                <div class="list col-sm-12 col-md-4 mb-5">
+                                    <img src="{{ ('/getcard.kartusaya.depan/'.$sK->pengguna_id) }}" width="100%" alt="KD" data-toggle="modal" data-target="#detailkartu{{ $sK->id }}" style="cursor:pointer">
                                 </div>
-                                <div class="list col-sm-12 col-md-6">
-                                    <img src="{{ ('/getcard.kartusaya.belakang/'.$sK->pengguna_id) }}" width="100%" alt="KB"> 
-                                </div>
-                            </picture>
-                        @endforeach
-
+                            @endforeach
+                        </picture>
+                            
                         @endif
                     </div>
 
-                    <div class="card-footer d-flex justify-content-between">
-                        {{-- <a href="#" class="btn btn-light-primary font-weight-bold"><i class="ki ki-copy icon-nm"></i> Salin Link</a> --}}
-                        {{-- <a href="#" class="btn btn-outline-secondary font-weight-bold"><i class="la la-print icon-dm"></i> Print</a> --}}
+                    <!--Begin::Modal Detail -->
+                    @foreach($simpanKartu as $sK)
+
+                    <div class="modal fade" id="detailkartu{{ $sK->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Detail Kartu</h5>
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <i aria-hidden="true" class="ki ki-close"></i>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <picture class="row">
+                                        <div class="list col-sm-12 col-md-6"> 
+                                            <img src="{{ ('/getcard.kartusaya.depan/'.$sK->pengguna_id) }}" width="100%" alt="KD">
+                                        </div>
+                                        <div class="list col-sm-12 col-md-6">
+                                            <img src="{{ ('/getcard.kartusaya.belakang/'.$sK->pengguna_id) }}" width="100%" alt="KB"> 
+                                        </div>
+                                    </picture>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <form action="{{ url('user/deleteKartu/'.$sK->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-light-danger font-weight-bold">Hapus</button>
+                                        <button type="button" class="btn btn-primary font-weight-bold" data-dismiss="modal">Tutup</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    @endforeach
+                    <!--End::Modal Detail -->
+
+                    <!--Begin::Pagination -->
+                    <div class="card-footer d-flex justify-content-between">
+                        {{ $simpanKartu->links()}}
+                    </div>
+                    <!--End::Pagination -->
+                    
                     <!--end::Body-->
                 </div>
                 <!--End::Card-->

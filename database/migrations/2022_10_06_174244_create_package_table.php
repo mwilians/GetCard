@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTemplateTable extends Migration
+class CreatePackageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateTemplateTable extends Migration
      */
     public function up()
     {
-        Schema::create('template', function (Blueprint $table) {
+        Schema::create('package', function (Blueprint $table) {
             $table->id();
-            $table->string('file_demo');
-            $table->string('file_kartu_app');
-            $table->string('file_kartu_nama1');
-            $table->string('file_kartu_nama2');
-            $table->string('tipe');
+            $table->string('foto');
+            $table->string('paket');
+            $table->string('harga');
+            $table->string('benefit');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateTemplateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('template');
+        Schema::dropIfExists('package');
     }
 }

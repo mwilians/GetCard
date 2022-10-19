@@ -89,4 +89,6 @@ Route::post('user/deleteKartu/{id}', [ListKartuController::class, 'deleteKartu']
 // Premium
 Route::get('user/premium', [PaymentController::class, 'premium'])->name('premium')->middleware('user');
 
+Route::post('user/premium', [PaymentController::class, 'premium_post']);
+
 Route::get('user/premium/pembayaran', [PaymentController::class, 'payment'])->name('payment')->middleware('user');
