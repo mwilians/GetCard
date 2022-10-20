@@ -34,14 +34,8 @@ class PaymentController extends Controller
                     'id' => 'a01',
                     'price' => 10000,
                     'quantity' => 1,
-                    'name' => 'Apple'
+                    'name' => 'Premium'
                 ],
-                [
-                    'id' => 'b02',
-                    'price' => 3500,
-                    'quantity' => 2,
-                    'name' => 'Orange'
-                ]
             ),
             'customer_details' => array(
                 'first_name' => Auth::user()->name,
@@ -59,7 +53,7 @@ class PaymentController extends Controller
     public function premium_post(Request $request) {
 
         $json = json_decode($request->get('json'));
-        dd($json);
+        // dd($json);
 
         $order = new Payment(); 
         $order->user_id = Auth::user()->id;

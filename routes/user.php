@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\{UserController, PenggunaController, LembagaController, ListKartuController, PaymentController};
+use App\Http\Controllers\User\{UserController, PenggunaController, LembagaController, ListKartuController, PaymentController, HistoriController};
 
 use Illuminate\Support\Facades\Auth;
 
@@ -94,3 +94,8 @@ Route::get('user/premium', [PaymentController::class, 'premium'])->name('premium
 Route::post('user/premium', [PaymentController::class, 'premium_post']);
 
 Route::get('user/premium/pembayaran', [PaymentController::class, 'payment'])->name('payment')->middleware('user');
+
+
+// Histori Pembayaran
+Route::get('user/histori-pembayaran', [HistoriController::class, 'histori'])->name('histori')->middleware('user');
+Route::post('user/histori-pembayaran/dataHistori', [PenggunaController::class, 'dataHistori']);

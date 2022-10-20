@@ -203,7 +203,7 @@
 <!-- TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
 <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" 
     data-client-key="SB-Mid-client-ztEDdkunNS_GYGmc">
-</script>
+</script>   
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
