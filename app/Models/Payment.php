@@ -13,6 +13,7 @@ class Payment extends Model
 
     protected $fillable = [
         'user_id',
+        'package_id',
         'status',
         'transaction_id',
         'order_id',
@@ -20,6 +21,10 @@ class Payment extends Model
         'payment_type',
         'payment_code',
         'pdf_url',
-
     ];
+
+    public function package() {
+
+        return $this->belongsTo(Package::class);
+    }
 }

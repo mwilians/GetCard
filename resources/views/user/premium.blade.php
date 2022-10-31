@@ -18,30 +18,61 @@
                 <div class="row my-10">
                     <!--begin: Pricing-->
                     @foreach($package as $p)
+
+                        @if(!\App\Http\Controllers\User\UserController::cekPremium())
                         
-                    <div class="col-md-3 col-xxl-3 border-right-0 border-right-md border-left-md border-bottom border-bottom-md-0">
-                        <div class="pt-30 pt-md-25 pb-15 px-5 text-center">
-                            <div class="d-flex flex-center position-relative mb-25">
-                                <span class="svg svg-fill-primary opacity-4 position-absolute">
-                                    <svg width="175" height="200">
-                                        <polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" />
-                                    </svg>
-                                </span>
-                                <span class="svg-icon svg-icon-5x svg-icon-primary">
-                                    <img src="{{ $p->foto }}" width="60px" height="60px" alt="">
-                                </span>
-                            </div>
-                            <span class="font-size-h1 d-block font-weight-boldest text-dark-75 py-2">{{ $p->harga }}</span>
-                            <h4 class="font-size-h6 d-block font-weight-bold mb-7 text-dark-50">{{ $p->paket }}</h4>
-                            <p class="font-size-h6 d-block font-weight-bold mb-15 d-flex flex-column">
-                                <span>{{ $p->benefit }}</span>
-                            </p>
-                            <div class="d-flex justify-content-center">
-                                {{-- <a href="user/premium/pembayaran" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">Bayar</a> --}}
-                                <button id="pay-button" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">Bayar</button>
+                        <div class="col-md-3 col-xxl-3 border-right-0 border-right-md border-left-md border-bottom border-bottom-md-0">
+                            <div class="pt-30 pt-md-25 pb-15 px-5 text-center">
+                                <div class="d-flex flex-center position-relative mb-25">
+                                    <span class="svg svg-fill-primary opacity-4 position-absolute">
+                                        <svg width="175" height="200">
+                                            <polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" />
+                                        </svg>
+                                    </span>
+                                    <span class="svg-icon svg-icon-5x svg-icon-primary">
+                                        <img src="{{ $p->foto }}" width="60px" height="60px" alt="">
+                                    </span>
+                                </div>
+                                <span class="font-size-h1 d-block font-weight-boldest text-dark-75 py-2">Rp. {{ str_replace('.00','',$p->harga) }}</span>
+                                <h4 class="font-size-h6 d-block font-weight-bold mb-7 text-dark-50">{{ $p->paket }}</h4>
+                                <p class="font-size-h6 d-block font-weight-bold mb-15 d-flex flex-column">
+                                    <span>Masa Berlaku {{ $p->masa_berlaku }} Hari</span>
+                                </p>
+                                <div class="d-flex justify-content-center">
+                                    <button class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3 pay-button"
+                                    data-item_id={{ $p->id }}
+                                    data-item_name={{ $p->paket }}
+                                    data-item_price={{ (int)$p->harga }} >Bayar</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+                        @else
+
+                        <div class="col-md-3 col-xxl-3 border-right-0 border-right-md border-left-md border-bottom border-bottom-md-0">
+                            <div class="pt-30 pt-md-25 pb-15 px-5 text-center">
+                                <div class="d-flex flex-center position-relative mb-25">
+                                    <span class="svg svg-fill-primary opacity-4 position-absolute">
+                                        <svg width="175" height="200">
+                                            <polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" />
+                                        </svg>
+                                    </span>
+                                    <span class="svg-icon svg-icon-5x svg-icon-primary">
+                                        <img src="{{ $p->foto }}" width="60px" height="60px" alt="">
+                                    </span>
+                                </div>
+                                <span class="font-size-h1 d-block font-weight-boldest text-dark-75 py-2">Rp. {{ str_replace('.00','',$p->harga) }}</span>
+                                <h4 class="font-size-h6 d-block font-weight-bold mb-7 text-dark-50">{{ $p->paket }}</h4>
+                                <p class="font-size-h6 d-block font-weight-bold mb-15 d-flex flex-column">
+                                    <span>Masa Berlaku {{ $p->masa_berlaku }} Hari</span>
+                                </p>
+                                <div class="d-flex justify-content-center">
+                                    <button class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3 telahPremium">Bayar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        @endif
 
                     @endforeach
                     <!--end: Pricing-->
@@ -49,6 +80,7 @@
                     <form action="" id="submit_form" method="POST">
                         @csrf
                         <input type="hidden" name="json" id="json_callback">
+                        <input type="hidden" name="item_ids" id="item_ids">
                     </form>
 
                     <!--begin: Pricing-->
@@ -209,36 +241,108 @@
 
 <script type="text/javascript">
     // For example trigger on button clicked, or any time you need
-    var payButton = document.getElementById('pay-button');
-    payButton.addEventListener('click', function () {
-    // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-    window.snap.pay('{{$snapToken}}', {
-        onSuccess: function(result){
-        /* You may add your own implementation here */
-        console.log(result);
-        send_response_to_form(result);
-        },
-        onPending: function(result){
-        /* You may add your own implementation here */
-        console.log(result);
-        send_response_to_form(result);
-        },
-        onError: function(result){
-        /* You may add your own implementation here */
-        console.log(result);
-        send_response_to_form(result);
-        },
-        onClose: function(){
-        /* You may add your own implementation here */
-        alert('You closed the popup without finishing the payment');
-        }
-    })
-});
+    var payButton = document.querySelectorAll('.pay-button');
+    payButton.forEach(button => {
+        button.addEventListener('click', event => {
+            // console.log(button)
 
-function send_response_to_form(result){
-    document.getElementById('json_callback').value = JSON.stringify(result);
-    $('#submit_form').submit();
-}
+            const user_name = '{{ Auth::user()->name }}'
+            const user_email = '{{ Auth::user()->email }}'
+
+            const item_name = button.dataset.item_name
+            const item_id = button.dataset.item_id
+            const item_price = button.dataset.item_price
+
+            const data = { 
+                item_name, item_id, item_price, user_name, user_email
+            }
+
+            console.log(data)
+
+            console.log("{{ URL::to('/api/user/snap') }}");
+
+            fetch("{{ URL::to('/api/user/snap') }}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+                
+                var bebas = document.getElementById('item_ids')
+
+                bebas.value = data.item
+
+                window.snap.pay(data.snap, {
+                    onSuccess: function(result){
+                    /* You may add your own implementation here */
+                    console.log(result);
+                    send_response_to_form(result);
+                    },
+                    onPending: function(result){
+                    /* You may add your own implementation here */
+                    console.log(result);
+                    send_response_to_form(result);
+                    },
+                    onError: function(result){
+                    /* You may add your own implementation here */
+                    console.log(result);
+                    send_response_to_form(result);
+                    },
+                    onClose: function(){
+                    /* You may add your own implementation here */
+                    alert('You closed the popup without finishing the payment');
+                    }
+                })
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        })
+    })
+
+    function send_response_to_form(result){
+        document.getElementById('json_callback').value = JSON.stringify(result);
+        $('#submit_form').submit();
+    }
+
+    function formatRupiah(angka, prefix) {
+        var number_string = angka.replace(/[^,\d]/g,"").toString(),
+        split = number_string.split(","),
+        sisa = split[0].length % 3,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+        if(ribuan) {
+            separator = sisa ? "." : "";
+            rupiah += separator + ribuan.join(".");
+        }
+
+        rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+
+        return prefix == undefined ? rupiah: rupiah ? "Rp." + " " + rupiah:"";
+    }
+
+    $('body').on('click', '.telahPremium', function () {
+        // var id = $(this).data('id');
+        Swal.fire({
+            title: 'Akun Anda Telah Premium!',
+            text: 'Terima kasih!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Lihat Histori!'
+            // cancelButtonText: 'Batal'
+        }).then((result)=>{
+            if(result.isConfirmed){
+                window.location.href = 'user/histori-pembayaran'
+            }
+        });
+    });
 </script>
 
 <!--begin::Global Theme Bundle(used by all pages)-->

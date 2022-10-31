@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\User\{HistoriController, PaymentController};
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/payment-handler', [ApiController::class, 'payment_handler']);
+
+Route::post('user/histori-pembayaran/dataHistori', [HistoriController::class, 'dataHistori']);
+
+Route::post('user/snap', [PaymentController::class, 'snap']);

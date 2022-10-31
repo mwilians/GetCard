@@ -16,6 +16,7 @@ class CreatePaymentTable extends Migration
         Schema::create('payment', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('package_id');
             $table->string('status');
             $table->string('transaction_id');
             $table->string('order_id');
