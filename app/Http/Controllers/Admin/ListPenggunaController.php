@@ -10,7 +10,9 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 use Illuminate\Http\Request;
 
-use App\Models\User;
+use App\Models\{User, Payment};
+
+use Carbon\Carbon;
 
 class ListPenggunaController extends Controller
 {
@@ -24,13 +26,23 @@ class ListPenggunaController extends Controller
     }
 
     public function data() {
+        
+        $joinA = User::leftJoin('payment', 'payment.user_id', '=', 'users.id')->where('role', 1)->get();
 
+        $data = Payment::query()
+            ->select('payment.user_id', 'users.name', 'users.email')
+            ->distinct('payment.user_id')
+            ->rightJoin('users', 'users.id', '=', 'payment.user_id')
+            ->where('users.role', 1)
+            ->orderBy('payment.created_at', 'desc')
+            ->get();
+
+            // dd($data);
+            
         $user = User::where('role', 1)->get();
 
-        // dd($user);
-
         return response()->json([
-            'data' => $user
+            'data' => $data
         ]);
     }
 

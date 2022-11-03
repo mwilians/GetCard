@@ -79,9 +79,14 @@ var KTDatatableJsonRemoteDemo = function () {
                 field: 'status',
                 title: 'Status',
                 width: 250,
+                template: function(data) {
+                    if(data.user_id){
+                        return `<span class="label font-weight-bold label-lg label-inline label-light-success">Berlangganan</span>`;
+                    }
+                        return `<span class="label font-weight-bold label-lg label-inline label-light-danger">Belum Berlangganan</span>`;
+                }
             }],
         });
-
 
 
         $('#search_sekolah').on('change', function (e) {
