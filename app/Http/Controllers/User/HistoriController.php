@@ -12,16 +12,17 @@ class HistoriController extends Controller
     public function histori() {
 
         $userBerlangganan = Payment::where('user_id', Auth::user()->id)->get();
-
+        // dd($userBerlangganan);
+        
         return view ('user.histori', compact('userBerlangganan'));
     }
 
     public function dataHistori() {
 
-        $userBerlangganan = Payment::where('user_id', 2)->get();
+        $join = Payment::with('package')->where('user_id', Auth::user()->id)->get();
 
         return response()->json([
-            'dataHistori' => $userBerlangganan
+            'data' => $join
         ]);
     }
 }

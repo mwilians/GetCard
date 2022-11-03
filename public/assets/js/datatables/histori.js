@@ -16,7 +16,7 @@ var KTDatatableJsonRemoteDemo = function () {
             // datasource definition
             data: {
                 type: 'remote',
-                source: HOST_URL + '/user/histori-pembayaran/dataHistori',
+                source: HOST_URL + '/user/histori-pembayaran/data-histori',
                 pageSize: 10,
             },
 
@@ -48,21 +48,87 @@ var KTDatatableJsonRemoteDemo = function () {
             // }, 
             
             {
-                field: 'user_id',
+                field: 'paket',
                 title: 'Nama Paket',
-                width: 230,
+                width: 120,
+                template: function(dataHistori){
+                    console.log(dataHistori);
+                    return dataHistori.package.paket;
+                }
+            }, {
+                field: 'order_id',
+                title: 'ID Order',
+                width: 110,
             }, {
                 field: 'gross_amount',
                 title: 'Harga',
-                width: 150,
+                width: 65,
+                template: function (dataHistori) {
+                    var gross_amount = dataHistori.gross_amount.split(".");
+                    return gross_amount[0];
+                }
             }, {
                 field: 'payment_type',
                 title: 'Metode Pembayaran',
-                width: 160,
+                textAlign: 'center',
+                width: 120,
+            },  {
+                field: 'created_at',
+                title: 'Tanggal',
+                width: 100,
+                template: function (dataHistori) {
+                    var created_at = dataHistori.created_at.split("T");
+                    return created_at[0];
+                }
             }, {
                 field: 'status',
                 title: 'Status',
+                width: 90,
+                template: function(data) {
+                    var status = {
+                        'settlement': {
+                            'class': 'label-light-success',
+                            'title': 'settlement'
+                        },
+                        'capture': {
+                            'class': 'label-light-success',
+                            'title': 'capture'
+                        },
+                        'pending': {
+                            'class': 'label-light-warning',
+                            'title': 'pending'
+                        },
+                        'deny': {
+                            'class': 'label-light-danger',
+                            'title': 'deny'
+                        },
+                        'cancel': {
+                            'class': 'label-light-danger',
+                            'title': 'cancel'
+                        },
+                        'expire': {
+                            'class': 'label-light-danger',
+                            'title': 'expire'
+                        }
+                    };
+                    var current = status[data.status];
+                    return `<span class="label font-weight-bold label-lg label-inline ${current.class}">${current.title}</span>`;
+                }
+            }, {
+                field: '',
+                title: 'Tagihan',
+                sortable: false,
                 width: 80,
+                overflow: 'visible',
+                textAlign: 'center',
+                autoHide: false,
+                template: function (dataHistori) {
+                    
+                    return '\
+                        <a href="' + dataHistori.pdf_url + '" class="btn btn-block btn-sm btn-light-primary font-weight-bolder text-uppercase" target="_blank" title="Lihat">\
+                        Lihat</a>\
+                    ';
+                },
             }],
         });
 
