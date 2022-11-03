@@ -204,6 +204,9 @@ var KTWidgets = function() {
             series: [{
                 name: 'Pendaftaran User',
                 data: newUser
+            }, {
+                name: 'User Berlangganan',
+                data: userBerlangganan
             }],
             chart: {
                 type: 'area',
@@ -212,87 +215,14 @@ var KTWidgets = function() {
                     show: false
                 }
             },
-            plotOptions: {
-
-            },
-            legend: {
-                show: false
-            },
             dataLabels: {
                 enabled: false
             },
-            fill: {
-                type: 'solid',
-                opacity: 1
-            },
             stroke: {
                 curve: 'smooth',
-                show: true,
-                width: 3,
-                colors: [KTApp.getSettings()['colors']['theme']['base']['success']]
             },
             xaxis: {
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
-                axisBorder: {
-                    show: false,
-                },
-                axisTicks: {
-                    show: false
-                },
-                labels: {
-                    style: {
-                        colors: KTApp.getSettings()['colors']['gray']['gray-500'],
-                        fontSize: '12px',
-                        fontFamily: KTApp.getSettings()['font-family']
-                    }
-                },
-                crosshairs: {
-                    position: 'front',
-                    stroke: {
-                        color: KTApp.getSettings()['colors']['theme']['base']['success'],
-                        width: 1,
-                        dashArray: 3
-                    }
-                },
-                tooltip: {
-                    enabled: true,
-                    formatter: undefined,
-                    offsetY: 0,
-                    style: {
-                        fontSize: '12px',
-                        fontFamily: KTApp.getSettings()['font-family']
-                    }
-                }
-            },
-            yaxis: {
-                labels: {
-                    style: {
-                        colors: KTApp.getSettings()['colors']['gray']['gray-500'],
-                        fontSize: '12px',
-                        fontFamily: KTApp.getSettings()['font-family']
-                    }
-                }
-            },
-            states: {
-                normal: {
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                },
-                hover: {
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                },
-                active: {
-                    allowMultipleDataPointsSelection: false,
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                }
             },
             tooltip: {
                 style: {
@@ -305,22 +235,7 @@ var KTWidgets = function() {
                     }
                 }
             },
-            colors: [KTApp.getSettings()['colors']['theme']['light']['success']],
-            grid: {
-                borderColor: KTApp.getSettings()['colors']['gray']['gray-200'],
-                strokeDashArray: 4,
-                yaxis: {
-                    lines: {
-                        show: true
-                    }
-                }
-            },
-            markers: {
-                //size: 5,
-                //colors: [KTApp.getSettings()['colors']['theme']['light']['danger']],
-                strokeColor: KTApp.getSettings()['colors']['theme']['base']['success'],
-                strokeWidth: 3
-            }
+            colors: ['#1BC5BD','#FFA800']
         };
 
         var chart = new ApexCharts(element, options);
@@ -339,12 +254,7 @@ var KTWidgets = function() {
                 name: 'Pendapatan',
                 type: 'bar',
                 stacked: true,
-                data: [1]
-            }, {
-                name: 'User Berlangganan',
-                type: 'bar',
-                stacked: true,
-                data: userBerlangganan
+                data: totalPendapatanan
             }],
             chart: {
                 stacked: true,
@@ -429,7 +339,7 @@ var KTWidgets = function() {
                 },
                 y: {
                     formatter: function(val) {
-                        return val + " User"
+                        return "Rp. " + val 
                     }
                 }
             },

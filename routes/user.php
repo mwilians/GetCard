@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\{UserController, PenggunaController, LembagaController, ListKartuController, PaymentController, HistoriController};
-
+use App\Http\Controllers\User\{UserController, PenggunaController, LembagaController, ListKartuController, PaymentController};
+use App\Http\Controllers\User\HistoriController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -53,16 +53,17 @@ Route::post('user/update/{id}',[PenggunaController::class, 'update'])->name('upd
 
 Route::post('user/pengguna/hapus',[PenggunaController::class, 'delete'])->middleware('user');
 
-// My Card - Show
+// Route::get('user/pengguna', [PenggunaController::class, 'numLimit'])->name('numLimit')->middleware('user');
 
+// My Card - Show
 Route::get('user/pengguna/{id}/show',[PenggunaController::class, 'show'])->name('show')->middleware('user');
 
 Route::post('user/pengguna/{id}/simpan-template',[PenggunaController::class, 'simpan'])->name('simpan')->middleware('user');
 
 Route::get('user/ubah-template/{id_user}/{id_template}',[PenggunaController::class, 'simpanTemplate']);
 
-// My Card - Fitur
 
+// My Card - Fitur
 Route::get('user/pengguna/{id}/print',[PenggunaController::class, 'print'])->name('print')->middleware('user');
 
 Route::get('getcard.kartusaya/{id}/{no_id}', [PenggunaController::class, 'viewLink'])->name('viewLink')->middleware('user');
@@ -97,5 +98,7 @@ Route::get('user/premium/pembayaran', [PaymentController::class, 'payment'])->na
 
 
 // Histori Pembayaran
+Route::post('user/histori-pembayaran/data-histori', [HistoriController::class, 'dataHistori']);
+// Route::post('user/histori-pembayaran/dataHistori', [HistoriController::class, 'dataHistori']);
+
 Route::get('user/histori-pembayaran', [HistoriController::class, 'histori'])->name('histori')->middleware('user');
-Route::post('user/histori-pembayaran/dataHistori', [PenggunaController::class, 'dataHistori']);

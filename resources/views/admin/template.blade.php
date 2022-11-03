@@ -135,11 +135,6 @@
                                                             Gratis
                                                         </label>
                                                         <label class="radio">
-                                                            <input type="radio" value="Standar" name="tipe"/>
-                                                            <span></span>
-                                                            Standar
-                                                        </label>
-                                                        <label class="radio">
                                                             <input type="radio" value="Premium" name="tipe"/>
                                                             <span></span>
                                                             Premium

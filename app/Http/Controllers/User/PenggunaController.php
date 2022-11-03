@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\{DB, Auth};
 
-use App\Models\{Pengguna, Lembaga, Template, User};
+use App\Models\{Pengguna, Lembaga, Template, User, Payment};
 
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -19,6 +19,8 @@ use App\Imports\{DataImport, CobaImport};
 use Maatwebsite\Excel\Facades\Excel;
 
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
+
+use Carbon\Carbon;
 
 use Validator;
 
@@ -32,7 +34,31 @@ class PenggunaController extends Controller {
 
         $pengguna = Pengguna::where('user_id', Auth::user()->id)->get();
 
-        return view('user.pengguna', compact('pengguna'));
+        $payment = Payment::where('user_id', Auth::user()->id)->where(function($query){
+            $query->where('status','settlement')->orWhere('status','capture');
+        })->orderBy('id', 'asc')->first();
+
+        // dd($payment);
+        
+        if($payment) {
+            $masa_berlaku = $payment->package->masa_berlaku;
+            if($payment->created_at->addDays($masa_berlaku) < now()){
+                $limit = 2;
+            }else{
+                // $limit = $payment->package->limit_kartu;
+                $limit = 999999;
+            }
+        } else {
+            $limit = 2;
+        }   
+
+        $hari = "0000-00-39 00:00:00";
+
+        $carbon = Carbon::now();
+
+        // dd($carbon, $carbon->addDays(1));
+
+        return view('user.pengguna', compact('pengguna', 'payment', 'limit'));
     }
 
     public function data() {
@@ -45,6 +71,19 @@ class PenggunaController extends Controller {
             'dataLembaga' => $lembaga
         ]);
     }
+
+    // public static function numLimit() {
+
+    //     $payment = Payment::where('user_id', Auth::user()->id)->first();
+
+    //     if($payment) {
+    //         return $payment->package->limit_kartu;
+    //     } else {
+    //         return 5;
+    //     }
+
+    //     return view('user.pengguna', compact('payment'));
+    // }
 
     public function generateUniqueCode()
     {

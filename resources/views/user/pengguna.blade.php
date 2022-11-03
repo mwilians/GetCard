@@ -47,10 +47,10 @@
 
                 <!--begin::Toolbar-->
                 <div class="d-flex align-items-center">
+
+                    @if($pengguna->count() >= $limit)
+
                     <!--begin::Button-->
-
-                    @if(count($pengguna) >= 10)
-
                     <a class="btn btn-light-primary font-weight-bolder mr-2 premium">
                         Import
                     </a>
@@ -68,9 +68,11 @@
                             <!--end::Svg Icon-->
                         </span>	Tambah Data
                     </a>
-                    
-                    @else 
+                    <!--end::Button-->
 
+                    @else
+
+                    <!--begin::Button-->
                     <a href="" class="btn btn-light-primary font-weight-bolder mr-2" data-toggle="modal" data-target="#import">
                         Import
                     </a>
@@ -88,9 +90,9 @@
                             <!--end::Svg Icon-->
                         </span>	Tambah Data
                     </a>
+                    <!--end::Button-->
 
                     @endif
-                    <!--end::Button-->
                 </div>
                 <!--end::Toolbar-->
             </div>
@@ -193,13 +195,13 @@
         // premium function
         $('body').on('click', '.premium', function () {
             Swal.fire({
-                title: 'Data Kartu Telah Mencapai Limit!',
+                title: 'Data Kartu Mencapai Limit!',
                 text: 'Upgrade ke Premium!',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#FFA800',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Upgrade Premium!!'
+                confirmButtonText: 'Upgrade Premium!'
             }).then((result)=>{
                 if(result.isConfirmed){
                     window.location = "{{ url('user/premium') }}"

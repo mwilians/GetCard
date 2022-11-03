@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="card-toolbar">
                                     <a href="user/premium" class="btn btn-sm btn-white">
-                                        <i class="flaticon2-settings"></i> Pengaturan
+                                        <i class="flaticon2-settings"></i> Paket
                                     </a>
                                 </div>
                             </div>
@@ -62,13 +62,8 @@
                                         </svg><!--end::Svg Icon-->
                                     </span>
                                     <h3 class="card-label text-white">
-                                        Selamat Datang! Akun Anda Premium
+                                        Selamat Datang {{ Auth::user()->name }}!
                                     </h3>
-                                </div>
-                                <div class="card-toolbar">
-                                    <a href="user/premium" class="btn btn-sm btn-white">
-                                        <i class="flaticon2-settings"></i> Pengaturan
-                                    </a>
                                 </div>
                             </div>
                         </div>

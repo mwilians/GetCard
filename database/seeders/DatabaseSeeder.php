@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
             'user_id' => '2',
             'template_id' => '1',
             'no_id' => '123456',
-            'foto' => 'assets/media/users/default.jpg',
+            'foto' => 'assets/media/users/lavender.jpg',
             'nama'	=> 'Lavender',
             'jenis_kelamin' => 'Perempuan',
             'jabatan' => 'CEO',
@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
             'user_id' => '2',
             'template_id' => '2',
             'no_id' => '789101',
-            'foto' => 'assets/media/users/default.jpg',
+            'foto' => 'assets/media/users/jahe.jpg',
             'nama'	=> 'Jahe',
             'jenis_kelamin' => 'Laki-laki',
             'jabatan' => 'Manager',
@@ -69,7 +69,7 @@ class DatabaseSeeder extends Seeder
             'user_id' => '3',
             'template_id' => '3',
             'no_id' => '112131',
-            'foto' => 'assets/media/users/default.jpg',
+            'foto' => 'assets/media/users/anggrekhitam.jpg',
             'nama'	=> 'Anggrek',
             'jenis_kelamin' => 'Perempuan',
             'jabatan' => 'CEO',
@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
 
         Lembaga::create([
             'user_id' => '2',
-            'foto' => 'assets/media/logos/default.png',
+            'foto' => 'assets/media/logos/A-building.png',
             'nama'	=> 'CV. Perusahaan',
             'telepon' => '081311214665',
             'alamat' => 'Jln. Alamat Perusahaan No.1',
@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
 
         Lembaga::create([
             'user_id' => '3',
-            'foto' => 'assets/media/logos/default.png',
+            'foto' => 'assets/media/logos/A-email.png',
             'nama'	=> 'CV. Email',
             'telepon' => '081276233007',
             'alamat' => 'Jln. Alamat Email No.1',
@@ -104,6 +104,14 @@ class DatabaseSeeder extends Seeder
             'file_kartu_app' => 'assets/media/desain/DAPP/A1C.png',
             'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K1C.png',
             'file_kartu_nama2' => 'assets/media/desain/DKARTU/K1D.png',
+            'tipe' => 'Gratis'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P21.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A21C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K21C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K21D.png',
             'tipe' => 'Gratis'
         ]);
 
@@ -135,9 +143,11 @@ class DatabaseSeeder extends Seeder
 
         Package::create([
             'foto' => 'assets/media/img/card-1.png',
-            'paket' => 'Gratis',
-            'harga'	=> 'Rp. 0',
-            'benefit' => '10 Kartu Nama + Template Terbatas'
+            // 'foto' => 'assets/media/img/2.png',
+            'paket' => 'Premium',
+            'harga'	=> '26000',
+            'masa_berlaku' => '30',
+            'tipe_template' => 'Premium'
         ]);
     }
 }

@@ -59,7 +59,6 @@
                             <!--begin::Body-->
                             <div class="card-header">
                                 <h5 class="card-label mt-8">Desain Kartu</h5>
-
                                 {{-- <div class="card-title">
                                     <form action="{{ url('user/pengguna/'.$id.'/simpan-template') }}" method="POST">
                                     @csrf

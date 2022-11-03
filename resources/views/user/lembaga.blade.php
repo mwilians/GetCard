@@ -313,7 +313,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Webstie</label>
+                                            <label class="col-xl-3 col-lg-3 text-right col-form-label">Website</label>
                                             <div class="col-lg-9 col-xl-6">
                                                 <div class="input-group input-group-lg input-group-solid">
                                                     <div class="input-group-prepend"><span
