@@ -19,7 +19,7 @@ class AdminController extends Controller
 
         $dataTemplate = Template::all();
 
-        $dataBerlangganan = Payment::all();
+        $dataBerlangganan = Payment::where('status','settlement')->orWhere('status','capture')->get();
 
 
         $newUser = User::where('role', 1)->select(DB::raw("COUNT(*) as newUser"), DB::raw("Month(created_at) as month"))
@@ -50,9 +50,9 @@ class AdminController extends Controller
             $newUser[Carbon::parse($u->created_at)->month-1]=$user+1;
         }
 
-        
+        // ------------------------------------------------------ //
 
-        $userBerlanggan = Payment::all();
+        $userBerlanggan = Payment::where('status','settlement')->orWhere('status','capture')->get();
 
         $bulanBerlangganan = Payment::select(DB::raw("MONTHNAME(created_at) as bulanBerlangganan"))
 
@@ -69,6 +69,25 @@ class AdminController extends Controller
             $userBerlangganan[Carbon::parse($uB->created_at)->month-1]=$berlangganan+1;
         }
 
-        return view ('admin.index', compact('dataUser', 'dataLembaga', 'dataTemplate', 'newUser', 'bulan', 'userBerlangganan', 'bulanBerlangganan', 'dataBerlangganan'));
+        // ------------------------------------------------------ //
+
+        $totalPendapatanBulan = Payment::where('status','settlement')->orWhere('status','capture')->sum('gross_amount');
+
+        $bulanPendapatan = Payment::select(DB::raw("MONTHNAME(created_at) as bulanPendapatan"))
+
+        ->GroupBy(DB::raw("MONTHNAME(created_at)"))
+
+        ->pluck('bulanPendapatan');
+
+        $totalPendapatanan = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        foreach ($userBerlanggan as $uB) {
+
+            $pendapatan = $totalPendapatanan[Carbon::parse($uB->created_at)->month-1];
+
+            $totalPendapatanan[Carbon::parse($uB->created_at)->month-1]=$pendapatan+$uB->gross_amount;
+        }
+
+        return view ('admin.index', compact('dataUser', 'dataLembaga', 'dataTemplate', 'newUser', 'bulan', 'userBerlangganan', 'bulanBerlangganan', 'dataBerlangganan', 'totalPendapatanBulan', 'totalPendapatanan', 'bulanPendapatan'));
     }
 }

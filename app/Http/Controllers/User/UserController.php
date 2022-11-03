@@ -19,7 +19,6 @@ class UserController extends Controller
         $l = Lembaga::where('user_id', Auth::user()->id)->first();        
 
         return view ('user.index', compact('kartuSaya', 'listKartu', 'l'));
-
     }
 
     public static function cekPremium() {
@@ -28,9 +27,13 @@ class UserController extends Controller
             return false;
         }
 
-        $paid = Payment::where('user_id', Auth::user()->id)->where('status','paid')->first();
+        $paid = Payment::where('user_id', Auth::user()->id)->where(function($query){
+            $query->where('status','settlement')->orWhere('status','capture');
+        })->orderBy('id', 'desc')->first();
 
         if(!$paid){
+            return false;
+        } elseif(now() > $paid->created_at->addDays($paid->package->masa_berlaku)){
             return false;
         }
 

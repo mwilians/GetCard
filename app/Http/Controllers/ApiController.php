@@ -18,7 +18,9 @@ class ApiController extends Controller
         // status berhasil
         $order = Payment::where('order_id', $json->order_id)->first();
         // dd($order);
-
-        return $order->update(['status' => $json->transaction_status]);
+        if($json->transaction_status == 'settlement'){
+            return $order->update(['status' => $json->transaction_status]);
+        }
+        return true;
     }
 }

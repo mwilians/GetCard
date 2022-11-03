@@ -33,6 +33,7 @@ class PaymentController extends Controller
             'transaction_details' => array(
                 'order_id' => rand(),
                 'gross_amount' => $request->item_price,
+                'user_id'   => auth()->id(),
             ),
             'item_details' => array(
                 [
