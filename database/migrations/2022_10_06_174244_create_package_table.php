@@ -17,8 +17,9 @@ class CreatePackageTable extends Migration
             $table->id();
             $table->string('foto');
             $table->string('paket');
-            $table->string('harga');
-            $table->string('benefit');
+            $table->decimal('harga');
+            $table->string('masa_berlaku');
+            $table->string('tipe_template');
             $table->timestamps();
         });
     }

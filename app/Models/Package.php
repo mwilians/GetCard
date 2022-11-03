@@ -15,6 +15,12 @@ class Package extends Model
         'foto',
         'paket',
         'harga',
-        'benefit',
+        'masa_berlaku',
+        'tipe_template',
     ];
+
+    public function payment() {
+
+        return $this->hasMany(Payment::class);
+    }
 }

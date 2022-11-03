@@ -7,7 +7,6 @@
 @include('sweetalert::alert')
 
 
-
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Subheader-->
@@ -36,12 +35,6 @@
                     </svg>
                     <!--end::Svg Icon-->
                 </span>
-
-                <!--begin::Search Form-->
-                <div class="d-flex align-items-center" id="kt_subheader_search">
-                    <span class="text-dark-50 font-weight-bold" id="kt_subheader_total"></span>
-                </div>
-                <!--end::Search Form-->
             </div>
             <!--end::Details-->
 
@@ -92,10 +85,10 @@
                                     <img src="{{ $p->foto }}" width="60px" height="60px" alt="">
                                 </span>
                             </div>
-                            <span class="font-size-h1 d-block font-weight-boldest text-dark-75 py-2">{{ $p->harga }}</span>
+                            <span class="font-size-h1 d-block font-weight-boldest text-dark-75 py-2">Rp. {{ str_replace('.00','',$p->harga) }}</span>
                             <h4 class="font-size-h6 d-block font-weight-bold mb-7 text-dark-50">{{ $p->paket }}</h4>
                             <p class="font-size-h6 d-block font-weight-bold mb-15 d-flex flex-column">
-                                <span>{{ $p->benefit }}</span>
+                                <span>Masa Berlaku {{ $p->masa_berlaku }} Hari</span>
                             </p>
                             <div class="d-flex justify-content-center" data-toggle="modal" data-target="#editPaket{{ $p->id }}">
                                 <a class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3">Edit</a>
@@ -289,12 +282,32 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleTextarea">Benefit</label>
+                                        <label>Masa Berlaku</label>
+                                        <input type="number" class="form-control" placeholder="0 Hari" name="masa_berlaku"/>
+                                        @error('masa_berlaku')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Tipe Template</label>
+                                        <select class="form-control" name="tipe_template">
+                                            <option value="">Pilih tipe:</option>
+                                            <option>Gratis</option>
+                                            <option>Premium</option>
+                                        </select>
+                                        @error('tipe_template')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    {{-- <div class="form-group">
+                                        <label for="exampleTextarea">Informasi Benefit</label>
                                         <textarea class="form-control" id="exampleTextarea" rows="4" placeholder="Benefit" name="benefit"></textarea>
                                         @error('benefit')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div class="modal-footer">
@@ -345,12 +358,21 @@
 
                                         <div class="form-group">
                                             <label>Harga</label>
-                                            <input type="text" class="form-control" placeholder="Rp." name="harga" value="{{ $p->harga }}" id="rupiah"/>
+                                            <input type="text" class="form-control" placeholder="Rp." name="harga" id="rupiah" value="{{ str_replace('.00','',$p->harga) }}" />
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleTextarea">Benefit</label>
-                                            <textarea class="form-control" id="exampleTextarea" rows="3" name="benefit" placeholder="Benefit">{{ $p->benefit }}</textarea>
+                                            <label>Masa Berlaku</label>
+                                            <input type="number" class="form-control" placeholder="0 Hari" name="masa_berlaku" value="{{ $p->masa_berlaku }}" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Tipe Template</label>
+                                            <select class="form-control" name="tipe_template">
+                                                <option value="{{ $p->tipe_template }}">{{ $p->tipe_template }}</option>
+                                                <option>Gratis</option>
+                                                <option>Premium</option>
+                                            </select>
                                         </div>
                                     </div>
                                     

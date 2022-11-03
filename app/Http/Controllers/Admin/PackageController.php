@@ -22,12 +22,14 @@ class PackageController extends Controller
             'foto' => 'image|mimes:jpeg,png,jpg|required',
             'paket' => 'required',
             'harga' => 'required',
-            'benefit' => 'required',
+            'masa_berlaku' => 'required',
+            'tipe_template' => 'required',
         ], [
             'foto.required' => 'Foto tidak boleh kosong',
             'paket.required' => 'Nama Paket tidak boleh kosong',
             'harga.required' => 'Harga tidak boleh kosong',
-            'benefit.required' => 'Benefit tidak boleh kosong',
+            'masa_berlaku' => 'Masa Berlaku tidak boleh kosong',
+            'tipe_template' => 'Tipe Template tidak boleh kosong',
         ]);
 
         $foto = $request->file('foto');
@@ -38,8 +40,9 @@ class PackageController extends Controller
         $package = Package::create([
             'foto' => $lokasiFoto.$FotoName,
             'paket' => $request->paket,
-            'harga' => $request->harga,
-            'benefit' => $request->benefit,
+            'harga' => preg_replace( '/[^0-9]/', '', $request->harga),
+            'masa_berlaku' => $request->masa_berlaku,
+            'tipe_template' => $request->tipe_template,
         ]);
 
         toast('Paket Berhasil di Tambah!','success');
@@ -53,11 +56,14 @@ class PackageController extends Controller
             'foto' => 'nullable|image|mimes:jpeg,png,jpg',
             'paket' => 'required',
             'harga' => 'required',
-            'benefit' => 'required',
+            'masa_berlaku' => 'required',
+            'tipe_template' => 'required',
         ], [
+            'foto.required' => 'Foto tidak boleh kosong',
             'paket.required' => 'Nama Paket tidak boleh kosong',
             'harga.required' => 'Harga tidak boleh kosong',
-            'benefit.required' => 'Benefit tidak boleh kosong',
+            'masa_berlaku' => 'Masa Berlaku tidak boleh kosong',
+            'tipe_template' => 'Tipe Template tidak boleh kosong',
         ]);
 
         $package = Package::where('id', $id)->first();
@@ -66,7 +72,8 @@ class PackageController extends Controller
         $package->update([
             'paket' => $request->paket,
             'harga' => $request->harga,
-            'benefit' => $request->benefit,
+            'masa_berlaku' =>  $request->masa_berlaku,
+            'tipe_template' => $request->tipe_template,
         ]);
 
         if ($foto = $request->file('foto')) {
