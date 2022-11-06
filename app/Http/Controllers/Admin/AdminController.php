@@ -107,8 +107,6 @@ class AdminController extends Controller
         $daftarPendapatan = Payment::where('status', 'settlement')->orWhere('status', 'capture')->sum('gross_amount')
         ->whereYear('created_at', '=', $year)->get();
 
-        dd($daftarPremium);
-
         return view('admin.index', ['daftarUser' => $daftarUser], ['daftarPremium' => $daftarPremium], ['daftarPendapatan' => $daftarPendapatan]);
     }
 
@@ -124,13 +122,13 @@ class AdminController extends Controller
             $daftarUser[Carbon::parse($u->created_at)->month - 1] = $jumlah + 1;
         }
 
-        $premium = Payment::where('status', 'settlement')->orWhere('status', 'capture')->whereYear('created_at', $request->tahun)->get();
+        $premium = Payment::whereYear('created_at', $request->tahun)->where('status', 'settlement')->orWhere('status', 'capture')->get();
         foreach ($premium as $p) {
             $jumlah = $daftarPremium[Carbon::parse($p->created_at)->month - 1];
             $daftarPremium[Carbon::parse($p->created_at)->month - 1] = $jumlah + 1;
         }
 
-        $pendapatan = Payment::where('status', 'settlement')->orWhere('status', 'capture')->whereYear('created_at', $request->tahun)->get();
+        $pendapatan = Payment::whereYear('created_at', $request->tahun)->where('status', 'settlement')->orWhere('status', 'capture')->get();
         foreach ($pendapatan as $pd) {
             $jumlah = $daftarPendapatan[Carbon::parse($pd->created_at)->month - 1];
             $daftarPendapatan[Carbon::parse($pd->created_at)->month - 1] = $jumlah + $pd -> gross_amount;

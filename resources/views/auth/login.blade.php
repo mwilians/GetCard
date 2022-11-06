@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <button type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Login</button>
                         </form> --}}
-                        <form method="POST" action="{{ route('postLogin') }}">
+                        <form method="POST" action="">
                             @csrf
     
                             <div class="row mb-5">
