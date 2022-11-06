@@ -31,9 +31,9 @@ Route::get('/welcome', function () {
 // });
 
 // login
-Route::get('/login', function () {
-    return view('login.login');
-})->middleware('guest')->name('login');//->name('login');
+// Route::get('/login', function () {
+//     return view('login.login');
+// })->middleware('guest')->name('login');//->name('login');
 
 
 // dashboard

@@ -24,19 +24,15 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
 
-
     <!--begin::Page Custom Styles(used by this page)-->
-    <link href="assets/css/pages/login/classic/login-4.css?v=7.0.6" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/pages/login/classic/login-4.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
     <!--end::Page Custom Styles-->
 
     <!--begin::Global Theme Styles(used by all pages)-->
-    <link href="assets/plugins/global/plugins.bundle.css?v=7.0.6" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.6" rel="stylesheet" type="text/css" />
-    <link href="assets/css/style.bundle.css?v=7.0.6" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/global/plugins.bundle.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/style.bundle.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Theme Styles-->
-
-    <!--begin::Layout Themes(used by all pages)-->
-    <!--end::Layout Themes-->
 
     <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 
@@ -230,15 +226,15 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Global Config-->
 
     <!--begin::Global Theme Bundle(used by all pages)-->
-    <script src="assets/plugins/global/plugins.bundle.js?v=7.0.6"></script>
-    <script src="assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.6"></script>
-    <script src="assets/js/scripts.bundle.js?v=7.0.6"></script>
+    <script src="{{ asset('assets/plugins/global/plugins.bundle.js?v=7.0.6') }}"></script>
+    <script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.6') }}"></script>
+    <script src="{{ asset('assets/js/scripts.bundle.js?v=7.0.6') }}"></script>
     <!--end::Global Theme Bundle-->
 
     @include('sweetalert::alert')
 
     <!--begin::Page Scripts(used by this page)-->
-    <script src="assets/js/pages/custom/login/login-general.js?v=7.0.6"></script>
+    <script src="{{ asset('assets/js/pages/custom/login/login-general.js?v=7.0.6') }}"></script>
     <!--end::Page Scripts-->
 </body>
 <!--end::Body-->
