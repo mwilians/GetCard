@@ -482,24 +482,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         </span>
                                                     </span>
                                                 </span>
-                                                <div class="d-flex flex-column text-right mr-20">
+                                                <div class="d-flex flex-column text-right mr-35">
                                                     <span class="text-dark-75 font-weight-bolder font-size-h5">Rincian Pendapatan</span>
                                                     {{-- <span class="text-muted font-weight-bold mt-1">Jumlah User</span> --}}
                                                 </div>
-                                                {{-- <div class="card-toolbar">
-                                                    <ul class="nav nav-pills nav-pills-sm nav-dark-75" role="tablist">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link py-2 px-4" data-toggle="tab"
-                                                                href="#kt_charts_widget_2_chart_tab_1">
-                                                                <span class="nav-text font-size-sm">Month</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div> --}}
                                                 <div class="card-toolbar">
                                                     <form action="{{ url('filter') }}" method="GET" class="form-group">
                                                         @csrf
-                                                        <select class="form-control" id="tahun" name="year">
+                                                        <select class="form-control" id="tahunPd" name="year">
                                                             <?php
                                                                 $year = date('Y');
                                                                 $min = $year - 1;
@@ -967,13 +957,13 @@ License: You must have a valid license purchased only from themeforest(the above
         var totalPendapatan = JSON.parse("<?php echo json_encode ($totalPendapatan) ?>");
         var chart;
 
-        $("#tahun").change(function(e) {
+        $("#tahunPd").change(function(e) {
             e.preventDefault();
             $.ajax({
             url: urlStr,
             type: "get",
             data: {
-                tahun: $("#tahun").val()
+                tahun: $("#tahunPd").val()
             },
             success: function(datas) {
                 console.log(datas);

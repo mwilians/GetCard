@@ -27,8 +27,6 @@ class AdminController extends Controller
         ->groupBy(DB::raw("Month(created_at)"))
         ->pluck('newUser');
 
-        // dd($newUser);
-
         $bulan = User::select(DB::raw("MONTHNAME(created_at) as bulan"))
         ->GroupBy(DB::raw("MONTHNAME(created_at)"))
         ->pluck('bulan');
@@ -69,7 +67,8 @@ class AdminController extends Controller
         // ->pluck('totalPendapatan');
 
         $total = Payment::where('status','settlement')->orWhere('status','capture')
-        ->whereYear('created_at', date('Y'));
+        ->whereYear('created_at', date('Y'))
+        ->get();
 
         $bulanPendapatan = Payment::select(DB::raw("MONTHNAME(created_at) as bulanPendapatan"))
         ->GroupBy(DB::raw("MONTHNAME(created_at)"))
@@ -108,6 +107,8 @@ class AdminController extends Controller
         $daftarPendapatan = Payment::where('status', 'settlement')->orWhere('status', 'capture')->sum('gross_amount')
         ->whereYear('created_at', '=', $year)->get();
 
+        dd($daftarPremium);
+
         return view('admin.index', ['daftarUser' => $daftarUser], ['daftarPremium' => $daftarPremium], ['daftarPendapatan' => $daftarPendapatan]);
     }
 
@@ -132,7 +133,7 @@ class AdminController extends Controller
         $pendapatan = Payment::where('status', 'settlement')->orWhere('status', 'capture')->whereYear('created_at', $request->tahun)->get();
         foreach ($pendapatan as $pd) {
             $jumlah = $daftarPendapatan[Carbon::parse($pd->created_at)->month - 1];
-            $daftarPendapatan[Carbon::parse($pd->created_at)->month - 1] = $jumlah+$pd->gross_amount;
+            $daftarPendapatan[Carbon::parse($pd->created_at)->month - 1] = $jumlah + $pd -> gross_amount;
         }
 
         $data = [
