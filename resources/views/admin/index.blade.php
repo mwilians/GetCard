@@ -36,11 +36,9 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="{{ asset('assets/css/style.bundle.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Theme Styles-->
 
-    <!--begin::Layout Themes(used by all pages)-->
-    <!--end::Layout Themes-->
-
     <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <!--end::Head-->
 
@@ -441,20 +439,19 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <span class="text-muted font-weight-bold mt-1">Jumlah User</span>
                                                 </div> --}}
                                                 <div class="card-toolbar">
-                                                    <ul class="nav nav-pills nav-pills-sm nav-dark-75" role="tablist">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link py-2 px-4" data-toggle="tab"
-                                                                href="#kt_charts_widget_2_chart_tab_1">
-                                                                <span class="nav-text font-size-sm">Year</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link py-2 px-4 active" data-toggle="tab"
-                                                                href="#kt_charts_widget_2_chart_tab_2">
-                                                                <span class="nav-text font-size-sm">Month</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
+                                                    <form action="{{ url('filter') }}" method="GET" class="form-group">
+                                                        @csrf
+                                                        <select class="form-control" id="tahun" name="year">
+                                                            <?php
+                                                                $year = date('Y');
+                                                                $min = $year - 1;
+                                                                $max = $year;
+                                                                for ($i = $max; $i >= $min; $i--){
+                                                                    echo '<option value=' . $i . '>' . $i . '</option>';
+                                                                }
+                                                            ?>
+                                                        </select>
+                                                    </form>
                                                 </div>
                                             </div>
                                             <div id="kt_charts_widget_3_chart" class="card-rounded-bottom"
@@ -463,26 +460,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <!--end::Body-->
                                     </div>
                                 </div>
-
-								<div class="col-xl-6">
+                                <div class="col-xl-6">
 									<!--begin::Charts Widget 6-->
 									<div class="card card-custom card-stretch gutter-b">
-										<!--begin::Header-->
-										{{-- <div class="card-header h-auto border-0">
-											<div class="card-title py-5">
-												<h3 class="card-label">
-													<span class="d-block text-dark font-weight-bolder">Rincian Pendapatan</span>
-													<span class="d-block text-muted mt-2 font-size-sm">{{ count($dataBerlangganan) }}  Akun Berlangganan</span>
-												</h3>
-											</div>
-											<div class="card-toolbar">
-												<span class="d-flex align-items-center font-weight-bold">
-													<i class="label label-dot label-xl label-info mr-2"></i> Pendapatan
-												</span>
-											</div>
-										</div> --}}
-										<!--end::Header-->
-
 										<!--begin::Body-->
 										<div class="card-body p-0">
                                             <div class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
@@ -506,21 +486,30 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <span class="text-dark-75 font-weight-bolder font-size-h5">Rincian Pendapatan</span>
                                                     {{-- <span class="text-muted font-weight-bold mt-1">Jumlah User</span> --}}
                                                 </div>
-                                                <div class="card-toolbar">
+                                                {{-- <div class="card-toolbar">
                                                     <ul class="nav nav-pills nav-pills-sm nav-dark-75" role="tablist">
                                                         <li class="nav-item">
                                                             <a class="nav-link py-2 px-4" data-toggle="tab"
                                                                 href="#kt_charts_widget_2_chart_tab_1">
-                                                                <span class="nav-text font-size-sm">Year</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link py-2 px-4 active" data-toggle="tab"
-                                                                href="#kt_charts_widget_2_chart_tab_2">
                                                                 <span class="nav-text font-size-sm">Month</span>
                                                             </a>
                                                         </li>
                                                     </ul>
+                                                </div> --}}
+                                                <div class="card-toolbar">
+                                                    <form action="{{ url('filter') }}" method="GET" class="form-group">
+                                                        @csrf
+                                                        <select class="form-control" id="tahun" name="year">
+                                                            <?php
+                                                                $year = date('Y');
+                                                                $min = $year - 1;
+                                                                $max = $year;
+                                                                for ($i = $max; $i >= $min; $i--){
+                                                                    echo '<option value=' . $i . '>' . $i . '</option>';
+                                                                }
+                                                            ?>
+                                                        </select>
+                                                    </form>
                                                 </div>
                                             </div>
                                             
@@ -578,7 +567,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <div class="font-size-sm font-weight-bold">Total Pendapatan Rp. {{ $totalPendapatanBulan }}</div>
+                                                        <div class="font-size-sm font-weight-bold">Total Pendapatan Rp. {{ $dataPendapatan }}</div>
                                                     </div>
                                                 </div>
                                                 <!--end::Item-->
@@ -809,75 +798,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <script>var HOST_URL = "{{ url('/') }}";</script>
 
-    <script>
-        var rupiah = 
-        document.getElementById("rupiah");
-        rupiah.addEventListener("keyup", function(e)
-        {
-            rupiah.value = formatRupiah(this.value,
-            "Rp.");
-        });
     
-        function formatRupiah(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g,"").toString(),
-            split = number_string.split(","),
-            sisa = split[0].length % 3,
-            rupiah = split[0].substr(0, sisa),
-            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-    
-            if(ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
-            }
-    
-            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-    
-            return prefix == undefined ? rupiah: rupiah ? "Rp." + " " + rupiah:"";
-        }
-    </script>
-
-    <script>
-
-        var newUser = <?php echo json_encode ($newUser) ?> ;
-
-        var bulan = <?php echo json_encode ($bulan) ?> ;
-
-        Highcharts.chart('kt_stats_widget_11_chart', {
-
-            title : {
-                text: 'Pendaftaran User'
-            },
-
-            xAxis : {
-                categories : bulan
-            },
-
-            yAxis : {
-                title: {
-                    text : 'Jumlah Pendaftaran User'
-                }
-            },
-
-            plotOptions: {
-                series: {
-                    allowPointSelect: true
-                }
-            },
-
-            series: [{
-                name: 'Pendaftaran User',
-            }]
-        });
-    </script>
-
-    <script>
-
-        var totalPendapatanan = @php echo json_encode ($totalPendapatanan) @endphp ;
-        var bulanPendapatan = @php echo json_encode ($bulanPendapatan) @endphp ;
-        var userBerlangganan = @php echo json_encode ($userBerlangganan) @endphp ;
-
-    </script>
-
     <!--begin::Global Config(global config for global JS scripts)-->
     <script>
         var KTAppSettings = {
@@ -953,9 +874,251 @@ License: You must have a valid license purchased only from themeforest(the above
     <script src="{{ asset('assets/plugins/custom/gmaps/gmaps.js?v=7.0.6') }}"></script>
     <!--end::Page Vendors-->
 
+    <script>
+    var bulan = JSON.parse("<?php echo json_encode ($bulan) ?>") ;
+    var bulanPremium = JSON.parse("<?php echo json_encode ($bulanPremium) ?>") ;
+    var bulanPendapatan = JSON.parse("<?php echo json_encode ($bulanPendapatan) ?>") ;
+    var bulan = ['jan', 'feb', 'mar', 'apr', 'mei', 'jun', 'jul', 'agu', 'sep', 'okt', 'nov', 'des']
+    var bulanPremium = ['jan', 'feb', 'mar', 'apr', 'mei', 'jun', 'jul', 'agu', 'sep', 'okt', 'nov', 'des']
+    var bulanPendapatan = ['jan', 'feb', 'mar', 'apr', 'mei', 'jun', 'jul', 'agu', 'sep', 'okt', 'nov', 'des']
+    </script>
+
+    <script>
+    const urlStr = "{{url('/ajaxGraphic')}}";
+    
+    $(document).ready(function() {
+        var newUser = JSON.parse("<?php echo json_encode ($newUser) ?>");
+        var userPremium = JSON.parse("<?php echo json_encode ($userPremium) ?>");
+        var chart;
+
+        $("#tahun").change(function(e) {
+            e.preventDefault();
+            $.ajax({
+            url: urlStr,
+            type: "get",
+            data: {
+                tahun: $("#tahun").val()
+            },
+            success: function(datas) {
+                console.log(datas);
+                chart.data.w.config.series[0].data = datas.user
+                chart.data.w.config.series[1].data = datas.premium
+                chart.update()
+            },
+
+            // Error handling
+            error: function(error) {
+                console.log(`Error ${error}`);
+            }
+            });
+        });
+        initChartsWidget3()
+        function initChartsWidget3() {
+        var element = document.getElementById("kt_charts_widget_3_chart");
+
+        if (!element) {
+            return;
+        }
+
+        var options = {
+            series: [{
+                name: 'Pendaftaran User',
+                data: newUser
+            }, {
+                name: 'User Berlangganan',
+                data: userPremium
+            }],
+            chart: {
+                type: 'area',
+                height: 350,
+                toolbar: {
+                    show: false
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth',
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+            },
+            tooltip: {
+                style: {
+                    fontSize: '12px',
+                    fontFamily: KTApp.getSettings()['font-family']
+                },
+                y: {
+                    formatter: function(val) {
+                        return "+" + val
+                    }
+                }
+            },
+            colors: ['#1BC5BD','#FFA800']
+        };
+
+        chart = new ApexCharts(element, options);
+        chart.render();
+    }
+    });
+
+    $(document).ready(function() {
+        var totalPendapatan = JSON.parse("<?php echo json_encode ($totalPendapatan) ?>");
+        var chart;
+
+        $("#tahun").change(function(e) {
+            e.preventDefault();
+            $.ajax({
+            url: urlStr,
+            type: "get",
+            data: {
+                tahun: $("#tahun").val()
+            },
+            success: function(datas) {
+                console.log(datas);
+                chart.data.w.config.series[0].data = datas.pendapatan
+                chart.update()
+            },
+
+            // Error handling
+            error: function(error) {
+                console.log(`Error ${error}`);
+            }
+            });
+        });
+        initChartsWidget6()
+        function initChartsWidget6() {
+        var element = document.getElementById("kt_charts_widget_6_chart");
+
+        if (!element) {
+            return;
+        }
+
+        var options = {
+            series: [{
+                name: 'Pendapatan',
+                type: 'bar',
+                stacked: true,
+                data: totalPendapatan
+            }],
+            chart: {
+                stacked: true,
+                height: 300,
+                toolbar: {
+                    show: false
+                }
+            },
+            plotOptions: {
+                bar: {
+                    stacked: true,
+                    horizontal: false,
+                    endingShape: 'rounded',
+                    columnWidth: ['12%']
+                },
+            },
+            legend: {
+                show: false
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth',
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+                axisBorder: {
+                    show: false,
+                },
+                axisTicks: {
+                    show: false
+                },
+                labels: {
+                    style: {
+                        colors: KTApp.getSettings()['colors']['gray']['gray-500'],
+                        fontSize: '12px',
+                        fontFamily: KTApp.getSettings()['font-family']
+                    }
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: KTApp.getSettings()['colors']['gray']['gray-500'],
+                        fontSize: '12px',
+                        fontFamily: KTApp.getSettings()['font-family']
+                    }
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            states: {
+                normal: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                hover: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                active: {
+                    allowMultipleDataPointsSelection: false,
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                }
+            },
+            tooltip: {
+                style: {
+                    fontSize: '12px',
+                    fontFamily: KTApp.getSettings()['font-family']
+                },
+                y: {
+                    formatter: function(val) {
+                        return "Rp. " + val 
+                    }
+                }
+            },
+            colors: [KTApp.getSettings()['colors']['theme']['base']['info'], KTApp.getSettings()['colors']['theme']['base']['primary'], KTApp.getSettings()['colors']['theme']['light']['primary']],
+            grid: {
+                borderColor: KTApp.getSettings()['colors']['gray']['gray-200'],
+                strokeDashArray: 4,
+                yaxis: {
+                    lines: {
+                        show: true
+                    }
+                },
+                padding: {
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                }
+            }
+        };
+
+        chart = new ApexCharts(element, options);
+        chart.render();
+    }
+    });
+    </script>
+
+
     <!--begin::Page Scripts(used by this page)-->
-    <script src="{{ asset('assets/js/pages/widgets.js?v=7.0.6') }}"></script>
+    {{-- <script src="{{ asset('assets/js/pages/widgets.js?v=7.0.6') }}"></script> --}}
     <!--end::Page Scripts-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 <!--end::Body-->
 

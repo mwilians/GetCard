@@ -44,6 +44,8 @@ Route::get('/admin', [AdminController::class, 'home'])->name('home')->middleware
 
 Route::get('/chart', [AdminController::class, 'chart'])->name('chart')->middleware('admin');
 
+Route::get('/ajaxGraphic', [AdminController::class, 'ajaxGraphic'])->name('ajaxGraphic')->middleware('admin');
+
 
 // list pengguna
 Route::get('admin/list-pengguna', [ListPenggunaController::class, 'index'])->name('index')->middleware('admin');
