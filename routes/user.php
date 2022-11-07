@@ -97,8 +97,13 @@ Route::post('user/premium', [PaymentController::class, 'premium_post']);
 Route::get('user/premium/pembayaran', [PaymentController::class, 'payment'])->name('payment')->middleware('user');
 
 
+// Perbedaan Premium dan Tidak
+Route::get('user/tentang-premium', function(){
+    return view("user/tentang-premium");
+});
+
+
 // Histori Pembayaran
 Route::post('user/histori-pembayaran/data-histori', [HistoriController::class, 'dataHistori']);
-// Route::post('user/histori-pembayaran/dataHistori', [HistoriController::class, 'dataHistori']);
 
 Route::get('user/histori-pembayaran', [HistoriController::class, 'histori'])->name('histori')->middleware('user');

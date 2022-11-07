@@ -33,7 +33,7 @@
                                         </svg><!--end::Svg Icon-->
                                     </span>
                                     <h3 class="card-label text-white">
-                                        Selamat Datang {{ Auth::user()->name }}!
+                                        Selamat Datang {{ Auth::user()->name }}. Akun Anda belum Premium!
                                     </h3>
                                 </div>
                                 <div class="card-toolbar">
@@ -62,7 +62,7 @@
                                         </svg><!--end::Svg Icon-->
                                     </span>
                                     <h3 class="card-label text-white">
-                                        Selamat Datang {{ Auth::user()->name }}!
+                                        Selamat Datang {{ Auth::user()->name }}. Akun Anda Premium!
                                     </h3>
                                 </div>
                             </div>
@@ -291,50 +291,60 @@
                             </div>
                             <!--end::Header-->
 
-                            @foreach($kartuSaya as $kS)
-                                
-                            <!--begin::Body-->
-                            <div class="card-body p-0 px-10 mb-5">
-                                <!--begin::Item-->
-                                <div class="d-flex align-items-center">
-                                    <!--begin::Symbol-->
-                                    <div class="symbol symbol-60 symbol-2by3 flex-shrink-0 mr-4">
-                                        <div class="symbol-label"
-                                        style="background-image:url({{ asset($kS->foto) }})">
+                            @if(count($kartuSaya) == 0)
+
+                                <div class="d-flex justify-content-center">
+                                    <p>-- Belum Ada Data Kartu --</p>
+                                </div>
+
+                            @else
+
+                                @foreach($kartuSaya as $kS)
+                                    
+                                <!--begin::Body-->
+                                <div class="card-body p-0 px-10 mb-5">
+                                    <!--begin::Item-->
+                                    <div class="d-flex align-items-center">
+                                        <!--begin::Symbol-->
+                                        <div class="symbol symbol-60 symbol-2by3 flex-shrink-0 mr-4">
+                                            <div class="symbol-label"
+                                            style="background-image:url({{ asset($kS->foto) }})">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!--end::Symbol-->
+                                        <!--end::Symbol-->
 
-                                    <!--begin::Title-->
-                                    <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
-                                        <span class="text-dark-75 font-weight-bolder text-hover-primary font-size-h5">
-                                            {{ $kS->nama }}
-                                        </span>
-                                        <span class="text-muted font-weight-bold font-size-md my-1">
-                                            {{ $kS->jabatan }}
-                                        </span>
-                                        <span class="text-muted font-weight-bold font-size-md">
-                                             <span
-                                                class="text-primary font-weight-bold">{{ $kS->tanggal_bergabung }} / {{ $kS->tanggal_berakhir }}</span>
-                                        </span>
-                                    </div>
-                                    <!--end::Title-->
-
-                                    <!--begin::Info-->
-                                    <div class="d-flex align-items-center py-lg-0 py-2">
-                                        <div class="d-flex flex-column text-right">
-                                            <span class="text-dark-75 font-weight-bolder font-size-h4">
-                                                {{ $kS->no_id }}
+                                        <!--begin::Title-->
+                                        <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
+                                            <span class="text-dark-75 font-weight-bolder text-hover-primary font-size-h5">
+                                                {{ $kS->nama }}
+                                            </span>
+                                            <span class="text-muted font-weight-bold font-size-md my-1">
+                                                {{ $kS->jabatan }}
+                                            </span>
+                                            <span class="text-muted font-weight-bold font-size-md">
+                                                <span
+                                                    class="text-primary font-weight-bold">{{ $kS->tanggal_bergabung }} / {{ $kS->tanggal_berakhir }}</span>
                                             </span>
                                         </div>
-                                    </div>
-                                    <!--end::Info-->
-                                </div>
-                                <!--end::Item-->
-                            </div>
-                            <!--end::Body-->
+                                        <!--end::Title-->
 
-                            @endforeach
+                                        <!--begin::Info-->
+                                        <div class="d-flex align-items-center py-lg-0 py-2">
+                                            <div class="d-flex flex-column text-right">
+                                                <span class="text-dark-75 font-weight-bolder font-size-h4">
+                                                    {{ $kS->no_id }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <!--end::Info-->
+                                    </div>
+                                    <!--end::Item-->
+                                </div>
+                                <!--end::Body-->
+
+                                @endforeach
+
+                            @endif
                         </div>
                         <!--end::List Widget 14-->
                     </div>
