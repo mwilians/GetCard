@@ -37,19 +37,19 @@ class PenggunaController extends Controller {
         $payment = Payment::where('user_id', Auth::user()->id)->where(function($query){
             $query->where('status','settlement')->orWhere('status','capture');
         })->orderBy('id', 'asc')->first();
-
-        // dd($payment);
         
         if($payment) {
             $masa_berlaku = $payment->package->masa_berlaku;
+
             if($payment->created_at->addDays($masa_berlaku) < now()){
-                $limit = 2;
+                $limit = 3;
             }else{
-                // $limit = $payment->package->limit_kartu;
                 $limit = 999999;
+                // $limit = $payment->package->limit_kartu;
             }
+
         } else {
-            $limit = 2;
+            $limit = 3;
         }   
 
         $hari = "0000-00-39 00:00:00";
@@ -258,6 +258,7 @@ class PenggunaController extends Controller {
             Excel::import($import,$file);
 
             // dd($import);
+            
             toast('Data Berhasil di Import','success');
 
             return redirect()->route('index')->with('success', 'Data Berhasil di Import');
@@ -339,9 +340,11 @@ class PenggunaController extends Controller {
 
         $pengguna->template_id = $request->template;
 
-        $pengguna->save(); 
+        $pengguna->save();
 
-        return redirect('user/pengguna/'.$id.'/show')->with(compact('pengguna'), ['succes',' Template Berhasil di Simpan']);
+        toast('Template Berhasil di Simpan!','success');
+
+        return redirect('user/pengguna/'.$id.'/show')->with(compact('pengguna'), ['success',' Template Berhasil di Simpan']);
     }
 
     public function simpanTemplate($id_user, $id_template){
@@ -351,7 +354,7 @@ class PenggunaController extends Controller {
         $pengguna->update(['template_id' => $id_template]);
 
         return response()->json([
-            'sukses'
+            'success'
         ]);
     }
 

@@ -146,7 +146,23 @@ class DatabaseSeeder extends Seeder
             // 'foto' => 'assets/media/img/2.png',
             'paket' => 'Premium',
             'harga'	=> '26000',
+            'masa_berlaku' => '15',
+            'tipe_template' => 'Premium'
+        ]);
+
+        Package::create([
+            'foto' => 'assets/media/img/card-1.png',
+            'paket' => 'Premium 1',
+            'harga'	=> '36000',
             'masa_berlaku' => '30',
+            'tipe_template' => 'Premium'
+        ]);
+
+        Package::create([
+            'foto' => 'assets/media/img/card-1.png',
+            'paket' => 'Premium 2',
+            'harga'	=> '46000',
+            'masa_berlaku' => '45',
             'tipe_template' => 'Premium'
         ]);
     }

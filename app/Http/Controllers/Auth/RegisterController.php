@@ -61,7 +61,7 @@ class RegisterController extends Controller
             'email.unique' => 'Email telah terdaftar',
             'password.required' => 'Password tidak boleh kosong',
             'password.min' => 'Password minimal 6 karakter',
-            'password.confirmed' => 'Konfrimasi Password tidak cocok',
+            'password.confirmed' => 'Konfirmasi Password tidak cocok',
         ]);
     }
 
@@ -79,5 +79,7 @@ class RegisterController extends Controller
             'role' => '1',
             'password' => Hash::make($data['password']),
         ]);
+
+        toast('Registrasi Akun Berhasil, Terima kasih!','success');
     }
 }

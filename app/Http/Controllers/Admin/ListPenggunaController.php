@@ -30,7 +30,6 @@ class ListPenggunaController extends Controller
         $joinA = User::leftJoin('payment', 'payment.user_id', '=', 'users.id')->where('role', 1)->get();
 
         $data = Payment::query()
-            ->where()
             ->select('payment.user_id', 'users.name', 'users.email')
             ->distinct('payment.user_id')
             ->rightJoin('users', 'users.id', '=', 'payment.user_id')

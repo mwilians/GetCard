@@ -55,7 +55,7 @@ class LembagaController extends Controller
 
         }
 
-        // toast('Data berhasil di Tambah','success');
+        toast('Data Perusahaan berhasil di Simpan!','success');
 
         return redirect('user/lembaga')->with('succes',' Data Berhasil di Tambah');
         
@@ -86,7 +86,7 @@ class LembagaController extends Controller
             ]);
         }
 
-        // toast('Data berhasil di Tambah','success');
+        toast('Data Perusahaan berhasil di Simpan!','success');
 
         return redirect()->route('user/lembaga')->with('success',' Data Berhasil di Update');
     }
@@ -158,7 +158,7 @@ class LembagaController extends Controller
 
         }
 
-        // toast('Data berhasil di Tambah','success');
+        toast('Data Perusahaan berhasil di Simpan','success');
 
         return redirect()->route('lembaga')->with('success',' Data Berhasil di Update');
     }
