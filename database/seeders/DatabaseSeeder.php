@@ -66,13 +66,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Pengguna::create([
-            'user_id' => '3',
+            'user_id' => '2',
             'template_id' => '3',
             'no_id' => '112131',
             'foto' => 'assets/media/users/anggrekhitam.jpg',
-            'nama'	=> 'Anggrek',
+            'nama'	=> 'Anggrek Hitam',
             'jenis_kelamin' => 'Perempuan',
-            'jabatan' => 'CEO',
+            'jabatan' => 'Staff',
             'telepon' => '082234269772',
             'email'	=> 'anggrek@gmail.com',
             'tanggal_bergabung' => now(),
@@ -108,10 +108,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Template::create([
-            'file_demo' => 'assets/media/desain/DP/P21.png',
-            'file_kartu_app' => 'assets/media/desain/DAPP/A21C.png',
-            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K21C.png',
-            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K21D.png',
+            'file_demo' => 'assets/media/desain/DP/P3.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A3C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K3C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K3D.png',
             'tipe' => 'Gratis'
         ]);
 
@@ -120,7 +120,63 @@ class DatabaseSeeder extends Seeder
             'file_kartu_app' => 'assets/media/desain/DAPP/A7C.png',
             'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K7C.png',
             'file_kartu_nama2' => 'assets/media/desain/DKARTU/K7D.png',
-            'tipe' => 'Standar'
+            'tipe' => 'Gratis'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P10.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A10C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K10C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K10D.png',
+            'tipe' => 'Gratis'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P11.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A11C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K11C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K11D.png',
+            'tipe' => 'Gratis'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P13.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A13C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K13C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K13D.png',
+            'tipe' => 'Gratis'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P16.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A16C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K16C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K16D.png',
+            'tipe' => 'Gratis'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P19.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A19C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K19C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K19D.png',
+            'tipe' => 'Gratis'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P28.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A28C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K28C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K28D.png',
+            'tipe' => 'Gratis'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P8.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A8C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K8C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K8D.png',
+            'tipe' => 'Premium'
         ]);
 
         Template::create([
@@ -128,6 +184,78 @@ class DatabaseSeeder extends Seeder
             'file_kartu_app' => 'assets/media/desain/DAPP/A9C.png',
             'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K9C.png',
             'file_kartu_nama2' => 'assets/media/desain/DKARTU/K9D.png',
+            'tipe' => 'Premium'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P14.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A14C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K14C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K14D.png',
+            'tipe' => 'Premium'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P15.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A15C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K15C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K15D.png',
+            'tipe' => 'Premium'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P17.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A17C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K17C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K17D.png',
+            'tipe' => 'Premium'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P22.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A22C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K22C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K22D.png',
+            'tipe' => 'Premium'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P24.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A24C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K24C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K24D.png',
+            'tipe' => 'Premium'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P27.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A27C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K27C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K27D.png',
+            'tipe' => 'Premium'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P23.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A23C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K23C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K23D.png',
+            'tipe' => 'Premium'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P29.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A29C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K29C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K29D.png',
+            'tipe' => 'Premium'
+        ]);
+
+        Template::create([
+            'file_demo' => 'assets/media/desain/DP/P21.png',
+            'file_kartu_app' => 'assets/media/desain/DAPP/A21C.png',
+            'file_kartu_nama1'	=> 'assets/media/desain/DKARTU/K21C.png',
+            'file_kartu_nama2' => 'assets/media/desain/DKARTU/K21D.png',
             'tipe' => 'Premium'
         ]);
 

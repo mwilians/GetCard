@@ -283,7 +283,7 @@ class PenggunaController extends Controller {
 
         $lembaga = Lembaga::where('user_id', Auth::user()->id)->get();
         
-        $template = Template::paginate(15);
+        $template = Template::paginate(18);
 
         $previewDesain = Pengguna::where('id', $id)->first();
         

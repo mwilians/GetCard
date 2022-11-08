@@ -11,10 +11,14 @@
         <!--begin::Entry-->
         <div class="d-flex flex-column-fluid">
             <!--begin::Container-->
-            <div class=" container">
+            <div class="container">
                 <!--begin::Row-->
                 <div class="row">
                     <div class="col-12">
+                        @php
+                            $masa_berlangganan = $masa->package->masa_berlaku;
+                        @endphp
+
                         @if (!\App\Http\Controllers\User\UserController::cekPremium ())
 
                         <div class="card card-custom bg-primary">
@@ -62,7 +66,7 @@
                                         </svg><!--end::Svg Icon-->
                                     </span>
                                     <h3 class="card-label text-white">
-                                        Selamat Datang {{ Auth::user()->name }}. Akun Anda Premium!
+                                        Selamat Datang {{ Auth::user()->name }}. Akun Anda Premium selama {{ $masa_berlangganan }} Hari!
                                     </h3>
                                 </div>
                             </div>

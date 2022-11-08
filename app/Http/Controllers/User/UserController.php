@@ -16,9 +16,11 @@ class UserController extends Controller
 
         $listKartu = ListKartu::where('user_id', Auth::user()->id)->get();
 
-        $l = Lembaga::where('user_id', Auth::user()->id)->first();        
+        $l = Lembaga::where('user_id', Auth::user()->id)->first();
+        
+        $masa = Payment::where('user_id', Auth::user()->id)->first();
 
-        return view ('user.index', compact('kartuSaya', 'listKartu', 'l'));
+        return view ('user.index', compact('kartuSaya', 'listKartu', 'l', 'masa'));
     }
 
     public static function cekPremium() {
