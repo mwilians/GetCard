@@ -388,12 +388,19 @@ class PenggunaController extends Controller {
         $q = imagecreatefromstring($qr_image);
         imagecopyresized($image, $q, 450, 3610, 0, 0, 679, 679, 100, 100);
 
+        // tempel watermark
+        if(!\App\Http\Controllers\User\UserController::cekPremium ()) {
+            $watermark = imagecreatefrompng(public_path('assets/media/logos/GC-6.png'));
+            $watermark_width = imagesx($watermark);
+            $watermark_height = imagesy($watermark);
+            imagecopyresized($image, $watermark, ($image_width / 2)-($watermark_width / 2) + 3010, 80, 0, 0, 480, 150, $watermark_width, $watermark_height);
+        }
+
         // tempel logo perusahaan ke template id card
         $logo_image = imagecreatefrompng(public_path($lembaga->foto));
         $logo_image_width = imagesx($logo_image);
         $logo_image_height = imagesy($logo_image);
         // imagecopyresized($image, $logo_image, ($image_width / 2)-($logo_image_width / 2), 2380, 0, 0, $logo_image_width, $logo_image_height, $logo_image_width, $logo_image_height);
-
         imagecopyresized($image, $logo_image, ($image_width / 2)-($logo_image_width / 2), ($image_height / 2)-($logo_image_height / 2) + 200, 0, 0, $logo_image_width, $logo_image_height, $logo_image_width, $logo_image_height);
 
         $explode = last(explode('.', $pengguna->foto));
@@ -557,6 +564,7 @@ class PenggunaController extends Controller {
         imagepng($image);
         imagedestroy($image);
         imagedestroy($qr_image);
+        imagedestroy($watermark);
         imagedestroy($logo_image);
         imagedestroy($user_img_color);
         imagedestroy($mask);
@@ -595,6 +603,14 @@ class PenggunaController extends Controller {
         imagecopyresized($image, $q, 1715, 1280, 0, 0, 600, 600, 88, 88);
 
         $explode = last(explode('.', $pengguna->foto));
+
+        // tempel watermark
+        if(!\App\Http\Controllers\User\UserController::cekPremium ()) {
+            $watermark = imagecreatefrompng(public_path('assets/media/logos/GC-6.png'));
+            $watermark_width = imagesx($watermark);
+            $watermark_height = imagesy($watermark);
+            imagecopyresized($image, $watermark, ($image_width / 2)-($watermark_width / 2) + 1655, 40, 0, 0, 480, 150, $watermark_width, $watermark_height);
+        }
 
         // tempel foto user
         if ($explode =='jpg') {
@@ -699,6 +715,7 @@ class PenggunaController extends Controller {
         imagedestroy($image);
         imagedestroy($qr_image);
         imagedestroy($logo_image);
+        imagedestroy($watermark);
         imagedestroy($user_img_color);
         imagedestroy($mask);
  
@@ -739,12 +756,17 @@ class PenggunaController extends Controller {
 
         $logo_image_width = imagesx($logo_image);
         $logo_image_height = imagesy($logo_image);
-
         // imagecopyresized($image, $logo_image, ($image_width / 2)-($logo_image_width / 4), 580, 0, 0, $logo_image_width, $logo_image_height, $logo_image_width, $logo_image_height);
-
         imagecopyresized($image, $logo_image, ($image_width / 2)-($logo_image_width / 2), ($image_height / 2)-($logo_image_height / 2) - 280, 0, 0, $logo_image_width, $logo_image_height, $logo_image_width, $logo_image_height);
 
-        
+        // tempel watermark
+        if(!\App\Http\Controllers\User\UserController::cekPremium ()) {
+            $watermark = imagecreatefrompng(public_path('assets/media/logos/GC-6.png'));
+            $watermark_width = imagesx($watermark);
+            $watermark_height = imagesy($watermark);
+            imagecopyresized($image, $watermark, ($image_width / 2)-($watermark_width / 2) + 1655, 40, 0, 0, 480, 150, $watermark_width, $watermark_height);
+        }
+
         // warna
         $black = imagecolorallocate($image, 0,0,0);
         $white = imagecolorallocate($image, 255,255,255);
@@ -788,7 +810,6 @@ class PenggunaController extends Controller {
             imagettftext($image, $fontSize, 0, $x, 1210 + ($i * 110), $black, $poppins, $a);
             $i++;
         }
-        
 
 
         // Ambil data email dari query parameter
@@ -817,6 +838,7 @@ class PenggunaController extends Controller {
         imagedestroy($image);
         imagedestroy($qr_image);
         imagedestroy($logo_image);
+        imagedestroy($watermark);
         imagedestroy($user_img_color);
         imagedestroy($mask);
  

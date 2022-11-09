@@ -110,6 +110,23 @@
                                 <!--end::Title-->
                             </div>
                             <!--end::Item-->
+
+                            <!--begin::Item-->
+                            <div class="d-flex align-items-center bg-light-warning rounded p-5 mb-9">
+                                <!--begin::Img-->
+                                <span class="svg-icon svg-icon-5x mr-4">
+                                    <img src="{{ asset('assets/media/img/P9.png') }}" width="150px" height="100px" alt="">
+                                </span>
+                                <!--end::Img-->
+
+                                <!--begin::Title-->
+                                <div class="d-flex flex-column flex-grow-1 mr-2">
+                                    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1"><b>Tanpa Tanda Air!</b></a>
+                                    <span class="text-muted font-weight-bold">Template tidak memiliki tanda air</span>
+                                </div>
+                                <!--end::Title-->
+                            </div>
+                            <!--end::Item-->
                         </div>
                         <!--end::Body-->
                     </div>
@@ -155,6 +172,23 @@
                                 <div class="d-flex flex-column flex-grow-1 mr-2">
                                     <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1"><b>Template terbatas!</b></a>
                                     <span class="text-muted font-weight-bold">Hanya dapat mengakses beberapa template yang telah disediakan oleh GetCard</span>
+                                </div>
+                                <!--end::Title-->
+                            </div>
+                            <!--end::Item-->
+
+                            <!--begin::Item-->
+                            <div class="d-flex align-items-center bg-light-primary rounded p-5 mb-9">
+                                <!--begin::Img-->
+                                <span class="svg-icon svg-icon-5x mr-4">
+                                    <img src="{{ asset('assets/media/img/P5.png') }}" width="150px" height="100px" alt="">
+                                </span>
+                                <!--end::Img-->
+
+                                <!--begin::Title-->
+                                <div class="d-flex flex-column flex-grow-1 mr-2">
+                                    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1"><b>Tanda Air!</b></a>
+                                    <span class="text-muted font-weight-bold">Tampilan template akan terdapat tanda air dari GetCard</span>
                                 </div>
                                 <!--end::Title-->
                             </div>
