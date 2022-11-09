@@ -50,7 +50,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <div id="kt_header_mobile" class="header-mobile  header-mobile-fixed ">
         <!--begin::Logo-->
         <a href="/user">
-            <img alt="Logo" src="{{ asset('assets/media/logos/get card-01.png') }}" class="logo-default max-h-60px" />
+            <img alt="Logo" src="{{ asset('assets/media/logos/GC.png') }}" class="logo-default max-h-60px" />
         </a>
         <!--end::Logo-->
 

@@ -40,7 +40,7 @@
     <div class="container">
 
       <a href="#" class="logo">
-        <img src="{{ asset('assets/media/logos/get card-02.png') }}" alt="Landio logo" width="180px">
+        <img src="{{ asset('assets/media/logos/GC-4.png') }}" alt="Landio logo" width="180px">
       </a> 
 
       <a class="navbar-brand"></a>
