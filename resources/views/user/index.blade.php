@@ -15,9 +15,6 @@
                 <!--begin::Row-->
                 <div class="row">
                     <div class="col-12">
-                        @php
-                            $masa_berlangganan = $masa->package->masa_berlaku;
-                        @endphp
 
                         @if (!\App\Http\Controllers\User\UserController::cekPremium ())
 
@@ -49,6 +46,10 @@
                         </div>
 
                         @else
+
+                        @php
+                            $masa_berlangganan = $masa->package->masa_berlaku;
+                        @endphp
 
                         <div class="card card-custom bg-warning">
                             <div class="card-header border-0">
