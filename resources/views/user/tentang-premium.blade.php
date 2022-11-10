@@ -81,7 +81,7 @@
                             <div class="d-flex align-items-center mb-9 bg-light-info rounded p-5">
                                 <!--begin::Img-->
                                 <span class="svg-icon svg-icon-5x mr-4">
-                                    <img src="{{ asset('assets/media/img/P8.png') }}" width="150px" height="100px" alt="">
+                                    <img src="{{ asset('assets/media/img/P1.png') }}" width="150px" height="100px" alt="">
                                 </span>
                                 <!--end::Img-->
 
@@ -98,7 +98,7 @@
                             <div class="d-flex align-items-center bg-light-warning rounded p-5 mb-9">
                                 <!--begin::Img-->
                                 <span class="svg-icon svg-icon-5x mr-4">
-                                    <img src="{{ asset('assets/media/img/P9.png') }}" width="150px" height="100px" alt="">
+                                    <img src="{{ asset('assets/media/img/P2.png') }}" width="150px" height="100px" alt="">
                                 </span>
                                 <!--end::Img-->
 
@@ -112,17 +112,17 @@
                             <!--end::Item-->
 
                             <!--begin::Item-->
-                            <div class="d-flex align-items-center bg-light-warning rounded p-5 mb-9">
+                            <div class="d-flex align-items-center bg-light-success rounded p-5 mb-9">
                                 <!--begin::Img-->
-                                <span class="svg-icon svg-icon-5x mr-4">
-                                    <img src="{{ asset('assets/media/img/P9.png') }}" width="150px" height="100px" alt="">
+                                <span class="svg-icon svg-icon-5x ml-4 mr-7">
+                                    <img src="{{ asset('assets/media/img/P3.png') }}" width="100px" height="100px" alt="">
                                 </span>
                                 <!--end::Img-->
 
                                 <!--begin::Title-->
                                 <div class="d-flex flex-column flex-grow-1 mr-2">
-                                    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1"><b>Tanpa Tanda Air!</b></a>
-                                    <span class="text-muted font-weight-bold">Template tidak memiliki tanda air</span>
+                                    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1"><b>Tanpa Watermark!</b></a>
+                                    <span class="text-muted font-weight-bold">Template tidak memiliki watermark</span>
                                 </div>
                                 <!--end::Title-->
                             </div>
@@ -147,7 +147,7 @@
                             <div class="d-flex align-items-center mb-9 bg-light-danger rounded p-5">
                                 <!--begin::Img-->
                                 <span class="svg-icon svg-icon-5x mr-4">
-                                    <img src="{{ asset('assets/media/img/P6.png') }}" width="150px" height="100px" alt="">
+                                    <img src="{{ asset('assets/media/img/P4.png') }}" width="150px" height="100px" alt="">
                                 </span>
                                 <!--end::Img-->
 
@@ -180,14 +180,14 @@
                             <!--begin::Item-->
                             <div class="d-flex align-items-center bg-light-primary rounded p-5 mb-9">
                                 <!--begin::Img-->
-                                <span class="svg-icon svg-icon-5x mr-4">
-                                    <img src="{{ asset('assets/media/img/P5.png') }}" width="150px" height="100px" alt="">
+                                <span class="svg-icon svg-icon-5x ml-3 mr-7">
+                                    <img src="{{ asset('assets/media/img/P6-2.png') }}" width="130px" height="100px" alt="">
                                 </span>
                                 <!--end::Img-->
 
                                 <!--begin::Title-->
                                 <div class="d-flex flex-column flex-grow-1 mr-2">
-                                    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1"><b>Tanda Air!</b></a>
+                                    <a href="#" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1"><b>Watermark!</b></a>
                                     <span class="text-muted font-weight-bold">Tampilan template akan terdapat tanda air dari GetCard</span>
                                 </div>
                                 <!--end::Title-->

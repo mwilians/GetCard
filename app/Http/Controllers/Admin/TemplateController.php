@@ -11,7 +11,7 @@ class TemplateController extends Controller
 {
     public function template() {
 
-        $template = Template::all();
+        $template = Template::paginate(20);
 
         return view('admin.template', compact('template'));
     }

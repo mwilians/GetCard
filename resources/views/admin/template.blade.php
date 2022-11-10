@@ -240,6 +240,12 @@
                             @endforeach
                             <!--End::Modal Detail -->
 
+                            <!--Begin::Pagination -->
+                            <div class="card-footer d-flex justify-content-between">
+                                {{ $template->links()}}
+                            </div>
+                            <!--End::Pagination -->
+
                             <!--end::Body-->
                         </div>
                         <!--end::Card-->
