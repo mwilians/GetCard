@@ -966,7 +966,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 tahun: $("#tahunPd").val()
             },
             success: function(datas) {
-                console.log(datas);
+                console.log(chart);
                 chart.data.w.config.series[0].data = datas.pendapatan
                 chart.update()
             },
