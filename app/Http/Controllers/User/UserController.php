@@ -8,8 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\{Pengguna, ListKartu, Template, Lembaga, Payment};
 use Redirect;
 
-class UserController extends Controller
-{
+class UserController extends Controller {
     public function home() {
 
         $kartuSaya = Pengguna::where('user_id', Auth::user()->id)->limit(3)->get();

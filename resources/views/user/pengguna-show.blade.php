@@ -71,13 +71,7 @@
                             <div class="card-body">
                                 {{-- // Pilihan Desain --}}
 
-                                @if(count($template) == 0)
-
-                                <div class="d-flex justify-content-center">
-                                    <p>-- Belum Ada Desain Template --</p>
-                                </div>
-
-                                @else
+                                {{-- 2 --}}
 
                                 <div class="flex-shrink-0 mr-7 mt-lg-0 mt-3 desain">
                                     
@@ -87,7 +81,7 @@
 
                                             @if(!\App\Http\Controllers\User\UserController::cekPremium())
 
-                                            <div class="symbol symbol-50 symbol-lg-150 gambar">
+                                              <div class="symbol symbol-50 symbol-lg-150 gambar">
                                                 <button class="btn symbol symbol-50 symbol-lg-150 alertPremium" style="border: none">
                                                     <span class="svg-icon svg-icon-md svg-icon-warning">
                                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-opened.svg-->
@@ -139,7 +133,7 @@
 
                                 </div>
 
-                                @endif
+                                {{-- @endif --}}
                             </div>
 
                             <!--Begin::Pagination -->
